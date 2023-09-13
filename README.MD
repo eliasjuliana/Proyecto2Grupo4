@@ -1,4 +1,5 @@
-# Presentacion fin de módulo 2: Página de streaming, prime video
+# Presentacion fin de módulo 2: Página de streaming inspirada en prime video.
+
 
 El fin de este trabajo es crear una página unificando los conocimientos obtenidos en el 1er módulo (maquetado en gral) y en el 2do módulo (github y javascript, entre otros).
 
