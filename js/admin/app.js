@@ -3,12 +3,48 @@ import {validateName, validateImage, validateCategory, validateDescription, vali
 import {addRowTable, loadTable} from './adminUtils.js';
 
 
-//PARA MOSTRAR TABLA DE PELICULAS O DE SERIES
+//SELECCION ELEMENTOS
+
+const selectMoviesSeries = document.getElementById("select-movies-series");
+const selectedOption = selectMoviesSeries.value;
 
 const btnMoviesTable = document.getElementById('btn-movies-table');
 const btnSeriesTable = document.getElementById('btn-series-table');
 const moviesTable = document.getElementById('movies-table');
 const seriesTable = document.getElementById('series-table');
+
+
+const movieFormContainer = document.getElementById('movie-form-container');
+const serieFormContainer = document.getElementById('serie-form-container');
+
+const movieForm = document.getElementById('form-movies');
+const serieForm = document.getElementById('form-series');
+
+const fieldMovieName = document.getElementById('input-name-movie');
+const fieldMovieImage = document.getElementById('input-image-movie');
+const fieldMovieCategory = document.getElementById('category-movie');
+const fieldMovieDescription = document.getElementById('input-description-movie');
+const fieldMoviePublication = document.getElementById('publication-movie');
+
+
+
+//PARA CARGAR FORMULARIO SEGUN QUE SE ELIGE EN EL SELECT PELICULAS/SERIES
+selectMoviesSeries.addEventListener("change", () =>{
+    const selectedOption = selectMoviesSeries.value;
+    if(selectedOption == 1){
+        loadTable();
+        movieFormContainer.classList.remove('d-none');
+        serieFormContainer.classList.add('d-none');
+    } else if (selectedOption == 2){ 
+        serieFormContainer.classList.remove('d-none');
+        movieFormContainer.classList.add('d-none');
+    } else {
+        movieFormContainer.classList.add('d-none');
+        serieFormContainer.classList.add('d-none');
+    }
+});
+
+//PARA MOSTRAR TABLA DE PELICULAS O DE SERIES
 
 btnMoviesTable.addEventListener('click', () =>{
     seriesTable.classList.add('d-none');
@@ -24,15 +60,6 @@ btnSeriesTable.addEventListener('click', () =>{
 
 //1.cargar datos en la tabla
 
-//2.seleccionar elementos del dom
-
-const movieForm = document.getElementById('form-movies');
-
-const fieldMovieName = document.getElementById('input-name-movie');
-const fieldMovieImage = document.getElementById('input-image-movie');
-const fieldMovieCategory = document.getElementById('category-movie');
-const fieldMovieDescription = document.getElementById('input-description-movie');
-const fieldMoviePublication = document.getElementById('publication-movie');
 
 //3.event listeners
 

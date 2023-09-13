@@ -54,9 +54,17 @@
         </nav>
     </header>
     <main class="container-fluid pt-5" id="main-admin-container">
+<!-- select para elegir cargar peliculas o series -->
+        <h2 class="text-light mb-3">Seleccione que desea agregar (Peliculas/Series)</h2>
+        <select id="select-movies-series" class="form-select w-50" aria-label="Select movies/series">
+            <option value=""></option>
+            <option id="option-movie" value="1">Peliculas</option>
+            <option id="option-serie" value="2">Series</option>
+        </select>
+
 <!-- FORMS PARA AGREGAR PELICULAS Y SERIES -->
-        <section class="row">
-            <article class="p-3 rounded text-light col-12 col-md-6">
+        <section>
+            <article class="p-3 rounded text-light d-none" id="movie-form-container">
                 <h1 class="pt-5 text-light">Agregar Peliculas</h1>
     
                 <form id="form-movies">
@@ -68,12 +76,12 @@
                     <fieldset class="mb-2">
                         <label for="input-image-movie" class="form-label">Imagen</label>
                         <input type="text" id="input-image-movie" class="form-control"/>
-                        <div class="invalid-feedback">Ingrese un url valido</div>
+                        <div class="invalid-feedback">Ingrese un dirección de imágen válida</div>
                     </fieldset>
                     <fieldset class="mb-2">
                         <label for="category-movie">Categoría:</label>
                         <select id="category-movie" name="opciones">
-                            <option value="">Selecciona una categoria</option>
+                            <option value="">Selecciona una categoría</option>
                             <option value="opcion1">Opción 1</option>
                             <option value="opcion2">Opción 2</option>
                             <option value="opcion3">Opción 3</option>
@@ -97,7 +105,7 @@
                 </form>
             </article>
 
-            <article class="p-3 rounded text-light col-12 col-md-6">
+            <article class="p-3 rounded text-light d-none" id="serie-form-container">
                 <h1 class="pt-5 text-light">Agregar Series</h1>
     
                 <form id="form-series">
@@ -148,8 +156,8 @@
         </section>
 <!-- TABLA DONDE SE MUESTRAN LAS PELICULAS -->
 
-        <section>
-            <div class="btn-group w-50 d-flex justify-content-center" role="group" aria-label="Basic example">
+        <section class="container mt-5">
+            <div class="btn-group w-50" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-primary" id="btn-movies-table">Peliculas</button>
                 <button type="button" class="btn btn-primary" id="btn-series-table">Series</button>
             </div>
@@ -157,7 +165,6 @@
                 <table class="table">
                     <thead>
                         <tr>
-                        <th>Destacada</th>
                         <th>Nombre</th>
                         <th>Caratula</th>
                         <th>Categoria</th>
@@ -175,7 +182,6 @@
                 <table class="table" >
                     <thead>
                         <tr>
-                        <th>Destacada</th>
                         <th>Caratula</th>
                         <th>Nombre</th>
                         <th>Categoria</th>

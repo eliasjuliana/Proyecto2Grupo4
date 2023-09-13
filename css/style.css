@@ -86,3 +86,24 @@ nav a{
 #btn-series{
     background-color: var(--blue-letter-color);
 }
+
+/* favorite */
+
+.star-fav {
+    color: #f7da48;
+}
+
+.star-unfav {
+    color: #666664;
+}
+
+.btn-fav-default{
+    border: none;
+    background-color: transparent;
+}
+
+.image-table{
+    width: 170px;
+    height: 120px;
+    object-fit: cover;
+}

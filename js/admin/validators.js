@@ -19,7 +19,7 @@ export const validateName = (value, field) => {
     return true;
 };
 
-//VALIDACION URL IMAGEN
+//VALIDACION IMAGEN
 export const validateImage = (value, field) => {
     // Cantidad de caracteres menor a 4
     if (value.trim().length < 4) {
@@ -29,12 +29,13 @@ export const validateImage = (value, field) => {
     }
 
     // Cantidad de caracteres mayor a 300
-    if (value.trim().length > 300) {
+    if (value.trim().length > 3000) {
         field.classList.add('is-invalid');
         field.classList.remove('is-valid');
         return false;
     }
 
+    // const imageRegex = /^data:image\/(jpeg|jpg|png|gif);base64,([a-zA-Z0-9+/]+={0,2})$/;
     const regex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
 
     if (!regex.test(value)) {
@@ -71,8 +72,8 @@ export const validateDescription = (value, field) => {
         return false;
     }
 
-    // Maxima long del nombre
-    if (value.trim().length >= 1000) {
+    // Maxima long de la descripcion
+    if (value.trim().length >= 200) {
         field.classList.add('is-invalid');
         field.classList.remove('is-valid');
         return false;

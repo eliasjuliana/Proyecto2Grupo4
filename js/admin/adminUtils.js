@@ -25,6 +25,8 @@ export const addRowTable = (movie) => {
     // imagen  
     const tdImage = document.createElement('td');
     const img = document.createElement('img');
+    img.classList.add('image-table')
+
   
     img.src = movie.image;
     img.alt = movie.name;
@@ -51,9 +53,34 @@ export const addRowTable = (movie) => {
     tdPublication.innerText = movie.publication;
     tr.appendChild(tdPublication);
     
-    // BOTONES para editar y eliminar
+    // Destacar, editar y eliminar
   
-    // const tdButtons = document.createElement('td');
+      //destacar
+    const tdActions = document.createElement('td');
+    const btnFav = document.createElement('button');
+    btnFav.type = 'button';
+    btnFav.classList.add('btn-fav-default');
+
+    const favStar = document.createElement('i');
+    favStar.classList.add('fa-solid', 'fa-star', 'star-unfav');
+    btnFav.appendChild(favStar);
+    tdActions.appendChild(btnFav);
+    tr.appendChild(tdActions);
+
+    btnFav.onclick = () => {
+      if(favStar.classList.contains('star-unfav')){
+        favStar.classList.remove('star-unfav');
+        favStar.classList.add('star-fav');
+        disableFavBtns();
+      } else if(favStar.classList.contains('star-fav')){
+        favStar.classList.add('star-unfav');
+        favStar.classList.remove('star-fav');
+        resetFavBtns();
+      };
+
+      const favMovieCode = movie.code;
+      return favMovieCode;
+      };
   
     // const btnEdit = document.createElement('button');
     // const btnRemove = document.createElement('button');
@@ -82,8 +109,9 @@ export const addRowTable = (movie) => {
   
     tbody.appendChild(tr);
   };
-  
-  export const loadTable = () => {
+
+
+export const loadTable = () => {
     const movies = getMoviesFromLS();
   
     // Vaciar tabla
@@ -95,3 +123,24 @@ export const addRowTable = (movie) => {
       addRowTable(movie, index);
     });
 };
+
+
+export const disableFavBtns = () =>{
+    const buttonsFav = document.querySelectorAll('.btn-fav-default');
+    // console.log(buttonsFav);
+    buttonsFav.forEach((button)=>{
+      // console.log(button.innerHTML);
+        if(button.innerHTML.includes('star-unfav')){
+          button.disabled = true;
+        }
+    })
+};
+
+export const resetFavBtns = () => {
+  const buttonsFav = document.querySelectorAll('.btn-fav-default');
+  // console.log(buttonsFav);
+  buttonsFav.forEach((button)=>{
+    // console.log(button.innerHTML);
+      button.disabled = false;
+      }
+);}

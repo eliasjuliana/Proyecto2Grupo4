@@ -1,4 +1,4 @@
-import { Movie } from './movies.js';
+import { Movie } from './classes.js';
 import { addMoviesToLS } from './adminUtils.js';
 
 export const addMovie = (name, image, category, description, publication) => {
@@ -13,6 +13,6 @@ export const addMovie = (name, image, category, description, publication) => {
     // });
 };
 
-export const editarContacto = () => {};
-
-export const eliminarContacto = () => {};
+// export const favorite = () =>{
+//     favStar.classList.add('favorite');
+// }
