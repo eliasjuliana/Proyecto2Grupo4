@@ -3,9 +3,10 @@
 :root{
     --primary-color: #010D0C;
     --secondary-color:  #1A1E24;
-    --terciary-color: #ffffff;
+    --terciary-color: #fafafa;
     --dropdown-list-color: #848587;
     --blue-letter-color: #4896F7;
+    --blue-dark-color: #2062b3;
 }
 
 *{
@@ -79,15 +80,21 @@ nav a{
     background-color: var(--primary-color);
 }
 
-#btn-movies{
-    background-color: var(--blue-letter-color);
+.btn-blue-style{
+    background-color: var(--secondary-color);
+    color: var(--terciary-color);
 }
 
-#btn-series{
+.btn-blue-style:focus{
     background-color: var(--blue-letter-color);
+    font-weight: 800;
 }
 
-/* favorite */
+.btn-blue-style:hover{
+    background-color: var(--blue-letter-color);
+    font-weight: 800;
+}
+/* FAVORITE MOVIE/SERIE */
 
 .star-fav {
     color: #f7da48;
@@ -106,4 +113,21 @@ nav a{
     width: 170px;
     height: 120px;
     object-fit: cover;
+}
+
+@media (width >= 576px){
+    #movie-form-container{
+        max-width: 38rem;
+        margin: auto;
+    }
+
+    #serie-form-container{
+        max-width: 38rem;
+        margin: auto;
+    }
+
+    #select-movies-container{
+        max-width: 38rem;
+        margin: auto;
+    }
 }

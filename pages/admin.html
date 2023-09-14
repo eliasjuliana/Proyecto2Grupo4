@@ -55,16 +55,19 @@
     </header>
     <main class="container-fluid pt-5" id="main-admin-container">
 <!-- select para elegir cargar peliculas o series -->
-        <h2 class="text-light mb-3">Seleccione que desea agregar (Peliculas/Series)</h2>
-        <select id="select-movies-series" class="form-select w-50" aria-label="Select movies/series">
-            <option value=""></option>
-            <option id="option-movie" value="1">Peliculas</option>
-            <option id="option-serie" value="2">Series</option>
-        </select>
+        <section class="container my-4 gap-4 d-flex flex-column flex-sm-row align-items-center justify-content-center" id="select-movies-container">
+            <h3 class="text-light my-3">¿Qué desea agregar?</h3>
+            <select id="select-movies-series" class="form-select" aria-label="Select movies/series">
+                <!-- <option value=""></option> -->
+                <option id="option-movie" value="movies">Peliculas</option>
+                <option id="option-serie" value="series">Series</option>
+            </select>
+        </section>
+
 
 <!-- FORMS PARA AGREGAR PELICULAS Y SERIES -->
         <section>
-            <article class="p-3 rounded text-light d-none" id="movie-form-container">
+            <article class="p-3 text-light" id="movie-form-container">
                 <h1 class="pt-5 text-light">Agregar Peliculas</h1>
     
                 <form id="form-movies">
@@ -80,7 +83,7 @@
                     </fieldset>
                     <fieldset class="mb-2">
                         <label for="category-movie">Categoría:</label>
-                        <select id="category-movie" name="opciones">
+                        <select class="form-select" id="category-movie" name="opciones">
                             <option value="">Selecciona una categoría</option>
                             <option value="opcion1">Opción 1</option>
                             <option value="opcion2">Opción 2</option>
@@ -88,24 +91,24 @@
                         </select>
                     </fieldset>
                     <fieldset class="mb-2">
-                        <label for="input-description-movie" class="form-label">Decripcion</label>
+                        <label for="input-description-movie" class="form-label">Descripción</label>
                         <textarea id="input-description-movie" class="form-control"></textarea>
                     </fieldset>
                     <fieldset class="mb-2">
                         <label for="publication-movie" class="form-label">¿Está publicada?</label>
-                        <select id="publication-movie" name="opciones">
+                        <select class="form-select" id="publication-movie" name="opciones">
                             <option value=""></option>
                             <option value="Si">Si</option>
                             <option value="No">No</option>
                         </select>
                     </fieldset>
                     <div class="text-end mt-3">
-                        <button type="submit" class="btn" id="btn-movies">Guardar</button>
+                        <button type="submit" class="btn btn-blue-style px-4">Guardar</button>
                     </div>
                 </form>
             </article>
 
-            <article class="p-3 rounded text-light d-none" id="serie-form-container">
+            <article class="p-3 text-light d-none" id="serie-form-container">
                 <h1 class="pt-5 text-light">Agregar Series</h1>
     
                 <form id="form-series">
@@ -121,48 +124,50 @@
                     </fieldset>
                     <fieldset class="mb-2">
                         <label for="category-serie">Categoría:</label>
-                        <select id="category-serie" name="opciones">
+                        <select class="form-select" id="category-serie" name="opciones">
+                            <option value="">Selecciona una categoría</option>
                             <option value="opcion1">Opción 1</option>
                             <option value="opcion2">Opción 2</option>
                             <option value="opcion3">Opción 3</option>
                         </select>
                     </fieldset>
                     <fieldset class="mb-2">
-                        <label for="input-image-serie" class="form-label">Temporadas</label>
-                        <input type="number" id="input-seasons" class="form-control"/>
+                        <label for="input-seasons-serie" class="form-label">Temporadas</label>
+                        <input type="number" id="input-seasons-serie" class="form-control"/>
                         <div class="invalid-feedback">Ingrese un numero valido</div>
                     </fieldset>
                     <fieldset class="mb-2">
-                        <label for="input-image-serie" class="form-label">Episodios</label>
-                        <input type="number" id="input-seasons" class="form-control"/>
+                        <label for="input-episodes-serie" class="form-label">Episodios</label>
+                        <input type="number" id="input-episodes-serie" class="form-control"/>
                         <div class="invalid-feedback">Ingrese un numero valido</div>
                     </fieldset>
                     <fieldset class="mb-2">
-                        <label for="input-description-serie" class="form-label">Decripcion</label>
+                        <label for="input-description-serie" class="form-label">Descripción</label>
                         <textarea id="input-description-serie" class="form-control"></textarea>
                     </fieldset>
                     <fieldset class="mb-2">
                         <label for="publication-serie" class="form-label">¿Está publicada?</label>
-                        <select id="publication-serie" name="opciones">
+                        <select class="form-select" id="publication-serie" name="opciones">
                             <option value="Si">Si</option>
                             <option value="No">No</option>
                         </select>
                     </fieldset>
                     <div class="text-end mt-3">
-                        <button type="submit" class="btn" id="btn-series">Guardar</button>
+                        <button type="submit" class="btn btn-blue-style px-4">Guardar</button>
                     </div>
                 </form>
             </article>
         </section>
+
 <!-- TABLA DONDE SE MUESTRAN LAS PELICULAS -->
 
         <section class="container mt-5">
-            <div class="btn-group w-50" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary" id="btn-movies-table">Peliculas</button>
-                <button type="button" class="btn btn-primary" id="btn-series-table">Series</button>
+            <div class="btn-group w-100" role="group" aria-label="Tabs">
+                <button type="button" class="btn btn-blue-style rounded-bottom-0" id="btn-movies-table">Peliculas</button>
+                <button type="button" class="btn btn-blue-style rounded-bottom-0" id="btn-series-table">Series</button>
             </div>
-            <article class="table-responsive mt-3" id="movies-table">
-                <table class="table">
+            <article class="table-responsive" id="movies-table">
+                <table class="table table-dark table-borderless text-center">
                     <thead>
                         <tr>
                         <th>Nombre</th>
@@ -178,12 +183,12 @@
             </article>
     
     <!-- TABLA DONDE SE MUESTRAN LAS SERIES -->
-            <article class="table-responsive mt-3 d-none" id="series-table">
-                <table class="table" >
+            <article class="table-responsive d-none" id="series-table">
+                <table class="table table-dark table-borderless" >
                     <thead>
                         <tr>
-                        <th>Caratula</th>
                         <th>Nombre</th>
+                        <th>Caratula</th>
                         <th>Categoria</th>
                         <th>Temporadas</th>
                         <th>Episodios</th>

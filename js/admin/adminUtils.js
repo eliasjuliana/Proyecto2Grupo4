@@ -1,9 +1,15 @@
-//Traer peliculas del LS
+const moviesTable = document.getElementById('movies-table');
+const seriesTable = document.getElementById('series-table');
+//TRAER PELICULAS O SERIES DEL LS
 export const getMoviesFromLS = () => {
-    //   Traer peliculas desde LS, PERO, si es null, que tome un valor por defecto ([])
     return JSON.parse(localStorage.getItem('movies')) || [];
 };
 
+export const getseriesFromLS = () => {
+  return JSON.parse(localStorage.getItem('series')) || [];
+};
+
+//AGREGAR PELICULAS O SERIES AL LS
 export const addMoviesToLS = (newMovie) => {
     const movies = getMoviesFromLS();
     movies.push(newMovie);
@@ -11,8 +17,14 @@ export const addMoviesToLS = (newMovie) => {
     localStorage.setItem('movies', JSON.stringify(movies));
 };
 
-//una vez agregada la pelicula, crear una fila en la tabla con toda su info
-export const addRowTable = (movie) => {
+export const addSeriesToLS = (newSerie) => {
+  const series = getseriesFromLS();
+  series.push(newSerie);
+  localStorage.setItem('series', JSON.stringify(series));
+};
+
+//CREAR FILAS EN TABLA PELICULAS O TABLA SERIES
+export const addRowMovieTable = (movie) => {
     const tbody = document.getElementById('tbody-movies');
     //row table
     const tr = document.createElement('tr');
@@ -45,6 +57,7 @@ export const addRowTable = (movie) => {
   
     const tdDescription = document.createElement('td');
     tdDescription.innerText = movie.description;
+    tdDescription.classList.add('text-start');
     tr.appendChild(tdDescription);
   
     // publicacion
@@ -81,50 +94,164 @@ export const addRowTable = (movie) => {
       const favMovieCode = movie.code;
       return favMovieCode;
       };
-  
-    // const btnEdit = document.createElement('button');
-    // const btnRemove = document.createElement('button');
-  
-    // btnEditar.type = 'button';
-    // btnEliminar.type = 'button';
-    // btnEditar.classList.add('btn', 'btn-warning', 'btn-sm', 'me-2');
-    // btnEliminar.classList.add('btn', 'btn-danger', 'btn-sm');
-    // btnEditar.innerText = 'Editar';
-    // btnEliminar.innerText = 'Eliminar';
-  
-    // btnEditar.onclick = () => {
-    //   console.log(`Editar`);
-    // };
-  
-    // btnEliminar.onclick = () => {
-    //   console.log(`Eliminar`);
-    // };
-  
-    // tdBotones.appendChild(btnEditar);
-    // tdBotones.appendChild(btnEliminar);
-  
-    // tr.appendChild(tdBotones);
-  
+
     // Añadir todo al tbody
   
     tbody.appendChild(tr);
-  };
+};
 
+export const addRowSerieTable = (serie) => {
+    const tbody = document.getElementById('tbody-series');
+    //row table
+    const tr = document.createElement('tr');
 
-export const loadTable = () => {
+    // nombre
+    const tdName = document.createElement('td');
+    tdName.innerText = serie.name;
+    tr.appendChild(tdName);
+  
+    // imagen  
+    const tdImage = document.createElement('td');
+    const img = document.createElement('img');
+    img.classList.add('image-table')
+
+    img.src = serie.image;
+    img.alt = serie.name;
+  
+    tdImage.appendChild(img);
+    tr.appendChild(tdImage);
+  
+    // categoria
+    const tdCategory = document.createElement('td');
+    tdCategory.innerText = serie.category;
+    tr.appendChild(tdCategory);
+
+    // temporada
+    const tdSeasons = document.createElement('td');
+    tdSeasons.innerText = serie.seasons;
+    tr.appendChild(tdSeasons);
+
+    //episodios
+    const tdEpisodes = document.createElement('td');
+    tdEpisodes.innerText = serie.episodes;
+    tr.appendChild(tdEpisodes);
+  
+    // descripcion
+    const tdDescription = document.createElement('td');
+    tdDescription.innerText = serie.description;
+    tdDescription.classList.add('text-start');
+    tr.appendChild(tdDescription);
+  
+    // publicacion
+    const tdPublication = document.createElement('td');
+    tdPublication.innerText = serie.publication;
+    tr.appendChild(tdPublication);
+    
+    // Destacar, editar y eliminar
+  
+      //destacar
+    const tdActions = document.createElement('td');
+    const btnFav = document.createElement('button');
+    btnFav.type = 'button';
+    btnFav.classList.add('btn-fav-default');
+
+    const favStar = document.createElement('i');
+    favStar.classList.add('fa-solid', 'fa-star', 'star-unfav');
+    btnFav.appendChild(favStar);
+    tdActions.appendChild(btnFav);
+    tr.appendChild(tdActions);
+
+    btnFav.onclick = () => {
+      if(favStar.classList.contains('star-unfav')){
+        favStar.classList.remove('star-unfav');
+        favStar.classList.add('star-fav');
+        disableFavBtns();
+      } else if(favStar.classList.contains('star-fav')){
+        favStar.classList.add('star-unfav');
+        favStar.classList.remove('star-fav');
+        resetFavBtns();
+      };
+
+      const favSerieCode = serie.code;
+      return favSerieCode;
+      };
+      
+    // Añadir todo al tbody
+  
+    tbody.appendChild(tr);
+};
+
+//CARGAR TABLA PELICULA O TABLA SERIES
+export const loadMovieTable = () => {
     const movies = getMoviesFromLS();
   
     // Vaciar tabla
     const tbody = document.getElementById('tbody-movies');
     tbody.innerHTML = '';
+
+    seriesTable.classList.add('d-none');
+    moviesTable.classList.remove('d-none');
   
     // Cargar tabla
     movies.forEach((movie, index) => {
-      addRowTable(movie, index);
+      addRowMovieTable(movie, index);
     });
 };
 
+export const loadSerieTable = () => {
+  const series = getseriesFromLS();
 
+  // Vaciar tabla
+  const tbody = document.getElementById('tbody-series');
+  tbody.innerHTML = '';
+
+  seriesTable.classList.remove('d-none');
+  moviesTable.classList.add('d-none');
+
+  // Cargar tabla
+  series.forEach((serie, index) => {
+    addRowSerieTable(serie, index);
+  });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//DESTACAR
 export const disableFavBtns = () =>{
     const buttonsFav = document.querySelectorAll('.btn-fav-default');
     // console.log(buttonsFav);

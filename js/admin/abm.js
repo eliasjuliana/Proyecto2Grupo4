@@ -1,5 +1,5 @@
-import { Movie } from './classes.js';
-import { addMoviesToLS } from './adminUtils.js';
+import { Movie, Serie } from './classes.js';
+import { addMoviesToLS, addSeriesToLS } from './adminUtils.js';
 
 export const addMovie = (name, image, category, description, publication) => {
     const newMovie = new Movie(name, image, category, description, publication);
@@ -13,6 +13,14 @@ export const addMovie = (name, image, category, description, publication) => {
     // });
 };
 
-// export const favorite = () =>{
-//     favStar.classList.add('favorite');
-// }
+export const addSerie = (name, image, category, seasons, episodes, description, publication) => {
+    const newSerie = new Serie(name, image, category, seasons, episodes, description, publication);
+    
+    addSeriesToLS(newSerie);
+
+    // swal.fire({
+    //     title: 'Exito',
+    //     text: 'Pelicula agregado exitosamente',
+    //     icon: 'success',
+    // });
+};
