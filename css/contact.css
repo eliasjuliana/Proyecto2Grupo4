@@ -7,26 +7,26 @@ main {
     padding-top: 56px;
 }
 
- #custom-form {
+ #contact-form {
     background-color: #040404ad;
     padding-bottom: 10px;
 }
 
 @media (max-width: 767px) {
-    #custom-form {
+    #contact-form {
         margin-top: 50px;
     }
 }
 
 @media (min-width: 768px) {
-    #custom-form {
+    #contact-form {
         margin-top: 90px;
     }
 }
 
 
 @media (min-width: 1200px)  {
-    #custom-form {
+    #contact-form {
         width: 600px;
         margin-top: 40px;
     }
