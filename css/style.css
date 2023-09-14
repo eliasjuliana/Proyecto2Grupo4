@@ -16,22 +16,23 @@
 
 /* NAVBAR */
 nav {
-    font-weight: 600;
+    font-weight: 800;
     font: var(--terciary-color);
     background-color: var(--primary-color);
+    height: 5rem;
 }
 
 nav a{
     color: var(--terciary-color);
+    font-weight: 600;
+    font-size: 1.2rem;
 }
 
 #btn-menu {
     color: var(--terciary-color);
 }
 
-#dropdownMenu-container {
-    background-color: var(--secondary-color);
-}
+
 
 .list-color {
     color: var(--dropdown-list-color);
@@ -42,6 +43,18 @@ nav a{
     color: var(--terciary-color);
 }
 
+#input-search-navbar{
+    background-color: var(--dropdown-list-color);
+    color: var(--terciary-color);
+    border-radius: 5px;
+    border-color: var(--terciary-color);
+    border-width: 3px;
+    padding: 0 0.6rem;
+}
+
+#input-search-navbar::placeholder{
+    color: var(--terciary-color);
+}
 
 /* FOOTER */
 
@@ -61,7 +74,7 @@ nav a{
     margin-bottom: 0;
 }
 
-@media screen and (max-width >= 768px) {
+@media (width >= 768px){
     #footer-p{
         font-size: 15px;
         font-weight: 600;
@@ -70,5 +83,9 @@ nav a{
     .footer-link{
         font-size: 15px;
         font-weight: 600;
+    }
+
+    #img-logo-footer{
+        max-width: 9rem;
     }
 }
