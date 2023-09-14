@@ -8,4 +8,4 @@ export const añadirDatos = (dato,categoria) => {
     // Agregarlo a la lista
     guardarDatosEnLS(nuevoDato);
 
-}  
+}
