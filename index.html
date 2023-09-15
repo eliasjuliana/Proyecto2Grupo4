@@ -19,7 +19,65 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg fixed-top">
-            <div class="container-fluid">
+            <div class="container-fluid d-flex">
+                <!-- menu desplegable -->
+                <button class="btn p-4" id="btn-menu" type="button">
+                    Menú
+                </button>
+
+                <div class="container-fluid pt-2 ps-4" id="menu-links">
+                    <a class="dropdown-item" href="#">Inicio</a>
+                    <a class="dropdown-item" href="#">Peliculas y Series</a>
+                    <a class="dropdown-item" href="#">Contacto</a>
+                    <a class="dropdown-item" href="#">Sobre nosotros</a>
+                </div>
+
+                <!-- logo -->
+                <a id="navbar-logo" href="#">
+                    <img src="./assets/Logo-min.png" alt="Prime Video" id="logo-img">
+                </a>
+
+                <!-- buscar -->
+                <button class="btn p-4" id="btn-search" type="button">
+                    <i class="fa-solid fa-magnifying-glass" style="color: #fafafa;" id="icon-search"></i>
+                    <i class="fa-solid fa-xmark d-none" style="color: #fafafa;" id="icon-xmark"></i>
+                </button>
+
+                <!-- usuario -->
+                <button class="btn p-4" id="btn-user" type="button">
+                    <i class="fa-solid fa-user" style="color: #fafafa;"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- div menu desplegable -->
+        <div class="container-fluid pt-2 ps-4 d-flex flex-column gap-3 d-none" id="dropdown-menu">
+                <a class="dropdown-item" href="#">Inicio</a>
+                <a class="dropdown-item" href="#">Peliculas y Series</a>
+                <a class="dropdown-item" href="#">Contacto</a>
+                <a class="dropdown-item" href="#">Sobre nosotros</a>
+        </div>
+
+        <!-- div buscar -->
+        <div class="container-fluid pt-2 ps-4 d-flex flex-column gap-3 d-none" id="dropdown-search">
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button">
+                    <i class="fa-solid fa-magnifying-glass" style="color: #fafafa;"></i>
+                </button>
+                <input type="text" class="form-control" placeholder="Buscar" id="input-search-navbar">
+            </div>
+        </div>
+
+        <!-- div usuario -->
+        <div class="container-fluid pt-2 ps-4 d-flex flex-column gap-3 d-none" id="dropdown-user">
+            <a class="dropdown-item" href="#">Registrarse</a>
+            <a class="dropdown-item" href="#">Iniciar sesion</a>
+            <hr class="text-light">
+            <a class="dropdown-item" href="#">Admin</a>
+            <a class="dropdown-item" href="#">Salir</a>
+        </div>
+        <!-- <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container-fluid px-5">
                 <div class="dropdown" >
                     <button class="btn dropdown-toggle" id="btn-menu" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Menú
@@ -27,9 +85,7 @@
                     <ul class="dropdown-menu" id="dropdownMenu-container">
                         <li><a class="dropdown-item list-color" href="#">Inicio</a></li>
                         <li><a class="dropdown-item list-color" href="#">Peliculas y Series</a></li>
-                        <li><a class="dropdown-item list-color" href="#">Admin</a></li>
                         <li><a class="dropdown-item list-color" href="#">Contacto</a></li>
-                        <li><a class="dropdown-item list-color" href="#">Admin</a></li>
                         <li><a class="dropdown-item list-color" href="#">Sobre nosotros</a></li>
                     </ul>
                 </div>
@@ -38,23 +94,27 @@
 
                 <p class="d-inline-flex mb-0">
                     <a class="btn" data-bs-toggle="collapse" href="#collapseSearch" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
+                        <i class="fa-solid fa-magnifying-glass" style="color: #fafafa;"></i>
                     </a>
                 </p>
                 <div class="collapse" id="collapseSearch">
                         <input type="text" placeholder="Buscar" id="input-search-navbar">
                 </div>
-
-                <a href="" class="mx-4">
-                    <i class="fa-solid fa-user"></i>
-                </a>
+                <div class="dropdown pe-4 me-4">
+                    <button class="btn dropdown-toggle" id="btn-menu" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-user"></i>
+                    </button>
+                    <ul class="dropdown-menu" id="dropdownUser-container">
+                        <li><a class="dropdown-item list-color" href="#">Iniciar sesion</a></li>
+                        <li><a class="dropdown-item list-color" href="#">Registrarse</a></li>
+                        <li><a class="dropdown-item list-color" href="#">Login Admin</a></li>
+                        <li><a class="dropdown-item list-color" href="#">Salir</a></li>
+                    </ul>
+                </div>
             </div>
-        </nav>
+        </nav> -->
     </header>
     <main>
-        <body>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis suscipit nostrum pariatur, id possimus perferendis quibusis nam ducimus, tempora natus? Assumenda architecto nihil animi quas, odit impedit perspiciatis, provident distinctio, necessitatibus corporis debitis quaerat dolores? Consectetur illo illum quibusdam ab quasi quas iure corrupti, quo eligendi nulla porro possimus, ipsa error eaque, cumque autem similique amet! Quasi iste tempora unde soluta explicabo quisquam id aliquam. Facere recusandae atque, nihil labore pariatur, ipsum tenetur quo a aliquid autem nobis error. Eum, deleniti. Necessitatibus maiores explicabo autem consequatur, quasi eaque quam amet nesciunt repellat sint veniam corporis cum aliquid. Ex itaque, praesentium magni ea quis, corrupti in placeat accusamus, nobis a ab consequatur? Ipsa, necessitatibus veniam nesciunt quo esse, quidem quae magni perspiciatis explicabo repellat expedita error recusandae odio. Facilis nulla, deserunt nam voluptates nemo similique ratione, sequi velit eius fuga nisi maxime labore eos sunt nobis cumque, minus earum ducimus. Maxime perspiciatis vero similique eligendi exercitationem dolorem nisi consequatur voluptatum? Tempore perspiciatis aut, mollitia deleniti eligendi consequuntur dolorem natus doloremque praesentium temporibus laudantium adipisci vitae minima cupiditate qui beatae eius molestias quis, numquam blanditiis voluptates sum, eos recusandae accusantium distinctio soluta! Doloes aperiam quibusdam natus laboriosam libero iure fuga mollitia atque odit nulla repellendus ut, inventore magni necessitatibus, rerum rem recusandae quaerat iste! Praesentium aliquam ipsa quaerat! Eius commodi vel magni cupiditate, amet qui aliquid illo dicta mollitia quia totam tempore atque sapiente, labore fuga? Beatae ex ad molestiae cumque, aperiam minima veniam eaque eum itaque corporis laudantium alias laboriosam ab ipsa voluptatum eligendi, voluptatibus voluptates obcaecati delectus amet atque perspiciatis quam natus nobis. Eum dolore necessitlaborum quasi. Ipsum nesciunt, debitis iure quas animi unde ad tempore dicta repellat pariatur voluptates, quis omnis! Quae aliquam obcaecati culpa reiciendis ab dolore distsint sequi provident, mollitia quidem eveniet minima.</p>
-        </body>
     </main>
     <footer>
         <section class="container-fluid p-5" id="footer-bg">
@@ -74,5 +134,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a48a581e8f.js" crossorigin="anonymous"></script>
+
+    <script type="module" src="./js/index/index.js"></script>
 </body>
 </html>
