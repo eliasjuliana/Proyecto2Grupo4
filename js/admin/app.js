@@ -2,6 +2,7 @@ import {addMovie, addSerie} from "./abm.js";
 import {validateName, validateImage, validateCategory, validateSeason, validateEpisode, 
     validateDescription, validatePublication} from "./validators.js";
 import {loadMovieTable, loadSerieTable} from './adminUtils.js';
+import { filtradoPelicula, filtradoSerie } from "./filters.js";
 
 
 //SELECCION ELEMENTOS
@@ -31,6 +32,8 @@ const fieldSeriePublication = document.getElementById('publication-serie');
 
 //botones para mostrar tabla peliculas o tabla series
 const btnMoviesTable = document.getElementById('btn-movies-table');
+const selectMovies = document.getElementById("divMovie")
+const selectSeries = document.getElementById("divSeries")
 const btnSeriesTable = document.getElementById('btn-series-table');
 const moviesTable = document.getElementById('movies-table');
 const seriesTable = document.getElementById('series-table');
@@ -56,12 +59,18 @@ selectMoviesSeries.addEventListener("click", () =>{
 btnMoviesTable.addEventListener('click', () =>{
     seriesTable.classList.add('d-none');
     moviesTable.classList.remove('d-none');
+    selectMovies.classList.remove("d-none")
+    selectSeries.classList.add("d-none")
+    filtradoPelicula()
 })
 
 btnSeriesTable.addEventListener('click', () =>{
     loadSerieTable();
     seriesTable.classList.remove('d-none');
     moviesTable.classList.add('d-none');
+    selectMovies.classList.add("d-none")
+    selectSeries.classList.remove("d-none")
+    filtradoSerie()
 })
 
 //PARA CREAR FILAS DE LA TABLA PELICULAS
@@ -210,3 +219,4 @@ serieForm.addEventListener('submit', (e) => {
             fieldSeriePublication.classList.remove('is-valid', 'is-invalid');
     }
 });
+
