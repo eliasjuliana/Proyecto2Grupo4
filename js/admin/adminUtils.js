@@ -96,9 +96,41 @@ export const addRowMovieTable = (movie) => {
       };
 
     // Añadir todo al tbody
-  
-    tbody.appendChild(tr);
+
+    // BOTONES
+
+  const tdBotones = document.createElement('td');
+
+  const btnEdit = document.createElement('button');
+  const btnDelete = document.createElement('button');
+
+  btnEdit.type = 'button';
+  btnDelete.type = 'button';
+  btnEdit.classList.add('btn', 'btn-warning', 'btn-sm', 'me-2');
+  btnDelete.classList.add('btn', 'btn-danger', 'btn-sm');
+  btnEdit.innerText = 'Editar';
+  btnDelete.innerText = 'Eliminar';
+
+  //quede aqui, termine abm, revisar de aqui y app, junto con index
+
+  btnEdit.onclick = () => {
+    prepararEdicionContacto(contacto.codigo);
+  };
+
+  btnDelete.onclick = () => {
+    eliminarContacto(contacto.codigo);
+  };
+
+  tdBotones.appendChild(btnEdit);
+  tdBotones.appendChild(btnDelete);
+
+  tr.appendChild(tdBotones);
+
+  // Añadir todo al tbody
+
+  tbody.appendChild(tr);
 };
+  
 
 export const addRowSerieTable = (serie) => {
     const tbody = document.getElementById('tbody-series');
