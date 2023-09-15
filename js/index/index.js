@@ -13,7 +13,7 @@ const iconX = document.getElementById('icon-xmark');
 
 
 //funciones
-const toggleNavbarButton = (button, dropdown, iconToShow, iconToHide) => {
+const toggleNavbarButton = (button, dropdown) => {
     if (button.classList.contains('btn-navbar-active')) {
         button.classList.remove('btn-navbar-active');
         button.classList.add('btn');
@@ -37,15 +37,18 @@ const inactiveBtn = (btn1, btn2) =>{
     btn2.classList.remove('btn-navbar-active');
 }
 
+const changeIcons = (iconToShow, iconToHide) =>{
+    iconToShow.classList.remove('d-none');
+    iconToHide.classList.add('d-none');
+}
+
 
 //event listeners
 menuBtnNav.addEventListener('click', () => {
     toggleNavbarButton(menuBtnNav, dropdownMenu);
     hideOtherDropdowns(dropdownSearch, dropdownUser);
     inactiveBtn(searchBtnNav, userBtnNav);
-
-    iconX.classList.add('d-none');
-    iconSearch.classList.remove('d-none');
+    changeIcons(iconSearch, iconX);
 });
 
 searchBtnNav.addEventListener('click', () => {
@@ -53,15 +56,16 @@ searchBtnNav.addEventListener('click', () => {
     hideOtherDropdowns(dropdownMenu, dropdownUser);
     inactiveBtn(menuBtnNav, userBtnNav);
 
-    iconX.classList.remove('d-none');
-    iconSearch.classList.add('d-none');
+    if(!(searchBtnNav.classList.contains('btn-navbar-active'))){
+        changeIcons(iconSearch, iconX);
+    } else {
+        changeIcons(iconX, iconSearch);
+    }
 });
 
 userBtnNav.addEventListener('click', () => {
     toggleNavbarButton(userBtnNav, dropdownUser);
     hideOtherDropdowns(dropdownMenu, dropdownSearch);
     inactiveBtn(menuBtnNav, searchBtnNav);
-
-    iconX.classList.add('d-none');
-    iconSearch.classList.remove('d-none');
+    changeIcons(iconSearch, iconX);
 });

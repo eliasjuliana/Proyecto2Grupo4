@@ -108,6 +108,12 @@ nav a{
         order: 1;
     }
 
+    #menu-links a:hover{
+        background-color: var(--secondary-color);
+        color: var(--dropdown-list-color);
+        padding: 0 0.3rem;
+    }
+
     #navbar-logo{
         order: 0;
         padding: 2rem;
