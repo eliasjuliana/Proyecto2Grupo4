@@ -6,11 +6,11 @@ export const addMovie = (name, image, category, description, publication) => {
     
     addMoviesToLS(newMovie);
 
-    // swal.fire({
-    //     title: 'Exito',
-    //     text: 'Pelicula agregado exitosamente',
-    //     icon: 'success',
-    // });
+    swal.fire({
+        title: 'Exito',
+        text: 'Pelicula agregada exitosamente',
+        icon: 'success',
+    });
 };
 
 export const addSerie = (name, image, category, seasons, episodes, description, publication) => {
@@ -18,9 +18,9 @@ export const addSerie = (name, image, category, seasons, episodes, description, 
     
     addSeriesToLS(newSerie);
 
-    // swal.fire({
-    //     title: 'Exito',
-    //     text: 'Pelicula agregado exitosamente',
-    //     icon: 'success',
-    // });
+    swal.fire({
+        title: 'Exito',
+        text: 'Serie agregada exitosamente',
+        icon: 'success',
+    });
 };

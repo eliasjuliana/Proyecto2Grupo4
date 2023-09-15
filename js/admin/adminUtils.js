@@ -214,6 +214,82 @@ export const loadSerieTable = () => {
   });
 };
 
+//responsive mobile
+export const addCardMovie = (movie) => {
+  const movieCardsContainer = document.getElementById('movie-cards-container');
+
+  const cardBody = document.createElement('div');
+  cardBody.classList.add('container', 'row', 'bg-secondary');
+
+  const cardTitle = document.createElement('div');
+  cardTitle.classList.add('col-12', 'd-flex', 'justify-content-start', 'gap-4', 'mt-3');
+
+  const favStarCards = document.createElement('i');
+  favStarCards.classList.add('fa-solid', 'fa-star', 'pt-4');
+  cardTitle.appendChild(favStarCards);
+
+  const cardTitleDiv = document.createElement('div');
+  cardTitleDiv.classList.add('d-flex', 'flex-column');
+
+  const movieTitleCard = document.createElement('h2');
+  movieTitleCard.innerText = movie.name;
+  const movieCategoryCard = document.createElement('h3');
+  movieCategoryCard.innerText= movie.category;
+  cardTitleDiv.appendChild(movieTitleCard);
+  cardTitleDiv.appendChild(movieCategoryCard);
+  
+  cardTitle.appendChild(favStarCards);
+  cardTitle.appendChild(cardTitleDiv);
+
+  const imgCardDiv = document.createElement('div');
+  imgCardDiv.classList.add('col-6');
+
+  const imgCard = document.createElement('img');
+  imgCard.src = movie.image;
+  imgCard.alt = movie.name;
+  imgCardDiv.appendChild(imgCard);
+
+  const btnsDiv = document.createElement('div');
+  btnsDiv.classList.add('col-6', 'd-flex', 'flex-column', 'gap-3', 'mb-3');
+
+  const btnEdit = document.createElement('button');
+  const btnDelete = document.createElement('button');
+
+  btnsDiv.appendChild(btnEdit);
+  btnsDiv.appendChild(btnDelete);
+
+  const descriptionCard = document.createElement('p');
+  descriptionCard.innerText = movie.description;
+
+  const publicationCard = document.createElement('p');
+  publicationCard.innerText = (`${movie.publication} esta publicada`);
+  
+  
+  cardBody.appendChild(cardTitle);
+  cardBody.appendChild(imgCardDiv);
+  cardBody.appendChild(btnsDiv);
+  cardBody.appendChild(descriptionCard);
+  cardBody.appendChild(publicationCard);
+
+  movieCardsContainer.appendChild(cardBody);
+}
+
+export const loadCardsMovie = () => {
+  const movies = getMoviesFromLS();
+  console.log(movies);
+  
+  // Vaciar container de cards
+  const movieCardsContainer = document.getElementById('movie-cards-container');
+  movieCardsContainer.innerHTML = '';
+
+  // seriesTable.classList.add('d-none');
+  // moviesTable.classList.remove('d-none');
+
+  // Cargar tabla
+    movies.forEach((movie, index) => {
+    addCardMovie(movie, index);
+  });
+}
 
 
 

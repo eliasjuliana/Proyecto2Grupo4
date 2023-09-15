@@ -1,7 +1,7 @@
 import {addMovie, addSerie} from "./abm.js";
 import {validateName, validateImage, validateCategory, validateSeason, validateEpisode, 
     validateDescription, validatePublication} from "./validators.js";
-import {loadMovieTable, loadSerieTable} from './adminUtils.js';
+import {addCardMovie, loadCardsMovie, loadMovieTable, loadSerieTable} from './adminUtils.js';
 
 
 //SELECCION ELEMENTOS
@@ -113,8 +113,10 @@ movieForm.addEventListener('submit', (e) => {
 
             addMovie(name, image, category, description, publication);
 
-            // Recargar tabla
             loadMovieTable();
+            loadCardsMovie();
+
+        }
             
             // Vaciar campos
             movieForm.reset();
@@ -126,7 +128,7 @@ movieForm.addEventListener('submit', (e) => {
             fieldMovieDescription.classList.remove('is-valid', 'is-invalid');
             fieldMoviePublication.classList.remove('is-valid', 'is-invalid');
     }
-});
+);
 
 
 //PARA CREAR FILAS DE LA TABLA SERIES
@@ -210,3 +212,7 @@ serieForm.addEventListener('submit', (e) => {
             fieldSeriePublication.classList.remove('is-valid', 'is-invalid');
     }
 });
+
+// loadCardsMovie();
+
+addCardMovie();

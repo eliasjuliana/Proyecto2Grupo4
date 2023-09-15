@@ -114,8 +114,8 @@ nav a{
 }
 
 .image-table{
-    width: 170px;
-    height: 120px;
+    max-width: 170px;
+    max-height: 120px;
     object-fit: cover;
 }
 
