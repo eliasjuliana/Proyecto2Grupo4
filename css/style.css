@@ -185,3 +185,17 @@ nav a{
         max-width: 9rem;
     }
 }
+
+/* ADMIN */
+
+#main-admin-container {
+    background-color: var(--primary-color);
+}
+
+#btn-movies{
+    background-color: var(--blue-letter-color);
+}
+
+#btn-series{
+    background-color: var(--blue-letter-color);
+}
