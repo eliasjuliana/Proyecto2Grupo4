@@ -180,6 +180,12 @@ nav a{
     }
 }
 
+/* HOME */
+
+#banner-container{
+    background-color: var(--primary-color);
+}
+
 /* ADMIN */
 
 #main-admin-container {
