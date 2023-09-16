@@ -14,6 +14,7 @@
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.cdnfonts.com/css/amazon-ember" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">    
 </head>
 <body>
@@ -174,7 +175,7 @@
                         <th>Caratula</th>
                         <th>Categoria</th>
                         <th>Descripcion</th>
-                        <th>Esta publicada?</th>
+                        <th>Disponible en Prime</th>
                         <th>Acciones</th>
                         </tr>
                     </thead>
@@ -192,29 +193,23 @@
                         <th>Temporadas</th>
                         <th>Episodios</th>
                         <th>Descripcion</th>
-                        <th>Esta publicada?</th>
+                        <th>Disponible en Prime</th>
                         <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="tbody-series"></tbody>
                 </table>
             </article>
-        </section>     
-        
+
 <!-- CARDS DE PELICULAS O SERIES VERSION MOBILE  -->
-        <section >
-            <div class="btn-group w-100" role="group" aria-label="Tabs">
-                <button type="button" class="btn btn-blue-style rounded-bottom-0" id="btn-movies-table">Peliculas</button>
-                <button type="button" class="btn btn-blue-style rounded-bottom-0" id="btn-series-table">Series</button>
-            </div>
-
-            <!-- card -->
+            <!-- cards -->
             <article id="movie-cards-container">
-
             </article>
 
+            <article id="serie-cards-container" class="d-none">
+            </article>
 
-        </section>
+        </section>      
     </main>
     <footer>
         <section class="container-fluid p-5" id="footer-bg">
@@ -236,6 +231,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a48a581e8f.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="../js/admin/app.js"></script>
 </body>
 </html>
+
+
+
+<link rel="stylesheet" href="@sweetalert2/theme-wordpress-admin/wordpress-admin.css">
+

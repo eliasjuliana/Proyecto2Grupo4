@@ -147,4 +147,4 @@ export const validateNumber = (value, campo) => {
     campo.classList.remove('is-invalid');
     campo.classList.add('is-valid');
     return true;
-  };
+};

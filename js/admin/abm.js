@@ -1,26 +1,48 @@
-import { Movie, Serie } from './classes.js';
-import { addMoviesToLS, addSeriesToLS } from './adminUtils.js';
+import { Movie, Serie } from "./classes.js";
+import { addMoviesToLS, addSeriesToLS } from "./adminUtils.js";
 
 export const addMovie = (name, image, category, description, publication) => {
-    const newMovie = new Movie(name, image, category, description, publication);
-    
-    addMoviesToLS(newMovie);
+  const newMovie = new Movie(name, image, category, description, publication);
 
-    swal.fire({
-        title: 'Exito',
-        text: 'Pelicula agregada exitosamente',
-        icon: 'success',
-    });
+  addMoviesToLS(newMovie);
+
+  swal.fire({
+    title: "Exito",
+    text: "Pelicula agregada exitosamente",
+    icon: "success",
+    customClass: {
+      popup: "colored-toast",
+    },
+  });
 };
 
-export const addSerie = (name, image, category, seasons, episodes, description, publication) => {
-    const newSerie = new Serie(name, image, category, seasons, episodes, description, publication);
-    
-    addSeriesToLS(newSerie);
+export const addSerie = (
+  name,
+  image,
+  category,
+  seasons,
+  episodes,
+  description,
+  publication
+) => {
+  const newSerie = new Serie(
+    name,
+    image,
+    category,
+    seasons,
+    episodes,
+    description,
+    publication
+  );
 
-    swal.fire({
-        title: 'Exito',
-        text: 'Serie agregada exitosamente',
-        icon: 'success',
-    });
+  addSeriesToLS(newSerie);
+
+  swal.fire({
+    title: "Exito",
+    text: "Serie agregada exitosamente",
+    icon: "success",
+    customClass: {
+      popup: "colored-toast",
+    },
+  });
 };
