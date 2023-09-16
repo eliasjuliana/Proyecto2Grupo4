@@ -1,0 +1,48 @@
+main {
+    height: 100vh;
+}
+#sec-main {
+    padding-top: 56px;
+}
+
+#sec-main .article-form {
+    border: 1px #ddd solid;
+    width: 400px;
+    border-radius: 8px;
+    height: 300px;
+}
+
+#sec-main button {
+    width: 100%;
+}
+
+.btn-custom {
+    background-color: #FFD814;
+    box-shadow: 0 2px 5px 0 rgba(213,217,217,.5);
+    &:hover {
+    background-color: #e6c314;
+    }
+}
+
+.a-spacing-small, .a-ws .a-ws-spacing-small {
+    margin-bottom: 10px!important;
+}
+
+.a-size-mini {
+    font-size: 11px!important;
+    line-height: 1.465!important;
+}
+
+.a-text-center {
+    text-align: center!important;
+}
+
+.auth-footer-seperator {
+    display: inline-block;
+    width: 20px;
+}
+
+
+.colored-toast.swal2-icon-success {
+    background-color: #a5dc86 !important;
+  }
