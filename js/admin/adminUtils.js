@@ -4,6 +4,7 @@ const seriesTable = document.getElementById("series-table");
 const movieCards = document.getElementById("movie-cards-container");
 const serieCards = document.getElementById("serie-cards-container");
 
+
 //TRAER PELICULAS O SERIES DEL LS
 export const getMoviesFromLS = () => {
   return JSON.parse(localStorage.getItem("movies")) || [];
@@ -94,8 +95,7 @@ export const addRowMovieTable = (movie) => {
       resetFavBtns();
     }
 
-    const favMovieCode = movie.code;
-    return favMovieCode;
+    saveFavMovieCode(movie.code);
   };
 
   // Añadir todo al tbody
@@ -175,8 +175,7 @@ export const addRowSerieTable = (serie) => {
       resetFavBtns();
     }
 
-    const favSerieCode = serie.code;
-    return favSerieCode;
+    saveFavSerieCode(serie.code);
   };
 
   // Añadir todo al tbody
@@ -254,8 +253,7 @@ export const addCardMovie = (movie) => {
       resetFavBtns();
     }
 
-    const favMovieCode = movie.code;
-    return favMovieCode;
+    saveFavMovieCode(movie.code);
   };
 
   const cardTitleDiv = document.createElement("div");
@@ -348,8 +346,7 @@ export const addCardSerie = (serie) => {
       resetFavBtns();
     }
 
-    const favSerieCode = movie.code;
-    return favSerieCode;
+    saveFavSerieCode(serie.code);
   };
 
   const cardTitleDiv = document.createElement("div");
@@ -487,4 +484,34 @@ export const resetFavBtns = () => {
     // console.log(button.innerHTML);
     button.disabled = false;
   });
+};
+
+//funcion para guardar codigo de destacada
+
+export const saveFavMovieCode = (code) => {
+  // 1. Traer la lista de peliculas
+  const movies = getMoviesFromLS();
+
+  // 2. Buscar la pelicula destacada
+  const favMovie = movies.find(
+    (movie) => movie.code === code,
+  );
+
+  // 3. Guardar el codigo en sessionStorage
+  sessionStorage.setItem("codeFavMovie", code);
+  console.log(favMovie);
+};
+
+export const saveFavSerieCode = (code) => {
+  // 1. Traer la lista de peliculas
+  const movies = getseriesFromLS();
+
+  // 2. Buscar la pelicula destacada
+  const favSerie = movies.find(
+    (serie) => serie.code === code,
+  );
+
+  // 3. Guardar el codigo en sessionStorage
+  sessionStorage.setItem("codeFavSerie", code);
+  console.log(favSerie);
 };

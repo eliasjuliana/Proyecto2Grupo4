@@ -178,12 +178,19 @@ nav a{
     #img-logo-footer{
         max-width: 9rem;
     }
+}
 
 /* HOME */
 
 #banner-container{
     background-color: var(--primary-color);
     margin-top: 80px;
+}
+
+.banner-item{
+    height: 65vh;
+    object-fit: cover;
+    overflow: hidden;
 }
 
 /* ADMIN */

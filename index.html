@@ -81,11 +81,9 @@
         <section id="banner-container" class="container-fluid">
             <article id="banner-home" class="carousel slide m-auto">
                 <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img id="fav-movie-home" src="" class="d-block w-100" alt="pelicula destacada">
+                  <div class="carousel-item active banner-item" id="carousel-movie">
                   </div>
-                  <div class="carousel-item">
-                    <img id="fav-serie-home" src="" class="d-block w-100" alt="serie destacada">
+                  <div class="carousel-item banner-item" id="carousel-serie">
                   </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#banner-home" data-bs-slide="prev">
@@ -96,6 +94,14 @@
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Next</span>
                 </button>
+            </article>
+
+            <article class="carousel slide m-auto d-none" id="banner-default">
+                <div class="carousel-inner">
+                    <div class="carousel-item active banner-item" id="carousel-item-default">
+                        <img id="fav-serie-home-img" src="./assets/banner.jpeg" class="d-block w-100" alt="banner default">
+                    </div>
+                </div>
             </article>
         </section>
 
