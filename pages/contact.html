@@ -62,18 +62,18 @@
         <h1 class="sec-h text-light text-center">Contactanos!</h1>
             <form class="mt-2 row" id="form-contact">
                 <fieldset class="col-md-12 col-sm-12 col-xl-12 mb-3 ">
-                    <label for="input-nombre" class="form-label text-light text-start fw-bold">Nombre</label>
-                    <input type="text" id="input-nombre" class="form-control" placeholder="Lionel Andrés">
+                    <label for="input-name" class="form-label text-light text-start fw-bold">Nombre</label>
+                    <input type="text" id="input-name" class="form-control" maxlength="30" placeholder="Lionel Andrés">
                     <div class="invalid-feedback">Ingrese un nombre valido</div>
                 </fieldset>
                 <fieldset class="col-md-12 col-sm-12 col-xl-12 mb-3">
-                    <label for="input-apellido" class="form-label text-light">Apellido</label>
-                    <input type="text" id="input-apellido" class="form-control" placeholder="Messi">
+                    <label for="input-surname" class="form-label text-light">Apellido</label>
+                    <input type="text" id="input-surname" class="form-control" maxlength="20" placeholder="Messi">
                     <div class="invalid-feedback">Ingrese un apellido valido</div>
                 </fieldset>
                 <fieldset class="col-md-12 col-sm-12 col-xl-12 mb-3">
-                    <label for="input-telefono" class="form-label text-light">Telefono</label>
-                    <input type="number" id="input-telefono" class="form-control" placeholder="381 486 7318">
+                    <label for="input-number" class="form-label text-light">Telefono</label>
+                    <input type="number" id="input-number" class="form-control" maxlength="18" placeholder="381 486 7318">
                     <div class="invalid-feedback">Ingrese un telefono valido</div>
                 </fieldset>
                 <fieldset class="col-md-12 col-sm-12 col-xl-12 mb-3">
@@ -82,11 +82,11 @@
                    <div class="invalid-feedback">Ingrese un email valido</div>
                 </fieldset>
                 <fieldset class="col-12 mb-3">
-                    <label for="input-consulta" class="text-light form-label">Tú consulta</label>
+                    <label for="input-question" class="text-light form-label">Tú consulta</label>
                     <textarea name="" id="input-question" cols="30" rows="3" class="form-control" maxlength="500" placeholder="Preguntanos lo que sea!"></textarea>
                 </fieldset>
                 <div class="text-end">
-                    <a href="../pages/error404.html" class="btn btn-danger">Enviar</a>
+                    <button type="button" class="btn btn-danger" id="btn-submit">Enviar</button>
                 </div>
             </form>
         </section>
@@ -107,10 +107,11 @@
         </section>
     </footer>
     <!-- scripts -->
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a48a581e8f.js" crossorigin="anonymous"></script>
+    <script type="module" src="../js/admin/contact.js"></script>
 </body>
 </html>

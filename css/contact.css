@@ -3,8 +3,11 @@
 main {
     background-image: url(/assets/prime-video-background.jpg);
     object-fit: cover;
-    height: 100vh;
     padding-top: 56px;
+}
+
+.customClass {
+    color: green;
 }
 
  #contact-form {
