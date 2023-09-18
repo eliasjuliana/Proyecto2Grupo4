@@ -1,14 +1,8 @@
-import { addMovie, addSerie } from "./abm.js";
-import {
-  validateName,
-  validateImage,
-  validateCategory,
-  validateSeason,
-  validateEpisode,
-  validateDescription,
-  validatePublication,
-} from "./validators.js";
-import { responsiveMovies, responsiveSeries } from "./adminUtils.js";
+import {addMovie, addSerie, editMovie, editSerie} from "./abm.js";
+import {validateName, validateImage, validateCategory, validateSeason, validateEpisode, 
+    validateDescription, validatePublication} from "./validators.js";
+import {loadMovieTable, loadSerieTable, editingMovie, editingSerie, responsiveMovies, responsiveSeries} from './adminUtils.js';
+
 
 //SELECCION ELEMENTOS
 //select para cargar peliculas o series
