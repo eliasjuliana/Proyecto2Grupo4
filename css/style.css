@@ -1,0 +1,195 @@
+@import url('https://fonts.cdnfonts.com/css/amazon-ember');
+
+:root{
+    --primary-color: #010D0C;
+    --secondary-color:  #1A1E24;
+    --terciary-color: #ffffff;
+    --dropdown-list-color: #aeafb3;
+    --blue-letter-color: #4896F7;
+}
+
+*{
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Amazon Ember"
+}
+
+/* NAVBAR */
+nav {
+    font-weight: 800;
+    font: var(--terciary-color);
+    background-color: var(--primary-color);
+    height: 5rem;
+}
+
+nav a{
+    color: var(--terciary-color);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+#btn-menu {
+    color: var(--terciary-color);
+}
+
+#logo-img{
+    width: 6rem;
+}
+
+/* #input-search-navbar{
+    background-color: var(--dropdown-list-color);
+    color: var(--terciary-color);
+    border-radius: 5px;
+    border-color: var(--terciary-color);
+    border-width: 3px;
+    padding: 0 0.6rem;
+}
+
+#input-search-navbar::placeholder{
+    color: var(--terciary-color);
+} */
+.dropdown-item {
+    color: var(--dropdown-list-color);
+    text-decoration: none; 
+    width: auto;
+}
+/* dropdowns del navbar */
+#dropdown-menu {
+    background-color: var(--secondary-color);
+    position: absolute;
+    top: 80px;
+    width: 100vw;
+    height: 100vh;
+}
+
+#dropdown-search{
+    background-color: var(--secondary-color);
+    position: absolute;
+    top: 80px;
+    width: 100vw;
+    height: 100vh;
+}
+
+#input-search-navbar{
+    background-color: var(--dropdown-list-color);
+    border-left: none;
+    border-radius: 0 5 5 0;
+}
+
+#dropdown-user {
+    background-color: var(--secondary-color);
+    position: absolute;
+    top: 80px;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* botones activos del navbar */
+
+.btn-navbar-active{
+    border: none;
+    background-color: var(--secondary-color);
+}
+
+/* navbar responsive */
+@media (width >= 1000px){
+    #dropdown-menu{
+        display: none;
+    }
+
+    #btn-menu{
+        display: none;
+    }
+
+    #menu-links{
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        order: 1;
+    }
+
+    #navbar-logo{
+        order: 0;
+        padding: 2rem;
+    }
+
+    #btn-search{
+        order: 2;
+    }
+
+    #btn-user{
+        order: 3;
+    }
+
+    #dropdown-search{
+        background-color: var(--secondary-color);
+        position: absolute;
+        top: 80px;
+        width: 100vw;
+        height: auto;
+    }
+
+    #dropdown-user {
+        background-color: var(--secondary-color);
+        position: absolute;
+        top: 80px;
+        width: 100vw;
+        height: auto;
+        padding: 1rem;
+    }
+}
+
+@media (width < 1000px){
+    #menu-links{
+        display: none;
+    }
+}
+
+
+/* FOOTER */
+
+#footer-bg {
+    background-color: var(--primary-color);
+}
+
+.footer-link{
+    color: var(--blue-letter-color);
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+#footer-p{
+    color: var(--dropdown-list-color);
+    font-size: 0.8rem;
+    margin-bottom: 0;
+}
+
+@media (width >= 768px){
+    #footer-p{
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .footer-link{
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    #img-logo-footer{
+        max-width: 9rem;
+    }
+}
+
+/* ADMIN */
+
+#main-admin-container {
+    background-color: var(--primary-color);
+}
+
+#btn-movies{
+    background-color: var(--blue-letter-color);
+}
+
+#btn-series{
+    background-color: var(--blue-letter-color);
+}
