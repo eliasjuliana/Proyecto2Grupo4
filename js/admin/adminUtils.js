@@ -1,3 +1,4 @@
+import { removeMovie, removeSerie } from "./abm";
 const moviesTable = document.getElementById('movies-table');
 const seriesTable = document.getElementById('series-table');
 //TRAER PELICULAS O SERIES DEL LS
@@ -65,10 +66,8 @@ export const addRowMovieTable = (movie) => {
     const tdPublication = document.createElement('td');
     tdPublication.innerText = movie.publication;
     tr.appendChild(tdPublication);
-    
-    // Destacar, editar y eliminar
   
-      //destacar
+      //destacar pelicula
     const tdActions = document.createElement('td');
     const btnFav = document.createElement('button');
     btnFav.type = 'button';
@@ -95,43 +94,78 @@ export const addRowMovieTable = (movie) => {
       return favMovieCode;
       };
 
-    // Añadir todo al tbody
+    // BOTONES PELICULAS
 
-    // BOTONES
+  const tdButtons = document.createElement('td');
 
-  const tdBotones = document.createElement('td');
+  const btnEditMovie = document.createElement('button');
+  const btnDeleteMovie = document.createElement('button');
 
-  const btnEdit = document.createElement('button');
-  const btnDelete = document.createElement('button');
+  btnEditMovie.type = 'button';
+  btnDeleteMovie.type = 'button';
+  btnEditMovie.classList.add('btn', 'btn-warning', 'btn-sm', 'me-2');
+  btnDeleteMovie.classList.add('btn', 'btn-danger', 'btn-sm');
+  btnEditMovie.innerText = 'Editar';
+  btnDeleteMovie.innerText = 'Eliminar';
 
-  btnEdit.type = 'button';
-  btnDelete.type = 'button';
-  btnEdit.classList.add('btn', 'btn-warning', 'btn-sm', 'me-2');
-  btnDelete.classList.add('btn', 'btn-danger', 'btn-sm');
-  btnEdit.innerText = 'Editar';
-  btnDelete.innerText = 'Eliminar';
-
-  //quede aqui, termine abm, revisar de aqui y app, junto con index
-
-  btnEdit.onclick = () => {
-    prepararEdicionContacto(contacto.codigo);
+  btnEditMovie.onclick = () => {
+    prepareEditionMovie(movie.code);
   };
 
-  btnDelete.onclick = () => {
-    eliminarContacto(contacto.codigo);
+  btnDeleteMovie.onclick = () => {
+    removeMovie(movie.code);
   };
 
-  tdBotones.appendChild(btnEdit);
-  tdBotones.appendChild(btnDelete);
+  tdButtons.appendChild(btnEditMovie);
+  tdButtons.appendChild(btnDeleteMovie);
 
-  tr.appendChild(tdBotones);
+  tr.appendChild(tdButtons);
 
   // Añadir todo al tbody
 
   tbody.appendChild(tr);
 };
-  
 
+      //Editar película
+      const prepareEditionMovie = (movies) => {
+        // 1. Traer lista
+        const movies = getMoviesFromLS();
+      
+        // 2. Buscar el contacto a editar
+        // const contactoSeleccionado = contactos.find(item => {
+        //   return item.codigo === codigo;
+        // });
+        const selectMovies = movies.find((item) => item.movies === movies);
+      
+        // 3. Seleccionar los elementos (campos)
+        const fieldMovieName = document.getElementById('input-name-movie');
+        const fieldMovieImage = document.getElementById('input-image-movie');
+        const fieldMovieCategory = document.getElementById('input-category-movie');
+        const fieldMovieDescription = document.getElementById('input-description-movie');
+        const fieldMoviePublication = document.getElementById('input-publication-movie');
+      
+        // 4. Cargar los datos en el formulario
+        fieldMovieName.value = selectMovies.name;
+        fieldMovieImage.value = selectMovies.image;
+        fieldMovieCategory.value = selectMovies.category;
+        fieldMovieDescription.value = selectMovies.description;
+        fieldMoviePublication.value = selectMovies.publication;
+      
+        // 5. Guardar codigo
+        sessionStorage.setItem('movie.code', movies);
+      };
+      
+      export function editingMovie() {
+  const movieEditing = sessionStorage.getItem('movie.code');
+
+  if (movieEditing === null) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+// tabla series
 export const addRowSerieTable = (serie) => {
     const tbody = document.getElementById('tbody-series');
     //row table
@@ -178,10 +212,9 @@ export const addRowSerieTable = (serie) => {
     const tdPublication = document.createElement('td');
     tdPublication.innerText = serie.publication;
     tr.appendChild(tdPublication);
-    
-    // Destacar, editar y eliminar
   
-      //destacar
+  
+      //destacar serie
     const tdActions = document.createElement('td');
     const btnFav = document.createElement('button');
     btnFav.type = 'button';
@@ -207,10 +240,73 @@ export const addRowSerieTable = (serie) => {
       const favSerieCode = serie.code;
       return favSerieCode;
       };
+
+// BOTONES SERIES
+
+  const tdButtonsSeries = document.createElement('td');
+
+  const btnEditSerie = document.createElement('button');
+  const btnDeleteSerie = document.createElement('button');
+
+  btnEditSerie.type = 'button';
+  btnDeleteSerie.type = 'button';
+  btnEditSerie.classList.add('btn', 'btn-warning', 'btn-sm', 'me-2');
+  btnDeleteSerie.classList.add('btn', 'btn-danger', 'btn-sm');
+  btnEditSerie.innerText = 'Editar';
+  btnDeleteSerie.innerText = 'Eliminar';
+
+  btnEditSerie.onclick = () => {
+    prepareEditionSerie(serie.code);
+  };
+
+  btnDeleteSerie.onclick = () => {
+    removeSerie(serie.code);
+  };
+
+  tdButtonsSeries.appendChild(btnEditSerie);
+  tdButtonsSeries.appendChild(btnDeleteSerie);
+
+  tr.appendChild(tdButtonsSeries);
+  tbody.appendChild(tr);
+};
+
+//Editar serie
+      const prepareEditionSerie = (series) => {
+        // 1. Traer lista
+        const series = getseriesFromLS();
       
-    // Añadir todo al tbody
-  
-    tbody.appendChild(tr);
+        const selectSerie = series.find((item) => item.codeSerie === series);
+      
+        // 3. Seleccionar los elementos (campos)
+        const fieldSerieName = document.getElementById('input-name-serie');
+        const fieldMovieImage = document.getElementById('input-image-serie');
+        const fieldMovieCategory= document.getElementById('input-category-serie');
+        const fieldMovieDescription = document.getElementById('input-description-serie');
+        const fieldMoviePublication = document.getElementById('input-publication-serie');
+      
+        // 4. Cargar los datos en el formulario
+        fieldSerieName.value = selectSerie.name;
+        fieldMovieImage.value = selectSerie.image;
+        fieldMovieCategory.value = selectSerie.category;
+        fieldMovieDescription.value = selectSerie.description;
+        fieldMoviePublication.value = selectSerie.publication;
+      
+        // 5. Guardar codigo
+        sessionStorage.setItem('serie.code', series);
+      };
+      
+      export const editingSerie = () => {
+        const Serie = sessionStorage.getItem('serie.code');
+      
+        if (Serie === null) {
+          return false;
+        } else {
+          return true;
+        }
+      
+      //Eliminar
+      
+   
 };
 
 //CARGAR TABLA PELICULA O TABLA SERIES
@@ -246,43 +342,6 @@ export const loadSerieTable = () => {
   });
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //DESTACAR
 export const disableFavBtns = () =>{
     const buttonsFav = document.querySelectorAll('.btn-fav-default');
@@ -301,5 +360,5 @@ export const resetFavBtns = () => {
   buttonsFav.forEach((button)=>{
     // console.log(button.innerHTML);
       button.disabled = false;
-      }
-);}
+      });
+    }

@@ -1,7 +1,7 @@
-import {addMovie, addSerie} from "./abm.js";
+import {addMovie, addSerie, editMovie, editSerie} from "./abm.js";
 import {validateName, validateImage, validateCategory, validateSeason, validateEpisode, 
     validateDescription, validatePublication} from "./validators.js";
-import {loadMovieTable, loadSerieTable} from './adminUtils.js';
+import {loadMovieTable, loadSerieTable, editingMovie, editingSerie} from './adminUtils.js';
 
 
 //SELECCION ELEMENTOS
@@ -111,7 +111,13 @@ movieForm.addEventListener('submit', (e) => {
         && validatePublication(publication, fieldMoviePublication)) {
             // Entra SOLAMENTE si TODAS son validas
 
-            addMovie(name, image, category, description, publication);
+            if (editingMovie()) {
+                editMovie(name, image, category, description, publication);
+              } else {
+               addMovie(name, image, category, description, publication);
+              }
+            
+            
 
             // Recargar tabla
             loadMovieTable();
@@ -192,8 +198,12 @@ serieForm.addEventListener('submit', (e) => {
         validatePublication(publication, fieldSeriePublication)) {
             // Entra SOLAMENTE si TODAS son validas
 
-            addSerie(name, image, category, seasons, episodes, description, publication);
-
+            if (editingSerie()) {
+                editSerie(name, image, category, seasons, episodes, description, publication);
+              } else {
+              addSerie(name, image, category, seasons, episodes, description, publication);
+              }
+               
             // Recargar tabla
             loadSerieTable();
             

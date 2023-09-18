@@ -28,9 +28,9 @@ export const addSerie = (name, image, category, seasons, episodes, description, 
 //Editar película
 
 export const editMovie = (name, image, category, description, publication) => {
-    // 1. Traer lista de contactos y el codigo del contacto a editar
+    // 1. Traer lista de peliculas y el codigo del contacto a editar
     const codeMovie = sessionStorage.getItem('movie.code');
-    const movie = getMoviesFromLS();
+    const Movie = getMoviesFromLS();
   
     // # Si no hay codigo (es null)
     if (!codeMovie) {
@@ -42,12 +42,12 @@ export const editMovie = (name, image, category, description, publication) => {
       return;
     }
   
-    // 2. Buscar posicion del contacto
-    const positionMovie = movie.findIndex(
+    // 2. Buscar posicion de la pelicula
+    const positionMovie = Movie.findIndex(
       (item) => item.codeMovie === codeMovie
     );
   
-    // # Si no se encontró el contacto
+    // # Si no se encontró la película
     if (positionMovie === -1) {
       swal.fire({
         title: 'Lo sentimos',
@@ -57,14 +57,14 @@ export const editMovie = (name, image, category, description, publication) => {
       return;
     }
   
-    // 3. Crear el contacto editado
+    // 3. Crear la pelicula editada
     const editedMovie = new Movie(name, image, category, description, publication);
   
     // 4. Eliminar dato  y agregar nuevo
-    movie.splice(positionMovie, 1, editedMovie);
+    Movie.splice(positionMovie, 1, editedMovie);
   
     // 5. Guardar en LS
-    localStorage.setItem('movie', JSON.stringify(movie));
+    localStorage.setItem('Movie', JSON.stringify(Movie));
   
     // 6. Mostrar mensaje de exito
     swal.fire({
@@ -151,7 +151,7 @@ export const editSerie = (name, image, category, seasons, episodes, description,
       return;
     }
   
-    // 3. Crear el contacto editado
+    // 3. Crear el dato modificado
     const editedSerie = new Serie(name, image, category, seasons, episodes, description, publication);
   
     // 4. Eliminar dato  y agregar nuevo
@@ -172,7 +172,7 @@ export const editSerie = (name, image, category, seasons, episodes, description,
   };
   
 
-  //Eliminar Película
+  //Eliminar serie
 
   export const removeSerie = (codeSerie) => {
     // 1. Confirmar eliminacion
