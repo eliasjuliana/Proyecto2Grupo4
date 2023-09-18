@@ -1,4 +1,4 @@
-import { addMovie, addSerie } from "./abm.js";
+import { addMovie, addSerie, editMovie, editSerie } from "./abm.js";
 import {
   validateName,
   validateImage,
@@ -8,7 +8,7 @@ import {
   validateDescription,
   validatePublication,
 } from "./validators.js";
-import { responsiveMovies, responsiveSeries } from "./adminUtils.js";
+import { editingMovie, editingSerie, responsiveMovies, responsiveSeries } from "./adminUtils.js";
 
 //SELECCION ELEMENTOS
 //select para cargar peliculas o series
@@ -140,9 +140,12 @@ movieForm.addEventListener("submit", (e) => {
     validatePublication(publication, fieldMoviePublication)
   ) {
     // Entra SOLAMENTE si TODAS son validas
-
-    addMovie(name, image, category, description, publication);
-
+    if (editingMovie()){
+      editMovie(name, image, category, description, publication);
+    } else {
+      addMovie(name, image, category, description, publication);
+    };
+    
     responsiveMovies();
   }
   // Vaciar campos
@@ -221,15 +224,28 @@ serieForm.addEventListener("submit", (e) => {
   ) {
     // Entra SOLAMENTE si TODAS son validas
 
-    addSerie(
-      name,
-      image,
-      category,
-      seasons,
-      episodes,
-      description,
-      publication
-    );
+    if(editingSerie()){
+      editSerie(
+        name,
+        image,
+        category,
+        seasons,
+        episodes,
+        description,
+        publication
+      );
+    } else {
+      addSerie(
+        name,
+        image,
+        category,
+        seasons,
+        episodes,
+        description,
+        publication
+      );
+    }
+
     // Recargar tabla
     responsiveSeries();
 
