@@ -1,5 +1,5 @@
 import { Movie, Serie } from "./classes.js";
-import { addMoviesToLS, addSeriesToLS, getMoviesFromLS, getseriesFromLS } from "./adminUtils.js";
+import { addMoviesToLS, addSeriesToLS, getMoviesFromLS, getseriesFromLS, loadMovieTable, responsiveMovies, responsiveSeries } from "./adminUtils.js";
 
 //CREATE
 
@@ -184,11 +184,83 @@ export const editSerie = (name,
 
 //DELETE
 
-export const deleteMovie = () =>{
+export const deleteMovie = (code) =>{
 
+  swal.fire({
+      title: "¿Estás seguro?",
+      text: "Una vez eliminado, no podrás recuperar la pelicula",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Eliminar",
+      cancelButtonText: "Cancelar",
+      customClass: {
+        popup: 'colored-toast'
+      },
+    })
+  .then((result) => {
+      if (result.isConfirmed) {
+        
+      const movies = getMoviesFromLS();
+
+      const filteredMovies = movies.filter((item) => item.code !== code);
+      console.log(filteredMovies);
+
+      localStorage.setItem('movies', JSON.stringify(filteredMovies));
+
+      swal.fire({
+        icon: "success",
+        title: "Pelicula eliminada correctamente",
+        customClass: {
+          popup: 'colored-toast',
+        showConfirmButton: false,
+        timer: 1500,
+      }
+    });
+
+    responsiveMovies();
+    }
+    })
 };
 
-export const deleteSerie = () => {
+export const deleteSerie = (code) => {
 
+  swal.fire({
+    title: "¿Estás seguro?",
+    text: "Una vez eliminada, no podrás recuperar la serie",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Eliminar",
+    cancelButtonText: "Cancelar",
+    customClass: {
+      popup: 'colored-toast'
+    },
+  })
+.then((result) => {
+    if (result.isConfirmed) {
+      // 1. Traer la lista de contactos
+      const series = getseriesFromLS();
+
+      // 2. Filtrar el contacto a eliminar
+      const seriesUpdated = series.filter(
+        (serie) => serie.code !== code,
+      );
+
+      // 3. Guardar el nuevo array en localStorage
+      localStorage.setItem("series", JSON.stringify(seriesUpdated));
+
+      // 4. Recargar la tabla
+      responsiveSeries();
+
+      // 5. Mensaje de exito
+      swal.fire({
+        icon: "success",
+        title: "Serie eliminada correctamente",
+        customClass: {
+          popup: 'colored-toast'},
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  });
 };
 

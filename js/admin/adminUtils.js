@@ -1,3 +1,5 @@
+import { deleteMovie, deleteSerie } from "./abm.js";
+
 const moviesTable = document.getElementById("movies-table");
 const seriesTable = document.getElementById("series-table");
 
@@ -114,7 +116,7 @@ export const addRowMovieTable = (movie) => {
   btnDelete.classList.add("btn", "btn-danger", "btn-sm");
   btnDelete.innerText = "Eliminar";
   btnDelete.onclick = () => {
-    console.log('eliminando');
+    deleteMovie(movie.code);
   };
 
   tdActions.appendChild(btnDelete);
@@ -216,7 +218,7 @@ export const addRowSerieTable = (serie) => {
   btnDelete.classList.add("btn", "btn-danger", "btn-sm");
   btnDelete.innerText = "Eliminar";
   btnDelete.onclick = () => {
-    console.log('eliminando');
+    deleteSerie(serie.code);
   };
 
   tdActions.appendChild(btnDelete);
@@ -305,7 +307,7 @@ export const addCardMovie = (movie) => {
   btnDelete.classList.add('btn', 'btn-danger', 'btn-sm');
   btnDelete.innerText = "Eliminar";
   btnDelete.onclick = () => {
-    console.log('eliminando');
+    deleteMovie(movie.code);
   };
 
 
@@ -407,7 +409,7 @@ export const addCardSerie = (serie) => {
   btnDelete.classList.add('btn', 'btn-danger', 'btn-sm');
   btnDelete.innerText = "Eliminar";
   btnDelete.onclick = () => {
-    console.log('eliminando');
+    deleteSerie(serie.code);
   };
 
   btnsDiv.appendChild(btnEdit);
