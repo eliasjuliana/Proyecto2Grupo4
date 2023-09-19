@@ -1,4 +1,4 @@
-import { getMoviesFromLS, getseriesFromLS, saveFavSerieCode } from "../admin/adminUtils.js";
+import { getMoviesFromLS, getseriesFromLS } from "../admin/adminUtils.js";
 import { createBannerMovie, createBannerSerie, favItem } from "./utils.js"
 
 //selecciono botones del navbar
@@ -78,6 +78,7 @@ userBtnNav.addEventListener('click', () => {
 //traigo del SS el codigo de pelicula/serie destacada
 const favMovieCode = sessionStorage.getItem('codeFavMovie');
 const favSerieCode = sessionStorage.getItem('codeFavSerie');
+
 //traigo los arrays de peliculas/series
 const movies = getMoviesFromLS();
 const series = getseriesFromLS();
@@ -86,12 +87,24 @@ const series = getseriesFromLS();
 const favMovie = favItem(movies, favMovieCode);
 const favSerie = favItem(series, favSerieCode);
 
+//selecciono slide default del carousel
+const bannerDefault = document.getElementById('banner-default');
+const bannerFavs = document.getElementById('banner-home');
 
-//tomo la imagen de la pelocula destacada y creo la imagen del carousel
+
+if(!favMovie || !favSerie){
+    bannerDefault.classList.remove('d-none');
+    bannerFavs.classList.add('d-none');
+} else {
+    bannerDefault.classList.add('d-none');
+    bannerFavs.classList.remove('d-none');
+}
+
+
 createBannerMovie(favMovie);
-
-//tomo la imagen de la pelocula destacada y creo la imagen del carousel
 createBannerSerie(favSerie);
+
+
 
 
 //de index.js feat/admin
