@@ -5,6 +5,7 @@ export const validateUsername = (value, field) => {
   if (value.trim().length < 4) {
     field.classList.add("is-invalid");
     field.classList.remove("is-valid");
+    // field.classList.add("invalid-feedback")
     return false;
   }
 
