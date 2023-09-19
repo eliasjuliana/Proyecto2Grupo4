@@ -1,0 +1,36 @@
+@import url('https://fonts.cdnfonts.com/css/amazon-ember');
+
+main {
+    background-image: url(/assets/prime-video-background.jpg);
+    object-fit: cover;
+    padding-top: 56px;
+}
+
+.customClass {
+    color: green;
+}
+
+ #contact-form {
+    background-color: #040404ad;
+    padding-bottom: 10px;
+}
+
+@media (max-width: 767px) {
+    #contact-form {
+        margin-top: 50px;
+    }
+}
+
+@media (min-width: 768px) {
+    #contact-form {
+        margin-top: 90px;
+    }
+}
+
+
+@media (min-width: 1200px)  {
+    #contact-form {
+        width: 600px;
+        margin-top: 40px;
+    }
+}
