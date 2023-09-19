@@ -73,7 +73,7 @@ export const validateDescription = (value, field) => {
     }
 
     // Maxima long de la descripcion
-    if (value.trim().length >= 200) {
+    if (value.trim().length >= 150) {
         field.classList.add('is-invalid');
         field.classList.remove('is-valid');
         return false;
