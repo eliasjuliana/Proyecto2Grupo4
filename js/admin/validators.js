@@ -128,23 +128,23 @@ export const validateEpisode = (value, field) => {
 };
 
 
-export const validateNumber = (value, campo) => {
+export const validateNumber = (value, field) => {
     // Cantidad de digitos distinta a 10 caracteres
     // 381 123 4567
     if (value.trim().length !== 10) {
-      campo.classList.add('is-invalid');
-      campo.classList.remove('is-valid');
+      field.classList.add('is-invalid');
+      field.classList.remove('is-valid');
       return false;
     }
   
     // No tenga caracteres no numericos
     if (isNaN(Number(value))) {
-      campo.classList.add('is-invalid');
-      campo.classList.remove('is-valid');
+      field.classList.add('is-invalid');
+      field.classList.remove('is-valid');
       return false;
     }
   
-    campo.classList.remove('is-invalid');
-    campo.classList.add('is-valid');
+    field.classList.remove('is-invalid');
+    field.classList.add('is-valid');
     return true;
 };
