@@ -193,7 +193,7 @@ export const addRowSerieTable = (serie) => {
   tr.appendChild(tdActions);
 
 // tabla series
-export const addRowSerieTable = (serie) => {
+ const addRowSerieTable = (serie) => {
     const tbody = document.getElementById('tbody-series');
     //row table
     const tr = document.createElement('tr');
