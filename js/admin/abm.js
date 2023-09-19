@@ -2,7 +2,6 @@ import { Movie, Serie } from "./classes.js";
 import { addMoviesToLS, addSeriesToLS, getMoviesFromLS, getseriesFromLS, loadMovieTable, responsiveMovies, responsiveSeries } from "./adminUtils.js";
 
 //CREATE
-
 export const addMovie = (name, image, category, description, publication) => {
   const newMovie = new Movie(name, image, category, description, publication);
 
