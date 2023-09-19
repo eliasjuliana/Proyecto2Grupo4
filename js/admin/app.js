@@ -3,9 +3,11 @@ import {validateName, validateImage, validateCategory, validateSeason, validateE
     validateDescription, validatePublication} from "./validators.js";
 import {loadMovieTable, loadSerieTable} from './adminUtils.js';
 import { filtradoPelicula, filtradoSerie } from "./filters.js";
+import {rechargeCategorySelect} from "../category/select.js"
 
 
 //SELECCION ELEMENTOS
+rechargeCategorySelect();
 //select para cargar peliculas o series
 const selectMoviesSeries = document.getElementById("select-movies-series");
 
