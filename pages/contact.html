@@ -21,40 +21,63 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg fixed-top">
-            <div class="container-fluid">
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle" id="btn-menu" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Menú
-                    </button>
-                    <ul class="dropdown-menu" id="dropdownMenu-container">
-                        <li><a class="dropdown-item list-color" href="../index.html">Inicio</a></li>
-                        <li><a class="dropdown-item list-color" href="../pages/">Peliculas y Series</a></li>
-                        <li><a class="dropdown-item list-color" href="../pages/contact.html">Contacto</a></li>
-                        <li><a class="dropdown-item list-color" href="#">Admin</a></li>
-                        <li><a class="dropdown-item list-color" href="../pages/aboutUs.html">Sobre nosotros</a></li>
-                    </ul>
+            <div class="container-fluid d-flex">
+                <!-- menu desplegable -->
+                <button class="btn p-4" id="btn-menu" type="button">
+                    Menú
+                </button>
+
+                <div class="container-fluid pt-2 ps-4" id="menu-links">
+                    <a class="dropdown-item" href="../index.html">Inicio</a>
+                    <a class="dropdown-item" href="./details.html">Peliculas y Series</a>
+                    <a class="dropdown-item" href="#">Contacto</a>
+                    <a class="dropdown-item" href="./aboutUs.html">Sobre nosotros</a>
                 </div>
 
-                <a class="navbar-brand" id="title" href="#">prime video</a>
-
-                <p class="d-inline-flex mb-0">
-                    <a class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
-                        aria-controls="collapseExample">
-                        <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
-                    </a>
-                </p>
-                <div class="collapse" id="collapseExample">
-                    <div class="card card-body">
-                        <input type="text">Buscar
-                    </div>
-                </div>
-
-                <a href="">
-                    <i class="fa-solid fa-user"></i>
+                <!-- logo -->
+                <a id="navbar-logo" href="../index.html">
+                    <img src="../assets/Logo-min.png" alt="Prime Video" id="logo-img">
                 </a>
+
+                <!-- buscar -->
+                <button class="btn p-4" id="btn-search" type="button">
+                    <i class="fa-solid fa-magnifying-glass" style="color: #fafafa;" id="icon-search"></i>
+                    <i class="fa-solid fa-xmark d-none" style="color: #fafafa;" id="icon-xmark"></i>
+                </button>
+
+                <!-- usuario -->
+                <button class="btn p-4" id="btn-user" type="button">
+                    <i class="fa-solid fa-user" style="color: #fafafa;"></i>
+                </button>
             </div>
         </nav>
+
+        <!-- div menu desplegable -->
+        <div class="container-fluid pt-2 ps-4 d-flex flex-column gap-3 d-none" id="dropdown-menu">
+                <a class="dropdown-item" href="../index.html">Inicio</a>
+                <a class="dropdown-item" href="./details.html">Peliculas y Series</a>
+                <a class="dropdown-item" href="#">Contacto</a>
+                <a class="dropdown-item" href="./aboutUs.html">Sobre nosotros</a>
+        </div>
+
+        <!-- div buscar -->
+        <div class="container-fluid pt-2 ps-4 d-flex flex-column gap-3 d-none" id="dropdown-search">
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button">
+                    <i class="fa-solid fa-magnifying-glass" style="color: #fafafa;"></i>
+                </button>
+                <input type="text" class="form-control" placeholder="Buscar" id="input-search-navbar">
+            </div>
+        </div>
+
+        <!-- div usuario -->
+        <div class="container-fluid pt-2 ps-4 d-flex flex-column gap-3 d-none" id="dropdown-user">
+            <a class="dropdown-item" href="#">Registrarse</a>
+            <a class="dropdown-item" href="./login.html">Iniciar sesion</a>
+            <hr class="text-light">
+            <a class="dropdown-item" href="./admin.html">Admin</a>
+            <a class="dropdown-item" href="#">Salir</a>
+        </div>
     </header>
     <main>
         <section class="container rounded pt-2" id="contact-form">
@@ -92,13 +115,13 @@
     </main>
     <footer>
         <section class="container-fluid p-5" id="footer-bg">
-            <a href="#" class="footer-link d-flex justify-content-center">
+            <a href="../index.html" class="footer-link d-flex justify-content-center">
                 <img class="w-25 mb-4" src="../assets/pngkit_amazon-png_245711.png" alt="Logo Prime Video">
             </a>
 
             <div class="container d-flex flex-column gap-2 align-items-center flex-md-row justify-content-md-center">
-                <a class="footer-link" href="../pages/error404.html">Terminos y Aviso de privacidad</a>
-                <a class="footer-link" href="../pages/error404.html">Envianos tus comentarios</a>
+                <a class="footer-link" href="./error404.html">Terminos y Aviso de privacidad</a>
+                <a class="footer-link" href="./error404.html">Envianos tus comentarios</a>
                 <p id="footer-p">&copy;1996-2003, Amazon.com Inc. o sus filiales</p>
             </div>
 

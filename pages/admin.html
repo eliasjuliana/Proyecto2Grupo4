@@ -27,10 +27,11 @@
                 </button>
 
                 <div class="container-fluid pt-2 ps-4" id="menu-links">
-                    <a class="dropdown-item" href="#">Inicio</a>
-                    <a class="dropdown-item" href="#">Peliculas y Series</a>
-                    <a class="dropdown-item" href="#">Contacto</a>
-                    <a class="dropdown-item" href="#">Sobre nosotros</a>
+                    <a class="dropdown-item" href="../index.html">Inicio</a>
+                    <a class="dropdown-item" href="./details.html">Peliculas y Series</a>
+                    <a class="dropdown-item" href="./category.html">Categorias</a>
+                    <a class="dropdown-item" href="./contact.html">Contacto</a>
+                    <a class="dropdown-item" href="./aboutUs.html">Sobre nosotros</a>
                 </div>
 
                 <!-- logo -->
@@ -54,9 +55,10 @@
         <!-- div menu desplegable -->
         <div class="container-fluid pt-2 ps-4 d-flex flex-column gap-3 d-none" id="dropdown-menu">
                 <a class="dropdown-item" href="../index.html">Inicio</a>
-                <a class="dropdown-item" href="#">Peliculas y Series</a>
-                <a class="dropdown-item" href="#">Contacto</a>
-                <a class="dropdown-item" href="./pages/aboutUs.html">Sobre nosotros</a>
+                <a class="dropdown-item" href="./details.html">Peliculas y Series</a>
+                <a class="dropdown-item" href="./category.html">Categorias</a>
+                <a class="dropdown-item" href="./contact.html">Contacto</a>
+                <a class="dropdown-item" href="./aboutUs.html">Sobre nosotros</a>
         </div>
 
         <!-- div buscar -->
@@ -72,9 +74,9 @@
         <!-- div usuario -->
         <div class="container-fluid pt-2 ps-4 d-flex flex-column gap-3 d-none" id="dropdown-user">
             <a class="dropdown-item" href="#">Registrarse</a>
-            <a class="dropdown-item" href="./pages/login.html">Iniciar sesion</a>
+            <a class="dropdown-item" href="./login.html">Iniciar sesion</a>
             <hr class="text-light">
-            <a class="dropdown-item" href="./pages/admin.html">Admin</a>
+            <a class="dropdown-item" href="./admin.html">Admin</a>
             <a class="dropdown-item" href="#">Salir</a>
         </div>
     </header>
@@ -110,11 +112,12 @@
                         <label for="category-movie">Categoría:</label>
                         <select class="form-select" id="category-movie" name="opciones">
                             <option value="">Selecciona una categoría</option>
-                            <option value="opcion1">Opción 1</option>
+                            <!-- <option value="opcion1">Opción 1</option>
                             <option value="opcion2">Opción 2</option>
-                            <option value="opcion3">Opción 3</option>
+                            <option value="opcion3">Opción 3</option> -->
                         </select>
                     </fieldset>
+                    <a href="./category.html">¿Queres agregar mas categorias?</a>
                     <fieldset class="mb-2">
                         <label for="input-description-movie" class="form-label">Descripción</label>
                         <textarea id="input-description-movie" class="form-control"></textarea>
@@ -156,6 +159,7 @@
                             <option value="opcion3">Opción 3</option>
                         </select>
                     </fieldset>
+                    <a href="./category.html">¿Queres agregar mas categorias?</a>
                     <fieldset class="mb-2">
                         <label for="input-seasons-serie" class="form-label">Temporadas</label>
                         <input type="number" id="input-seasons-serie" class="form-control"/>
@@ -184,6 +188,36 @@
                 </form>
             </article>
         </section>
+
+        <!-- FILTRADO CATEGORIAS agustin
+        <section class="container text-light">
+            <article class="row">
+                <div class="col-6 d-none" id="divMovie">
+        <p>Filtrar por Categoria Peliculas :</p>
+        <select class="form-select" id="categoryFilterMovies" name="opciones">
+            <option>Selecciona una categoría</option>
+            <option value="todos" selected="selected">Todas las categorias</option>
+            <option value="accion">Acción</option>
+            <option value="comedia">Comedia</option>
+            <option value="terror">Terror</option>
+            <option value="fantasia">Fantasia</option>
+            <option value="cienciaFicción">Ciencia Ficción</option>
+        </select>
+                </div>
+                <div class="col-6 d-none" id="divSeries">
+                    <p>Filtrar por Categoria Series :</p>
+                    <select class="form-select" id="categoryFilterSeries" name="opciones">
+                        <option>Selecciona una categoría</option>
+                        <option value="todos" selected="selected">Todas las categorias</option>
+                        <option value="accion">Acción</option>
+                        <option value="comedia">Comedia</option>
+                        <option value="terror">Terror</option>
+                        <option value="fantasia">Fantasia</option>
+                        <option value="cienciaFicción">Ciencia Ficción</option>
+                    </select>
+                </div>
+            </article>
+        </section> -->
 
 <!-- TABLAs DE PELICULAS O SERIES -->
 
@@ -238,13 +272,13 @@
     </main>
     <footer>
         <section class="container-fluid p-5" id="footer-bg">
-            <a href="#" class="footer-link d-flex justify-content-center">
+            <a href="../index.html" class="footer-link d-flex justify-content-center">
                 <img class="w-25 mb-4" src="../assets/pngkit_amazon-png_245711.png" alt="logo prime video">
             </a>
 
             <div class="container d-flex flex-column gap-2 align-items-center flex-md-row justify-content-md-center">
-                <a class="footer-link" href="./pages/error404.html">Terminos y Aviso de privacidad</a>
-                <a class="footer-link" href="./pages/error404.html">Envianos tus comentarios</a>
+                <a class="footer-link" href="./error404.html">Terminos y Aviso de privacidad</a>
+                <a class="footer-link" href="./error404.html">Envianos tus comentarios</a>
                 <p id="footer-p">&copy;1996-2003, Amazon.com Inc. o sus filiales</p>
             </div>
 

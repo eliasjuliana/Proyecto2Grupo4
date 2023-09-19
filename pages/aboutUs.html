@@ -13,49 +13,74 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.cdnfonts.com/css/amazon-ember" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">    
+    <link href="https://fonts.cdnfonts.com/css/amazon-ember" rel="stylesheet"> 
     <link rel="stylesheet" href="../css/aboutUs.css">
+    <link rel="stylesheet" href="../css/style.css">   
 </head>
 <body>
     <header>
+      <header>
         <nav class="navbar navbar-expand-lg fixed-top">
-            <div class="container-fluid">
-                <div class="dropdown" >
-                    <button class="btn dropdown-toggle" id="btn-menu" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Menú
-                    </button>
-                    <ul class="dropdown-menu" id="dropdownMenu-container">
-                        <li><a class="dropdown-item list-color" href="#">Inicio</a></li>
-                        <li><a class="dropdown-item list-color" href="#">Peliculas y Series</a></li>
-                        <li><a class="dropdown-item list-color" href="#">Admin</a></li>
-                        <li><a class="dropdown-item list-color" href="#">Contacto</a></li>
-                        <li><a class="dropdown-item list-color" href="#">Admin</a></li>
-                        <li><a class="dropdown-item list-color" href="./pages/aboutUs.html">Sobre nosotros</a></li>
-                    </ul>
-                </div>
+          <div class="container-fluid d-flex">
+              <!-- menu desplegable -->
+              <button class="btn p-4" id="btn-menu" type="button">
+                  Menú
+              </button>
 
-                <a class="navbar-brand" id="title" href="#">prime video</a>
+              <div class="container-fluid pt-2 ps-4" id="menu-links">
+                  <a class="dropdown-item" href="../index.html">Inicio</a>
+                  <a class="dropdown-item" href="./details.html">Peliculas y Series</a>
+                  <a class="dropdown-item" href="./contact.html">Contacto</a>
+                  <a class="dropdown-item" href="#">Sobre nosotros</a>
+              </div>
 
-                <p class="d-inline-flex mb-0">
-                    <a class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
-                    </a>
-                </p>
-                <div class="collapse" id="collapseExample">
-                    <div class="card card-body">
-                        <input type="text">Buscar
-                    </div>
-                </div>
+              <!-- logo -->
+              <a id="navbar-logo" href="../index.html">
+                  <img src="../assets/Logo-min.png" alt="Prime Video" id="logo-img">
+              </a>
 
-                <a href="">
-                    <i class="fa-solid fa-user"></i>
-                </a>
-            </div>
-        </nav>
+              <!-- buscar -->
+              <button class="btn p-4" id="btn-search" type="button">
+                  <i class="fa-solid fa-magnifying-glass" style="color: #fafafa;" id="icon-search"></i>
+                  <i class="fa-solid fa-xmark d-none" style="color: #fafafa;" id="icon-xmark"></i>
+              </button>
+
+              <!-- usuario -->
+              <button class="btn p-4" id="btn-user" type="button">
+                  <i class="fa-solid fa-user" style="color: #fafafa;"></i>
+              </button>
+          </div>
+      </nav>
+
+      <!-- div menu desplegable -->
+      <div class="container-fluid pt-2 ps-4 d-flex flex-column gap-3 d-none" id="dropdown-menu">
+              <a class="dropdown-item" href="../index.html">Inicio</a>
+              <a class="dropdown-item" href="./details.html">Peliculas y Series</a>
+              <a class="dropdown-item" href="./contact.html">Contacto</a>
+              <a class="dropdown-item" href="#">Sobre nosotros</a>
+      </div>
+
+      <!-- div buscar -->
+      <div class="container-fluid pt-2 ps-4 d-flex flex-column gap-3 d-none" id="dropdown-search">
+          <div class="input-group mb-3">
+              <button class="btn btn-outline-secondary" type="button">
+                  <i class="fa-solid fa-magnifying-glass" style="color: #fafafa;"></i>
+              </button>
+              <input type="text" class="form-control" placeholder="Buscar" id="input-search-navbar">
+          </div>
+      </div>
+
+      <!-- div usuario -->
+      <div class="container-fluid pt-2 ps-4 d-flex flex-column gap-3 d-none" id="dropdown-user">
+          <a class="dropdown-item" href="#">Registrarse</a>
+          <a class="dropdown-item" href="./login.html">Iniciar sesion</a>
+          <hr class="text-light">
+          <a class="dropdown-item" href="./admin.html">Admin</a>
+          <a class="dropdown-item" href="#">Salir</a>
+      </div>
     </header>
     <main>
-        <section class="aboutus-section container">
+        <section class="aboutus-section container pt-4 pb-4">
             <article class="cards-profile">
                     <h1 class="text-center mt-4 mb-4">Nuestro equipo de desarrollo</h1>
                     <div class="row">
@@ -114,7 +139,7 @@
     </main>
     <footer>
         <section class="container-fluid p-5" id="footer-bg">
-            <a href="#" class="footer-link d-flex justify-content-center">
+            <a href="../index.html" class="footer-link d-flex justify-content-center">
                 <img class="w-25 mb-4 mt-4" src="../assets/pngkit_amazon-png_245711.png" alt="">
             </a>
 
@@ -132,5 +157,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a48a581e8f.js" crossorigin="anonymous"></script>
+    <script type="module" src="../js/index/index.js"></script>
 </body>
 </html>

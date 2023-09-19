@@ -96,4 +96,45 @@ createBannerMovie(favMovie);
 createBannerSerie(favSerie);
 
 
+//de index.js feat/admin
+// export const eliminarContacto = (codigo) => {
+//     // Siempre confirmar la eliminacion
+//     swal
+//       .fire({
+//         title: "¿Estás seguro?",
+//         text: "Una vez eliminado, no podrás recuperar el contacto",
+//         icon: "warning",
+//         showCancelButton: true,
+//         confirmButtonText: "Eliminar",
+//         cancelButtonText: "Cancelar",
+//       })
+//       .then((result) => {
+//         if (result.isConfirmed) {
+//           // 1. Traer la lista de contactos
+//           const contactos = obtenerContactosDeLS();
+  
+//           // 2. Filtrar el contacto a eliminar
+//           const contactosActualizados = contactos.filter(
+//             (contacto) => contacto.codigo !== codigo,
+//           );
+  
+//           // 3. Guardar el nuevo array en localStorage
+//           localStorage.setItem(
+//             "contactos",
+//             JSON.stringify(contactosActualizados),
+//           );
+  
+//           // 4. Recargar la tabla
+//           cargarTabla();
+  
+//           // 5. Mensaje de exito
+//           swal.fire({
+//             icon: "success",
+//             title: "Contacto eliminado correctamente",
+//             showConfirmButton: false,
+//             timer: 1500,
+//           });
+//         }
+//       });
+//   };
 
