@@ -73,7 +73,7 @@ userBtnNav.addEventListener('click', () => {
     changeIcons(iconSearch, iconX);
 });
 
-//banner home
+//BANNER HOME
 
 //traigo del SS el codigo de pelicula/serie destacada
 const favMovieCode = sessionStorage.getItem('codeFavMovie');
