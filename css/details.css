@@ -1,5 +1,95 @@
+@import url('https://fonts.cdnfonts.com/css/amazon-ember');
+
 main {
     height: 100vh;
     background-color: var(--secondary-color);
     padding-top: 76px;
 }
+
+
+.data-container img {
+    width: 600px;
+    height: 400px;
+    object-fit: cover;
+    margin-left: 16px;
+    border-radius: 8px;
+}
+
+
+.h2-custom {
+    color: rgb(225, 225, 228);
+    width: 600px;
+}
+
+
+@media (max-width: 767px) {
+
+    main {
+        height: 100vh;
+    }
+
+    .img-container img {
+        width: 400px;
+        object-fit: cover;
+        margin: 0 auto;
+        display: block;
+        border-radius: 8px;
+      }
+
+    .order-md-2 {
+      order: 2;
+    }
+
+    .h2-custom {
+        color: rgb(225, 225, 228);
+        width: auto;
+    }
+
+
+    .t-custom {
+        text-align: left;
+    }
+
+    .btn-custom {
+        margin: 0 auto;
+        display: block;
+    }
+
+    
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    main {
+        height: 100vh;
+    }
+
+    .img-container img {
+        width: 600px;
+        height: 400px;
+        object-fit: cover;
+        margin: 36px;
+        border-radius: 8px;
+    }
+
+    .h2-custom {
+        color: rgb(225, 225, 228);
+        width: auto;
+    }
+
+    .btn-custom {
+        margin: 0 auto;
+        display: block;
+    }
+  }
+
+
+
+  @media (min-width: 1200px) {
+    .img-container img {
+        width: 100%;
+        object-fit: cover;
+        margin: 0 auto;
+        display: block;
+        border-radius: 8px;
+      }
+  }
