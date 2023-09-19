@@ -1,6 +1,7 @@
-import { Movie, Serie } from './classes.js';
-import { addMoviesToLS, addSeriesToLS, getMoviesFromLS, getseriesFromLS, loadMovieTable, loadSerieTable } from './adminUtils.js';
+import { Movie, Serie } from "./classes.js";
+import { addMoviesToLS, addSeriesToLS, getMoviesFromLS, getseriesFromLS, loadMovieTable, responsiveMovies, responsiveSeries } from "./adminUtils.js";
 
+//CREATE
 export const addMovie = (name, image, category, description, publication) => {
   const newMovie = new Movie(name, image, category, description, publication);
 
@@ -47,192 +48,218 @@ export const addSerie = (
   });
 };
 
-//Editar película
+//UPDATE
 
-export const editMovie = (name, image, category, description, publication) => {
-    // 1. Traer lista de peliculas y el codigo del contacto a editar
-    const codeMovie = sessionStorage.getItem('movie.code');
-    const Movie = getMoviesFromLS();
-  
-    // # Si no hay codigo (es null)
-    if (!codeMovie) {
-      swal.fire({
-        title: 'Lo sentimos',
-        text: 'No se encontró ninguna película',
-        icon: 'error',
-      });
-      return;
-    }
-  
-    // 2. Buscar posicion de la pelicula
-    const positionMovie = Movie.findIndex(
-      (item) => item.codeMovie === codeMovie
-    );
-  
-    // # Si no se encontró la película
-    if (positionMovie === -1) {
-      swal.fire({
-        title: 'Lo sentimos',
-        text: 'No se encontró ninguna película',
-        icon: 'error',
-      });
-      return;
-    }
-  
-    // 3. Crear la pelicula editada
-    const editedMovie = new Movie(name, image, category, description, publication);
-  
-    // 4. Eliminar dato  y agregar nuevo
-    Movie.splice(positionMovie, 1, editedMovie);
-  
-    // 5. Guardar en LS
-    localStorage.setItem('Movie', JSON.stringify(Movie));
-  
-    // 6. Mostrar mensaje de exito
+export const editMovie = (name, image, category, description, publication) =>{
+  //traer lista de peliculas y codigo
+  const code = sessionStorage.getItem('codeMovie');
+  const movies = getMoviesFromLS();
+
+  //si no hay codigo
+  if (!code) {
     swal.fire({
-      title: '¡Listo!',
-      text: 'La película se modificó con éxito',
-      icon: 'success',
-    });
-  
-    // 7. Resetear estado previo a edicion
-    sessionStorage.removeItem('movie.code');
+      icon: "error",
+      title: "Ocurrio un error",
+      text: "No se pudo encontrar la pelicula",
+      customClass: {
+        popup: 'colored-toast'
+      },
+      showConfirmButton: false,
+      timer: 1500,
+    })
+    return;
   };
-  
 
-  //Eliminar Película
+  const positionMovie = movies.findIndex((item)=>item.code === code);
 
-  export const removeMovie = (codeMovie) => {
-    // 1. Confirmar eliminacion
-    swal
-      .fire({
-        title: '¿Estas seguro/a?',
-        text: 'Esta opcion no será revertible',
-        icon: 'warning',
-        showCancelButton: true,
-        cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Si, eliminar',
-      })
-      .then((action) => {
-        if (action.isConfirmed) {
-          // 2. Traer lista
-          const movie = getMoviesFromLS();
-  
-          // 3. Filtrar lista (tambien se puede con splice)
-          // # Guarda en listaFiltrada TODOS los contactos que
-          // # COINCIDEN con la condicion de busqueda
-          const filteredListMovie = movie.filter(
-            (item) => item.code !== codeMovie
-          );
-  
-          // 4. Actualizamos la lista en LS
-          localStorage.setItem('movie', JSON.stringify(filteredListMovie));
-  
-          // 5. Mensaje de exito
-          swal.fire({
-            title: 'Listo!',
-            text: 'La película se eliminó correctamente',
-            icon: 'success',
-          });
-  
-          // 6. Recargar datos en tabla
-          loadMovieTable();
-  }
-        })
-      }
+  console.log(positionMovie);
 
-      //Editar serie
-
-export const editSerie = (name, image, category, seasons, episodes, description, publication) => {
-    // 1. Traer lista de datos y el codigo de la serie a editar
-    const codeSerie = sessionStorage.getItem('serie.code');
-    const serie = getseriesFromLS();
-  
-    // # Si no hay codigo (es null)
-    if (!codeSerie) {
-      swal.fire({
-        title: 'Lo sentimos',
-        text: 'No se encontró ninguna serie',
-        icon: 'error',
-      });
-      return;
-    }
-  
-    // 2. Buscar posicion del contacto
-    const positionSerie = serie.findIndex(
-      (item) => item.codeSerie === codeSerie
-    );
-  
-    // # Si no se encontró el contacto
-    if (positionSerie === -1) {
-      swal.fire({
-        title: 'Lo sentimos',
-        text: 'No se encontró ninguna serie',
-        icon: 'error',
-      });
-      return;
-    }
-  
-    // 3. Crear el dato modificado
-    const editedSerie = new Serie(name, image, category, seasons, episodes, description, publication);
-  
-    // 4. Eliminar dato  y agregar nuevo
-    movie.splice(positionSerie, 1, editedSerie);
-  
-    // 5. Guardar en LS
-    localStorage.setItem('serie', JSON.stringify(serie));
-  
-    // 6. Mostrar mensaje de exito
+  if (positionMovie === -1){
     swal.fire({
-      title: '¡Listo!',
-      text: 'La serie se modificó con éxito',
-      icon: 'success',
-    });
-  
-    // 7. Resetear estado previo a edicion
-    sessionStorage.removeItem('serie.code');
-  };
-  
-
-  //Eliminar serie
-
-  export const removeSerie = (codeSerie) => {
-    // 1. Confirmar eliminacion
-    swal
-      .fire({
-        title: '¿Estas seguro/a?',
-        text: 'Esta opcion no será revertible',
-        icon: 'warning',
-        showCancelButton: true,
-        cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Si, eliminar',
-      })
-      .then((action) => {
-        if (action.isConfirmed) {
-          // 2. Traer lista
-          const movie = getseriesFromLS();
-  
-          // 3. Filtrar lista (tambien se puede con splice)
-          // # Guarda en listaFiltrada TODOS los contactos que
-          // # COINCIDEN con la condicion de busqueda
-          const filteredListSerie = movie.filter(
-            (item) => item.code !== code
-          );
-  
-          // 4. Actualizamos la lista en LS
-          localStorage.setItem('movie', JSON.stringify(filteredListSerie));
-  
-          // 5. Mensaje de exito
-          swal.fire({
-            title: 'Listo!',
-            text: 'La serie se eliminó correctamente',
-            icon: 'success',
-          });
-  
-          // 6. Recargar datos en tabla
-          loadSerieTable();
+      icon: "error",
+      title: "Ocurrio un error",
+      text: "No se pudo encontrar la pelicula",
+      customClass: {
+        popup: 'colored-toast'
+      },
+      showConfirmButton: false,
+      timer: 1500,
+    })
+    return;
   }
-        })
-      }
 
+  //crear pelicula editada
+
+  const editedMovie = new Movie(name, image, category, description, publication);
+
+  //eliminar pelicula anterior y agregar la nueva
+  movies.splice( positionMovie, 1, editedMovie);
+
+  //guardo en LS
+  localStorage.setItem("movies", JSON.stringify(movies));
+
+  swal.fire({
+    icon: "success",
+    title: "Exito",
+    text: "La pelicula se editó correctamente",
+    customClass: {
+      popup: 'colored-toast'
+    },
+  })
+
+  sessionStorage.removeItem('codeMovie');
+
+};
+
+export const editSerie = (name,
+  image,
+  category,
+  seasons,
+  episodes,
+  description,
+  publication) => {
+  //traer lista de series y codigo
+  const code = sessionStorage.getItem('codeSerie');
+  const series = getseriesFromLS();
+
+  //si no hay codigo
+  if (!code) {
+    swal.fire({
+      icon: "error",
+      title: "Ocurrio un error",
+      text: "No se pudo encontrar la serie",
+      customClass: {
+        popup: 'colored-toast'
+      },
+      showConfirmButton: false,
+      timer: 1500,
+    })
+    return;
+  };
+
+  //buscar serie
+  const positionSerie = series.findIndex((item)=>item.code === code);
+
+  if(positionSerie === -1){
+    swal.fire({
+      icon: "error",
+      title: "Ocurrio un error",
+      text: "No se pudo encontrar la serie",
+      customClass: {
+        popup: 'colored-toast'
+      },
+      showConfirmButton: false,
+      timer: 1500,
+    })
+    return;
+  }
+
+  //crear serie editada
+
+  const editedSerie = new Serie (name, image,
+    category,
+    seasons,
+    episodes,
+    description,
+    publication);
+
+    //eliminar serie anterior y agregar la nueva
+    series.splice(positionSerie, 1, editedSerie);
+
+    //guardo en LS
+    localStorage.setItem("series", JSON.stringify(series));
+
+    swal.fire({
+      icon: "success",
+      title: "Exito",
+      text: "La serie se editó correctamente",
+      customClass: {
+        popup: 'colored-toast'
+      },
+    })
+
+    sessionStorage.removeItem('codeSerie');
+};
+
+//DELETE
+
+export const deleteMovie = (code) =>{
+
+  swal.fire({
+      title: "¿Estás seguro?",
+      text: "Una vez eliminado, no podrás recuperar la pelicula",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Eliminar",
+      cancelButtonText: "Cancelar",
+      customClass: {
+        popup: 'colored-toast'
+      },
+    })
+  .then((result) => {
+      if (result.isConfirmed) {
+        
+      const movies = getMoviesFromLS();
+
+      const filteredMovies = movies.filter((item) => item.code !== code);
+      console.log(filteredMovies);
+
+      localStorage.setItem('movies', JSON.stringify(filteredMovies));
+
+      swal.fire({
+        icon: "success",
+        title: "Pelicula eliminada correctamente",
+        customClass: {
+          popup: 'colored-toast',
+        showConfirmButton: false,
+        timer: 1500,
+      }
+    });
+
+    responsiveMovies();
+    }
+    })
+};
+
+export const deleteSerie = (code) => {
+
+  swal.fire({
+    title: "¿Estás seguro?",
+    text: "Una vez eliminada, no podrás recuperar la serie",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Eliminar",
+    cancelButtonText: "Cancelar",
+    customClass: {
+      popup: 'colored-toast'
+    },
+  })
+.then((result) => {
+    if (result.isConfirmed) {
+      // 1. Traer la lista de contactos
+      const series = getseriesFromLS();
+
+      // 2. Filtrar el contacto a eliminar
+      const seriesUpdated = series.filter(
+        (serie) => serie.code !== code,
+      );
+
+      // 3. Guardar el nuevo array en localStorage
+      localStorage.setItem("series", JSON.stringify(seriesUpdated));
+
+      // 4. Recargar la tabla
+      responsiveSeries();
+
+      // 5. Mensaje de exito
+      swal.fire({
+        icon: "success",
+        title: "Serie eliminada correctamente",
+        customClass: {
+          popup: 'colored-toast'},
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  });
+};
 

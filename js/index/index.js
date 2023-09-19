@@ -1,3 +1,6 @@
+import { getMoviesFromLS, getseriesFromLS, saveFavSerieCode } from "../admin/adminUtils.js";
+import { createBannerMovie, createBannerSerie, favItem } from "./utils.js"
+
 //selecciono botones del navbar
 
 const menuBtnNav = document.getElementById('btn-menu');
@@ -72,47 +75,25 @@ userBtnNav.addEventListener('click', () => {
 
 //banner home
 
-const favMovieHome = document.getElementById('fav-movie-home');
-const favSerieHome = document.getElementById('fav-serie-home');
+//traigo del SS el codigo de pelicula/serie destacada
+const favMovieCode = sessionStorage.getItem('codeFavMovie');
+const favSerieCode = sessionStorage.getItem('codeFavSerie');
+//traigo los arrays de peliculas/series
+const movies = getMoviesFromLS();
+const series = getseriesFromLS();
+
+//encuentro la pelicula/serie destacada
+const favMovie = favItem(movies, favMovieCode);
+const favSerie = favItem(series, favSerieCode);
+
+console.log(favMovie);
 
 
-export const eliminarContacto = (codigo) => {
-    // Siempre confirmar la eliminacion
-    swal
-      .fire({
-        title: "¿Estás seguro?",
-        text: "Una vez eliminado, no podrás recuperar el contacto",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Eliminar",
-        cancelButtonText: "Cancelar",
-      })
-      .then((result) => {
-        if (result.isConfirmed) {
-          // 1. Traer la lista de contactos
-          const contactos = obtenerContactosDeLS();
-  
-          // 2. Filtrar el contacto a eliminar
-          const contactosActualizados = contactos.filter(
-            (contacto) => contacto.codigo !== codigo,
-          );
-  
-          // 3. Guardar el nuevo array en localStorage
-          localStorage.setItem(
-            "contactos",
-            JSON.stringify(contactosActualizados),
-          );
-  
-          // 4. Recargar la tabla
-          cargarTabla();
-  
-          // 5. Mensaje de exito
-          swal.fire({
-            icon: "success",
-            title: "Contacto eliminado correctamente",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      });
-  };
+//tomo la imagen de la pelocula destacada y creo la imagen del carousel
+createBannerMovie(favMovie);
+
+//tomo la imagen de la pelocula destacada y creo la imagen del carousel
+createBannerSerie(favSerie);
+
+
+

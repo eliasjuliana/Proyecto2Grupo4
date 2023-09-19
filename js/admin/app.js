@@ -1,11 +1,16 @@
-import {addMovie, addSerie, editMovie, editSerie} from "./abm.js";
-import {validateName, validateImage, validateCategory, validateSeason, validateEpisode, 
-    validateDescription, validatePublication} from "./validators.js";
-import {loadMovieTable, loadSerieTable} from './adminUtils.js';
+import { addMovie, addSerie, editMovie, editSerie } from "./abm.js";
+import {
+  validateName,
+  validateImage,
+  validateCategory,
+  validateSeason,
+  validateEpisode,
+  validateDescription,
+  validatePublication,
+} from "./validators.js";
+import { editingMovie, editingSerie, responsiveMovies, responsiveSeries, setSelectValue, loadMovieTable, loadSerieTable } from "./adminUtils.js";
 import { filtradoPelicula, filtradoSerie } from "./filters.js";
 import {rechargeCategorySelect} from "../category/select.js"
-import {loadMovieTable, loadSerieTable, editingMovie, editingSerie, responsiveMovies, responsiveSeries} from './adminUtils.js';
-
 
 //SELECCION ELEMENTOS
 rechargeCategorySelect();
@@ -53,17 +58,26 @@ responsiveMovies();
 
 window.addEventListener("resize", () => {
   const screenWidth = window.innerWidth;
+  const selectedValue = selectMoviesSeries.value;
+  
+  // Ocultar todos los elementos por defecto
+  moviesTable.classList.add('d-none');
+  seriesTable.classList.add('d-none');
+  movieCards.classList.add('d-none');
+  serieCards.classList.add('d-none');
 
   if (screenWidth >= 768) {
-    moviesTable.classList.remove("d-none");
-    movieCards.classList.add("d-none");
-    seriesTable.classList.remove("d-none");
-    serieCards.classList.add("d-none");
-  } else {
-    moviesTable.classList.add("d-none");
-    movieCards.classList.remove("d-none");
-    seriesTable.classList.add("d-none");
-    serieCards.classList.remove("d-none");
+    if (selectedValue === 'movies') {
+      moviesTable.classList.remove('d-none');
+    } else if (selectedValue === 'series') {
+      seriesTable.classList.remove('d-none');
+    }
+  } else if (screenWidth < 768) {
+    if (selectedValue === 'movies') {
+      movieCards.classList.remove('d-none');
+    } else if (selectedValue === 'series') {
+      serieCards.classList.remove('d-none');
+    }
   }
 });
 
@@ -102,10 +116,12 @@ btnSeriesTable.addEventListener('click', () =>{
 
 btnMoviesTable.addEventListener("click", () => {
   responsiveMovies();
+  setSelectValue('movies');
 });
 
 btnSeriesTable.addEventListener("click", () => {
   responsiveSeries();
+  setSelectValue('series');
 });
 
 //PARA CREAR FILAS DE LA TABLA PELICULAS
@@ -158,9 +174,12 @@ movieForm.addEventListener("submit", (e) => {
     validatePublication(publication, fieldMoviePublication)
   ) {
     // Entra SOLAMENTE si TODAS son validas
-
-    addMovie(name, image, category, description, publication);
-
+    if (editingMovie()){
+      editMovie(name, image, category, description, publication);
+    } else {
+      addMovie(name, image, category, description, publication);
+    };
+    
     responsiveMovies();
   }
   // Vaciar campos
@@ -239,15 +258,28 @@ serieForm.addEventListener("submit", (e) => {
   ) {
     // Entra SOLAMENTE si TODAS son validas
 
-    addSerie(
-      name,
-      image,
-      category,
-      seasons,
-      episodes,
-      description,
-      publication
-    );
+    if(editingSerie()){
+      editSerie(
+        name,
+        image,
+        category,
+        seasons,
+        episodes,
+        description,
+        publication
+      );
+    } else {
+      addSerie(
+        name,
+        image,
+        category,
+        seasons,
+        episodes,
+        description,
+        publication
+      );
+    }
+
     // Recargar tabla
     responsiveSeries();
 

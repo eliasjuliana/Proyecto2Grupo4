@@ -1,9 +1,17 @@
-import { removeMovie, removeSerie } from "./abm";
+
+import { deleteMovie, deleteSerie } from "./abm.js";
+
 const moviesTable = document.getElementById("movies-table");
 const seriesTable = document.getElementById("series-table");
 
 const movieCards = document.getElementById("movie-cards-container");
 const serieCards = document.getElementById("serie-cards-container");
+
+const movieFormContainer = document.getElementById("movie-form-container");
+const serieFormContainer = document.getElementById("serie-form-container");
+
+// const selectMoviesSeries = document.getElementById("select-movies-series");
+
 
 //TRAER PELICULAS O SERIES DEL LS
 export const getMoviesFromLS = () => {
@@ -30,144 +38,159 @@ export const addSeriesToLS = (newSerie) => {
 
 //CREAR FILAS EN TABLA PELICULAS O TABLA SERIES
 export const addRowMovieTable = (movie) => {
-    const tbody = document.getElementById('tbody-movies');
-    //row table
-    const tr = document.createElement('tr');
+  const tbody = document.getElementById("tbody-movies");
+  const tr = document.createElement("tr");
 
-    // nombre
-    const tdName = document.createElement('td');
-    tdName.innerText = movie.name;
-    tr.appendChild(tdName);
-  
-    // imagen  
-    const tdImage = document.createElement('td');
-    const img = document.createElement('img');
-    img.classList.add('image-table')
+  // nombre
+  const tdName = document.createElement("td");
+  tdName.innerText = movie.name;
+  tr.appendChild(tdName);
 
-  
-    img.src = movie.image;
-    img.alt = movie.name;
-    // img.classList.add('imagen-tabla');
-  
-    tdImage.appendChild(img);
-    tr.appendChild(tdImage);
-  
-    // categoria
-  
-    const tdCategory = document.createElement('td');
-    tdCategory.innerText = movie.category;
-    tr.appendChild(tdCategory);
-  
-    // descripcion
-  
-    const tdDescription = document.createElement('td');
-    tdDescription.innerText = movie.description;
-    tdDescription.classList.add('text-start');
-    tr.appendChild(tdDescription);
-  
-    // publicacion
-  
-    const tdPublication = document.createElement('td');
-    tdPublication.innerText = movie.publication;
-    tr.appendChild(tdPublication);
-  
-      //destacar pelicula
-    const tdActions = document.createElement('td');
-    const btnFav = document.createElement('button');
-    btnFav.type = 'button';
-    btnFav.classList.add('btn-fav-default');
+  // imagen
+  const tdImage = document.createElement("td");
+  const img = document.createElement("img");
+  img.classList.add("image-table");
 
-    const favStar = document.createElement('i');
-    favStar.classList.add('fa-solid', 'fa-star', 'star-unfav');
-    btnFav.appendChild(favStar);
-    tdActions.appendChild(btnFav);
-    tr.appendChild(tdActions);
+  img.src = movie.image;
+  img.alt = movie.name;
+  // img.classList.add('imagen-tabla');
 
-    btnFav.onclick = () => {
-      if(favStar.classList.contains('star-unfav')){
-        favStar.classList.remove('star-unfav');
-        favStar.classList.add('star-fav');
-        disableFavBtns();
-      } else if(favStar.classList.contains('star-fav')){
-        favStar.classList.add('star-unfav');
-        favStar.classList.remove('star-fav');
-        resetFavBtns();
-      };
+  tdImage.appendChild(img);
+  tr.appendChild(tdImage);
 
-      const favMovieCode = movie.code;
-      return favMovieCode;
-      };
+  // categoria
 
-    // BOTONES PELICULAS
+  const tdCategory = document.createElement("td");
+  tdCategory.innerText = movie.category;
+  tr.appendChild(tdCategory);
 
-  const tdButtons = document.createElement('td');
+  // descripcion
 
-  const btnEditMovie = document.createElement('button');
-  const btnDeleteMovie = document.createElement('button');
+  const tdDescription = document.createElement("td");
+  tdDescription.innerText = movie.description;
+  tdDescription.classList.add("text-start");
+  tr.appendChild(tdDescription);
 
-  btnEditMovie.type = 'button';
-  btnDeleteMovie.type = 'button';
-  btnEditMovie.classList.add('btn', 'btn-warning', 'btn-sm', 'me-2');
-  btnDeleteMovie.classList.add('btn', 'btn-danger', 'btn-sm');
-  btnEditMovie.innerText = 'Editar';
-  btnDeleteMovie.innerText = 'Eliminar';
+  // publicacion
 
-  btnEditMovie.onclick = () => {
-    prepareEditionMovie(movie.code);
-  };
+  const tdPublication = document.createElement("td");
+  tdPublication.innerText = movie.publication;
+  tr.appendChild(tdPublication);
 
-  btnDeleteMovie.onclick = () => {
-    removeMovie(movie.code);
-  };
+  // Destacar, editar y eliminar
+
+  //destacar
+  const tdActions = document.createElement("td");
+  tdActions.classList.add('flex-wrap', 'justify-content-start')
+  const btnFav = document.createElement("button");
+  btnFav.type = "button";
+  btnFav.classList.add("btn-fav-default");
 
   tdButtons.appendChild(btnEditMovie);
   tdButtons.appendChild(btnDeleteMovie);
 
-  tr.appendChild(tdButtons);
+  btnFav.onclick = () => {
+    if (favStar.classList.contains("star-unfav")) {
+      favStar.classList.remove("star-unfav");
+      favStar.classList.add("star-fav");
+      disableFavBtns();
+    } else if (favStar.classList.contains("star-fav")) {
+      favStar.classList.add("star-unfav");
+      favStar.classList.remove("star-fav");
+      resetFavBtns();
+    }
+
+    saveFavMovieCode(movie.code);
+  };
+
+  //boton editar
+
+  const btnEdit = document.createElement("button");
+  btnEdit.classList.add("btn", "btn-warning", "btn-sm", 'm-1');
+  btnEdit.innerText = "Editar";
+  btnEdit.onclick = () => {
+    prepareEditionMovie(movie.code);
+  };
+
+  tdActions.appendChild(btnEdit);
+
+  //boton eliminar
+
+  const btnDelete = document.createElement("button");
+  btnDelete.classList.add("btn", "btn-danger", "btn-sm", 'm-1');
+  btnDelete.innerText = "Eliminar";
+  btnDelete.onclick = () => {
+    deleteMovie(movie.code);
+  };
+
+  tdActions.appendChild(btnDelete);
 
   // Añadir todo al tbody
 
   tbody.appendChild(tr);
 };
 
-      //Editar película
-      const prepareEditionMovie = (movies) => {
-        // 1. Traer lista
-        const movies = getMoviesFromLS();
-      
-        // 2. Buscar el contacto a editar
-        // const contactoSeleccionado = contactos.find(item => {
-        //   return item.codigo === codigo;
-        // });
-        const selectMovies = movies.find((item) => item.movies === movies);
-      
-        // 3. Seleccionar los elementos (campos)
-        const fieldMovieName = document.getElementById('input-name-movie');
-        const fieldMovieImage = document.getElementById('input-image-movie');
-        const fieldMovieCategory = document.getElementById('input-category-movie');
-        const fieldMovieDescription = document.getElementById('input-description-movie');
-        const fieldMoviePublication = document.getElementById('input-publication-movie');
-      
-        // 4. Cargar los datos en el formulario
-        fieldMovieName.value = selectMovies.name;
-        fieldMovieImage.value = selectMovies.image;
-        fieldMovieCategory.value = selectMovies.category;
-        fieldMovieDescription.value = selectMovies.description;
-        fieldMoviePublication.value = selectMovies.publication;
-      
-        // 5. Guardar codigo
-        sessionStorage.setItem('movie.code', movies);
-      };
-      
-      export function editingMovie() {
-  const movieEditing = sessionStorage.getItem('movie.code');
+export const addRowSerieTable = (serie) => {
+  const tbody = document.getElementById("tbody-series");
+  //row table
+  const tr = document.createElement("tr");
 
-  if (movieEditing === null) {
-    return false;
-  } else {
-    return true;
-  }
-}
+  // nombre
+  const tdName = document.createElement("td");
+  tdName.innerText = serie.name;
+  tr.appendChild(tdName);
+
+  // imagen
+  const tdImage = document.createElement("td");
+  const img = document.createElement("img");
+  img.classList.add("image-table");
+
+  img.src = serie.image;
+  img.alt = serie.name;
+
+  tdImage.appendChild(img);
+  tr.appendChild(tdImage);
+
+  // categoria
+  const tdCategory = document.createElement("td");
+  tdCategory.innerText = serie.category;
+  tr.appendChild(tdCategory);
+
+  // temporada
+  const tdSeasons = document.createElement("td");
+  tdSeasons.innerText = serie.seasons;
+  tr.appendChild(tdSeasons);
+
+  //episodios
+  const tdEpisodes = document.createElement("td");
+  tdEpisodes.innerText = serie.episodes;
+  tr.appendChild(tdEpisodes);
+
+  // descripcion
+  const tdDescription = document.createElement("td");
+  tdDescription.innerText = serie.description;
+  tdDescription.classList.add("text-start");
+  tr.appendChild(tdDescription);
+
+  // publicacion
+  const tdPublication = document.createElement("td");
+  tdPublication.innerText = serie.publication;
+  tr.appendChild(tdPublication);
+
+  // Destacar, editar y eliminar
+
+  //destacar
+  const tdActions = document.createElement("td");
+  const btnFav = document.createElement("button");
+  btnFav.type = "button";
+  btnFav.classList.add("btn-fav-default");
+
+  const favStar = document.createElement("i");
+  favStar.classList.add("fa-solid", "fa-star", "star-unfav");
+  btnFav.appendChild(favStar);
+  tdActions.appendChild(btnFav);
+  tdActions.classList.add('flex-wrap', 'justify-content-start');
+  tr.appendChild(tdActions);
 
 // tabla series
 export const addRowSerieTable = (serie) => {
@@ -262,91 +285,38 @@ export const addRowSerieTable = (serie) => {
   btnEditSerie.onclick = () => {
     prepareEditionSerie(serie.code);
   };
-
-  btnDeleteSerie.onclick = () => {
-    removeSerie(serie.code);
+    saveFavSerieCode(serie.code);
   };
 
-  tdButtonsSeries.appendChild(btnEditSerie);
-  tdButtonsSeries.appendChild(btnDeleteSerie);
+  //boton editar
 
-  tr.appendChild(tdButtonsSeries);
+  const btnEdit = document.createElement("button");
+  btnEdit.classList.add("btn", "btn-warning", "btn-sm", 'm-1');
+  btnEdit.innerText = "Editar";
+  btnEdit.onclick = () => {
+    prepareEditionSerie(serie.code);
+  };
+
+  tdActions.appendChild(btnEdit);
+
+  //boton eliminar
+
+  const btnDelete = document.createElement("button");
+  btnDelete.classList.add("btn", "btn-danger", "btn-sm", 'm-1');
+  btnDelete.innerText = "Eliminar";
+  btnDelete.onclick = () => {
+    deleteSerie(serie.code);
+  };
+
+  tdActions.appendChild(btnDelete);
+
+  // Añadir todo al tbody
+
   tbody.appendChild(tr);
 };
 
-//Editar serie
-      const prepareEditionSerie = (series) => {
-        // 1. Traer lista
-        const series = getseriesFromLS();
-      
-        const selectSerie = series.find((item) => item.codeSerie === series);
-      
-        // 3. Seleccionar los elementos (campos)
-        const fieldSerieName = document.getElementById('input-name-serie');
-        const fieldMovieImage = document.getElementById('input-image-serie');
-        const fieldMovieCategory= document.getElementById('input-category-serie');
-        const fieldMovieDescription = document.getElementById('input-description-serie');
-        const fieldMoviePublication = document.getElementById('input-publication-serie');
-      
-        // 4. Cargar los datos en el formulario
-        fieldSerieName.value = selectSerie.name;
-        fieldMovieImage.value = selectSerie.image;
-        fieldMovieCategory.value = selectSerie.category;
-        fieldMovieDescription.value = selectSerie.description;
-        fieldMoviePublication.value = selectSerie.publication;
-      
-        // 5. Guardar codigo
-        sessionStorage.setItem('serie.code', series);
-      };
-      
-      export const editingSerie = () => {
-        const Serie = sessionStorage.getItem('serie.code');
-      
-        if (Serie === null) {
-          return false;
-        } else {
-          return true;
-        }
-      
-      //Eliminar
-};
-
-//CARGAR TABLA PELICULA O TABLA SERIES
-export const loadMovieTable = () => {
-  const movies = getMoviesFromLS();
-
-  // Vaciar tabla
-  const tbody = document.getElementById("tbody-movies");
-  tbody.innerHTML = "";
-
-  seriesTable.classList.add("d-none");
-  moviesTable.classList.remove("d-none");
-
-  // Cargar tabla
-  movies.forEach((movie, index) => {
-    addRowMovieTable(movie, index);
-  });
-};
-
-export const loadSerieTable = () => {
-  const series = getseriesFromLS();
-
-  // Vaciar tabla
-  const tbody = document.getElementById("tbody-series");
-  tbody.innerHTML = "";
-
-  seriesTable.classList.remove("d-none");
-  moviesTable.classList.add("d-none");
-
-  // Cargar tabla
-  series.forEach((serie, index) => {
-    addRowSerieTable(serie, index);
-  });
-};
-
-//responsive mobile
+//CREAR CARDS PELICULAS O SERIES PARA VERSION MOBILE
 export const addCardMovie = (movie) => {
-  // console.log(movie);
   const movieCardsContainer = document.getElementById("movie-cards-container");
 
   const cardBody = document.createElement("div");
@@ -364,7 +334,7 @@ export const addCardMovie = (movie) => {
   //boton estrella para destacar
   const btnFav = document.createElement("button");
   btnFav.type = "button";
-  btnFav.classList.add("btn-fav-default");
+  btnFav.classList.add("btn-fav-default", 'd-flex', 'align-item-start' );
 
   const favStar = document.createElement("i");
   favStar.classList.add("fa-solid", "fa-star", "pt-4", "star-unfav");
@@ -381,8 +351,7 @@ export const addCardMovie = (movie) => {
       resetFavBtns();
     }
 
-    const favMovieCode = movie.code;
-    return favMovieCode;
+    saveFavMovieCode(movie.code);
   };
 
   const cardTitleDiv = document.createElement("div");
@@ -411,12 +380,22 @@ export const addCardMovie = (movie) => {
 
   //botones
   const btnsDiv = document.createElement("div");
-  btnsDiv.classList.add("col-6", "d-flex", "flex-column", "gap-3", "mb-3");
+  btnsDiv.classList.add("col-6", "d-flex", "flex-column", "gap-3", "mb-3", 'align-items-center');
 
   const btnEdit = document.createElement("button");
+  btnEdit.classList.add('btn', 'btn-warning', 'btn-sm', 'w-50');
   btnEdit.innerText = "Editar";
+  btnEdit.onclick = () => {
+    prepareEditionMovie(movie.code);
+  };
+
   const btnDelete = document.createElement("button");
+  btnDelete.classList.add('btn', 'btn-danger', 'btn-sm', 'w-50');
   btnDelete.innerText = "Eliminar";
+  btnDelete.onclick = () => {
+    deleteMovie(movie.code);
+  };
+
 
   btnsDiv.appendChild(btnEdit);
   btnsDiv.appendChild(btnDelete);
@@ -440,7 +419,6 @@ export const addCardMovie = (movie) => {
 };
 
 export const addCardSerie = (serie) => {
-  console.log(serie);
   const serieCardsContainer = document.getElementById("serie-cards-container");
 
   const cardBody = document.createElement("div");
@@ -475,8 +453,7 @@ export const addCardSerie = (serie) => {
       resetFavBtns();
     }
 
-    const favSerieCode = movie.code;
-    return favSerieCode;
+    saveFavSerieCode(serie.code);
   };
 
   const cardTitleDiv = document.createElement("div");
@@ -504,12 +481,21 @@ export const addCardSerie = (serie) => {
 
   //botones
   const btnsDiv = document.createElement("div");
-  btnsDiv.classList.add("col-6", "d-flex", "flex-column", "gap-3", "mb-3");
+  btnsDiv.classList.add("col-6", "d-flex", "flex-column", "gap-3", "mb-3", 'align-items-center');
 
   const btnEdit = document.createElement("button");
   btnEdit.innerText = "Editar";
+  btnEdit.classList.add('btn', 'btn-warning', 'btn-sm', 'w-50');
+  btnEdit.onclick = () => {
+    prepareEditionSerie(serie.code);
+  };
+
   const btnDelete = document.createElement("button");
+  btnDelete.classList.add('btn', 'btn-danger', 'btn-sm', 'w-50');
   btnDelete.innerText = "Eliminar";
+  btnDelete.onclick = () => {
+    deleteSerie(serie.code);
+  };
 
   btnsDiv.appendChild(btnEdit);
   btnsDiv.appendChild(btnDelete);
@@ -530,6 +516,39 @@ export const addCardSerie = (serie) => {
   cardBody.appendChild(publicationCard);
 
   serieCardsContainer.appendChild(cardBody);
+};
+
+//CARGAR PELICULAS O SERIES
+export const loadMovieTable = () => {
+  const movies = getMoviesFromLS();
+
+  // Vaciar tabla
+  const tbody = document.getElementById("tbody-movies");
+  tbody.innerHTML = "";
+
+  seriesTable.classList.add("d-none");
+  moviesTable.classList.remove("d-none");
+
+  // Cargar tabla
+  movies.forEach((movie, index) => {
+    addRowMovieTable(movie, index);
+  });
+};
+
+export const loadSerieTable = () => {
+  const series = getseriesFromLS();
+
+  // Vaciar tabla
+  const tbody = document.getElementById("tbody-series");
+  tbody.innerHTML = "";
+
+  seriesTable.classList.remove("d-none");
+  moviesTable.classList.add("d-none");
+
+  // Cargar tabla
+  series.forEach((serie, index) => {
+    addRowSerieTable(serie, index);
+  });
 };
 
 export const loadCardsMovie = () => {
@@ -565,11 +584,15 @@ export const loadCardsSerie = () => {
   });
 };
 
+
 //funcion para cargar inicialmente tabla o cards segun el ancho de pantalla
 
 export const responsiveMovies = () => {
   loadMovieTable();
   loadCardsMovie();
+
+  movieFormContainer.classList.remove("d-none");
+  serieFormContainer.classList.add("d-none");
 
   const screenWidth = window.innerWidth;
   if (screenWidth >= 768) {
@@ -582,10 +605,13 @@ export const responsiveMovies = () => {
 };
 
 export const responsiveSeries = () => {
-  const screenWidth = window.innerWidth;
   loadSerieTable();
   loadCardsSerie();
 
+  movieFormContainer.classList.add("d-none");
+  serieFormContainer.classList.remove("d-none");
+
+  const screenWidth = window.innerWidth;
   if (screenWidth >= 768) {
     seriesTable.classList.remove("d-none");
     serieCards.classList.add("d-none");
@@ -615,3 +641,122 @@ export const resetFavBtns = () => {
     button.disabled = false;
   });
 };
+
+//funcion para guardar codigo de destacada
+
+export const saveFavMovieCode = (code) => {
+  // 1. Traer la lista de peliculas
+  const movies = getMoviesFromLS();
+
+  // 2. Buscar la pelicula destacada
+  const favMovie = movies.find(
+    (movie) => movie.code === code,
+  );
+
+  // 3. Guardar el codigo en sessionStorage
+  sessionStorage.setItem("codeFavMovie", code);
+  console.log(favMovie);
+};
+
+export const saveFavSerieCode = (code) => {
+  // 1. Traer la lista de peliculas
+  const movies = getseriesFromLS();
+
+  // 2. Buscar la pelicula destacada
+  const favSerie = movies.find(
+    (serie) => serie.code === code,
+  );
+
+  // 3. Guardar el codigo en sessionStorage
+  sessionStorage.setItem("codeFavSerie", code);
+  console.log(favSerie);
+};
+
+//FUNCIONES PARA EDITAR
+
+const prepareEditionMovie = (code) =>{
+    //1.traer lista de peliculas
+    const movies = getMoviesFromLS();
+
+    //2. buscar pelicula
+    const selectedMovie = movies.find((item)=>{
+      return item.code === code;
+    })
+
+    //3. seleccionar los campos
+    const fieldMovieName = document.getElementById("input-name-movie");
+    const fieldMovieImage = document.getElementById("input-image-movie");
+    const fieldMovieCategory = document.getElementById("category-movie");
+    const fieldMovieDescription = document.getElementById("input-description-movie");
+    const fieldMoviePublication = document.getElementById("publication-movie");
+
+    //4. cargar los datos en el formulario
+
+    fieldMovieName.value = selectedMovie.name;
+    fieldMovieImage.value = selectedMovie.image;
+    fieldMovieCategory.value = selectedMovie.category;
+    fieldMovieDescription.value = selectedMovie.description;
+    fieldMoviePublication.value = selectedMovie.publication;
+
+    //5.guardar codigo en session storage
+    sessionStorage.setItem('codeMovie', code);
+};
+
+
+const prepareEditionSerie = (code) =>{
+    //1.traer lista de series
+    const series = getseriesFromLS();
+
+    //2. buscar pelicula
+    const selectedSerie = series.find((item)=>{
+      return item.code === code;
+    })
+
+    //3. seleccionar los campos
+    const fieldSerieName = document.getElementById("input-name-serie");
+    const fieldSerieImage = document.getElementById("input-image-serie");
+    const fieldSerieCategory = document.getElementById("category-serie");
+    const fieldSerieSeason = document.getElementById("input-seasons-serie");
+    const fieldSerieEpisode = document.getElementById("input-episodes-serie");
+    const fieldSerieDescription = document.getElementById("input-description-serie");
+    const fieldSeriePublication = document.getElementById("publication-serie");
+
+    //4. cargar los datos en el formulario
+
+    fieldSerieName.value = selectedSerie.name;
+    fieldSerieImage.value = selectedSerie.image;
+    fieldSerieCategory.value = selectedSerie.category;
+    fieldSerieSeason.value = selectedSerie.seasons;
+    fieldSerieEpisode.value = selectedSerie.episodes;
+    fieldSerieDescription.value = selectedSerie.description;
+    fieldSeriePublication.value = selectedSerie.publication;
+
+        //5.guardar codigo en session storage
+        sessionStorage.setItem('codeSerie', code);
+};
+
+
+export const editingMovie = () =>{
+  const code = sessionStorage.getItem('codeMovie');
+
+  if(code === null) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+export const editingSerie = () =>{
+  const code = sessionStorage.getItem('codeSerie');
+
+  if(code === null) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+export const setSelectValue = (value)=> {
+  const select = document.querySelector('#select-movies-series')
+  select.value = value;
+}
