@@ -12,6 +12,13 @@ import {
 // import {rechargeCategorySelect} from "../category/select.js"
 import { editingMovie, editingSerie, responsiveMovies, responsiveSeries, setSelectValue } from "./adminUtils.js";
 
+
+//Proteger rutas
+const Logueado = JSON.parse(sessionStorage.getItem('Logueado'));
+if (!Logueado) {
+  window.location.href = '../pages/login.html';
+}
+
 //SELECCION ELEMENTOS
 // rechargeCategorySelect();
 //select para cargar peliculas o series

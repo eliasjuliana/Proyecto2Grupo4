@@ -86,8 +86,6 @@ const series = getseriesFromLS();
 const favMovie = favItem(movies, favMovieCode);
 const favSerie = favItem(series, favSerieCode);
 
-console.log(favMovie);
-
 
 //tomo la imagen de la pelocula destacada y creo la imagen del carousel
 createBannerMovie(favMovie);

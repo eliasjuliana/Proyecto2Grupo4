@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.cdnfonts.com/css/amazon-ember" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="@sweetalert2/theme-wordpress-admin/wordpress-admin.css"> -->
     <link rel="stylesheet" href="../css/style.css">    
 </head>
 <body>
@@ -77,7 +78,7 @@
             <a class="dropdown-item" href="./login.html">Iniciar sesion</a>
             <hr class="text-light">
             <a class="dropdown-item" href="./admin.html">Admin</a>
-            <a class="dropdown-item" href="#">Salir</a>
+            <a class="dropdown-item text-danger" id="btn-exit" href="#">Salir</a>
         </div>
     </header>
     <main class="container-fluid pt-5" id="main-admin-container">
@@ -292,10 +293,8 @@
     <script src="https://kit.fontawesome.com/a48a581e8f.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="../js/admin/app.js"></script>
+    <script type="module" src="../js/index/index.js"></script>
+    <script type="module" src="../js/logout.js"></script>
 </body>
 </html>
-
-
-
-<link rel="stylesheet" href="@sweetalert2/theme-wordpress-admin/wordpress-admin.css">
 
