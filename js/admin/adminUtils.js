@@ -6,6 +6,11 @@ const seriesTable = document.getElementById("series-table");
 const movieCards = document.getElementById("movie-cards-container");
 const serieCards = document.getElementById("serie-cards-container");
 
+const movieFormContainer = document.getElementById("movie-form-container");
+const serieFormContainer = document.getElementById("serie-form-container");
+
+// const selectMoviesSeries = document.getElementById("select-movies-series");
+
 
 //TRAER PELICULAS O SERIES DEL LS
 export const getMoviesFromLS = () => {
@@ -75,6 +80,7 @@ export const addRowMovieTable = (movie) => {
 
   //destacar
   const tdActions = document.createElement("td");
+  tdActions.classList.add('flex-wrap', 'justify-content-start')
   const btnFav = document.createElement("button");
   btnFav.type = "button";
   btnFav.classList.add("btn-fav-default");
@@ -102,7 +108,7 @@ export const addRowMovieTable = (movie) => {
   //boton editar
 
   const btnEdit = document.createElement("button");
-  btnEdit.classList.add("btn", "btn-warning", "btn-sm", 'me-2');
+  btnEdit.classList.add("btn", "btn-warning", "btn-sm", 'm-1');
   btnEdit.innerText = "Editar";
   btnEdit.onclick = () => {
     prepareEditionMovie(movie.code);
@@ -113,7 +119,7 @@ export const addRowMovieTable = (movie) => {
   //boton eliminar
 
   const btnDelete = document.createElement("button");
-  btnDelete.classList.add("btn", "btn-danger", "btn-sm");
+  btnDelete.classList.add("btn", "btn-danger", "btn-sm", 'm-1');
   btnDelete.innerText = "Eliminar";
   btnDelete.onclick = () => {
     deleteMovie(movie.code);
@@ -185,6 +191,7 @@ export const addRowSerieTable = (serie) => {
   favStar.classList.add("fa-solid", "fa-star", "star-unfav");
   btnFav.appendChild(favStar);
   tdActions.appendChild(btnFav);
+  tdActions.classList.add('flex-wrap', 'justify-content-start');
   tr.appendChild(tdActions);
 
   btnFav.onclick = () => {
@@ -204,7 +211,7 @@ export const addRowSerieTable = (serie) => {
   //boton editar
 
   const btnEdit = document.createElement("button");
-  btnEdit.classList.add("btn", "btn-warning", "btn-sm", 'me-2');
+  btnEdit.classList.add("btn", "btn-warning", "btn-sm", 'm-1');
   btnEdit.innerText = "Editar";
   btnEdit.onclick = () => {
     prepareEditionSerie(serie.code);
@@ -215,7 +222,7 @@ export const addRowSerieTable = (serie) => {
   //boton eliminar
 
   const btnDelete = document.createElement("button");
-  btnDelete.classList.add("btn", "btn-danger", "btn-sm");
+  btnDelete.classList.add("btn", "btn-danger", "btn-sm", 'm-1');
   btnDelete.innerText = "Eliminar";
   btnDelete.onclick = () => {
     deleteSerie(serie.code);
@@ -230,7 +237,6 @@ export const addRowSerieTable = (serie) => {
 
 //CREAR CARDS PELICULAS O SERIES PARA VERSION MOBILE
 export const addCardMovie = (movie) => {
-  // console.log(movie);
   const movieCardsContainer = document.getElementById("movie-cards-container");
 
   const cardBody = document.createElement("div");
@@ -248,7 +254,7 @@ export const addCardMovie = (movie) => {
   //boton estrella para destacar
   const btnFav = document.createElement("button");
   btnFav.type = "button";
-  btnFav.classList.add("btn-fav-default");
+  btnFav.classList.add("btn-fav-default", 'd-flex', 'align-item-start' );
 
   const favStar = document.createElement("i");
   favStar.classList.add("fa-solid", "fa-star", "pt-4", "star-unfav");
@@ -294,17 +300,17 @@ export const addCardMovie = (movie) => {
 
   //botones
   const btnsDiv = document.createElement("div");
-  btnsDiv.classList.add("col-6", "d-flex", "flex-column", "gap-3", "mb-3");
+  btnsDiv.classList.add("col-6", "d-flex", "flex-column", "gap-3", "mb-3", 'align-items-center');
 
   const btnEdit = document.createElement("button");
-  btnEdit.classList.add('btn', 'btn-warning', 'btn-sm', 'me-2');
+  btnEdit.classList.add('btn', 'btn-warning', 'btn-sm', 'w-50');
   btnEdit.innerText = "Editar";
   btnEdit.onclick = () => {
     prepareEditionMovie(movie.code);
   };
 
   const btnDelete = document.createElement("button");
-  btnDelete.classList.add('btn', 'btn-danger', 'btn-sm');
+  btnDelete.classList.add('btn', 'btn-danger', 'btn-sm', 'w-50');
   btnDelete.innerText = "Eliminar";
   btnDelete.onclick = () => {
     deleteMovie(movie.code);
@@ -333,7 +339,6 @@ export const addCardMovie = (movie) => {
 };
 
 export const addCardSerie = (serie) => {
-  console.log(serie);
   const serieCardsContainer = document.getElementById("serie-cards-container");
 
   const cardBody = document.createElement("div");
@@ -396,17 +401,17 @@ export const addCardSerie = (serie) => {
 
   //botones
   const btnsDiv = document.createElement("div");
-  btnsDiv.classList.add("col-6", "d-flex", "flex-column", "gap-3", "mb-3");
+  btnsDiv.classList.add("col-6", "d-flex", "flex-column", "gap-3", "mb-3", 'align-items-center');
 
   const btnEdit = document.createElement("button");
   btnEdit.innerText = "Editar";
-  btnEdit.classList.add('btn', 'btn-warning', 'btn-sm', 'me-2');
+  btnEdit.classList.add('btn', 'btn-warning', 'btn-sm', 'w-50');
   btnEdit.onclick = () => {
     prepareEditionSerie(serie.code);
   };
 
   const btnDelete = document.createElement("button");
-  btnDelete.classList.add('btn', 'btn-danger', 'btn-sm');
+  btnDelete.classList.add('btn', 'btn-danger', 'btn-sm', 'w-50');
   btnDelete.innerText = "Eliminar";
   btnDelete.onclick = () => {
     deleteSerie(serie.code);
@@ -506,6 +511,9 @@ export const responsiveMovies = () => {
   loadMovieTable();
   loadCardsMovie();
 
+  movieFormContainer.classList.remove("d-none");
+  serieFormContainer.classList.add("d-none");
+
   const screenWidth = window.innerWidth;
   if (screenWidth >= 768) {
     moviesTable.classList.remove("d-none");
@@ -517,10 +525,13 @@ export const responsiveMovies = () => {
 };
 
 export const responsiveSeries = () => {
-  const screenWidth = window.innerWidth;
   loadSerieTable();
   loadCardsSerie();
 
+  movieFormContainer.classList.add("d-none");
+  serieFormContainer.classList.remove("d-none");
+
+  const screenWidth = window.innerWidth;
   if (screenWidth >= 768) {
     seriesTable.classList.remove("d-none");
     serieCards.classList.add("d-none");
@@ -664,3 +675,8 @@ export const editingSerie = () =>{
     return true;
   }
 };
+
+export const setSelectValue = (value)=> {
+  const select = document.querySelector('#select-movies-series')
+  select.value = value;
+}

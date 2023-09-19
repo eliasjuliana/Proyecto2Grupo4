@@ -8,7 +8,7 @@ import {
   validateDescription,
   validatePublication,
 } from "./validators.js";
-import { editingMovie, editingSerie, responsiveMovies, responsiveSeries } from "./adminUtils.js";
+import { editingMovie, editingSerie, responsiveMovies, responsiveSeries, setSelectValue } from "./adminUtils.js";
 
 //SELECCION ELEMENTOS
 //select para cargar peliculas o series
@@ -52,17 +52,26 @@ responsiveMovies();
 
 window.addEventListener("resize", () => {
   const screenWidth = window.innerWidth;
+  const selectedValue = selectMoviesSeries.value;
+  
+  // Ocultar todos los elementos por defecto
+  moviesTable.classList.add('d-none');
+  seriesTable.classList.add('d-none');
+  movieCards.classList.add('d-none');
+  serieCards.classList.add('d-none');
 
   if (screenWidth >= 768) {
-    moviesTable.classList.remove("d-none");
-    movieCards.classList.add("d-none");
-    seriesTable.classList.remove("d-none");
-    serieCards.classList.add("d-none");
-  } else {
-    moviesTable.classList.add("d-none");
-    movieCards.classList.remove("d-none");
-    seriesTable.classList.add("d-none");
-    serieCards.classList.remove("d-none");
+    if (selectedValue === 'movies') {
+      moviesTable.classList.remove('d-none');
+    } else if (selectedValue === 'series') {
+      seriesTable.classList.remove('d-none');
+    }
+  } else if (screenWidth < 768) {
+    if (selectedValue === 'movies') {
+      movieCards.classList.remove('d-none');
+    } else if (selectedValue === 'series') {
+      serieCards.classList.remove('d-none');
+    }
   }
 });
 
@@ -84,10 +93,12 @@ selectMoviesSeries.addEventListener("click", () => {
 
 btnMoviesTable.addEventListener("click", () => {
   responsiveMovies();
+  setSelectValue('movies');
 });
 
 btnSeriesTable.addEventListener("click", () => {
   responsiveSeries();
+  setSelectValue('series');
 });
 
 //PARA CREAR FILAS DE LA TABLA PELICULAS
