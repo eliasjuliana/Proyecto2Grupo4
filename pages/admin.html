@@ -109,12 +109,10 @@
                     <fieldset class="mb-2">
                         <label for="category-movie">Categoría:</label>
                         <select class="form-select" id="category-movie" name="opciones">
-                            <option value="">Selecciona una categoría</option>
-                            <option value="opcion1">Opción 1</option>
-                            <option value="opcion2">Opción 2</option>
-                            <option value="opcion3">Opción 3</option>
+                            <option>Selecciona una categoría</option>
                         </select>
                     </fieldset>
+                    <a href="#">¿Queres agregar mas categorias?</a>
                     <fieldset class="mb-2">
                         <label for="input-description-movie" class="form-label">Descripción</label>
                         <textarea id="input-description-movie" class="form-control"></textarea>
@@ -150,10 +148,7 @@
                     <fieldset class="mb-2">
                         <label for="category-serie">Categoría:</label>
                         <select class="form-select" id="category-serie" name="opciones">
-                            <option value="">Selecciona una categoría</option>
-                            <option value="opcion1">Opción 1</option>
-                            <option value="opcion2">Opción 2</option>
-                            <option value="opcion3">Opción 3</option>
+                            <option>Selecciona una categoría</option>
                         </select>
                     </fieldset>
                     <fieldset class="mb-2">
@@ -185,8 +180,37 @@
             </article>
         </section>
 
-<!-- TABLAs DE PELICULAS O SERIES -->
 
+<!-- FILTRADO CATEGORIAS -->
+<section class="container text-light">
+    <article class="row">
+        <div class="col-6 d-none" id="divMovie">
+<p>Filtrar por Categoria Peliculas :</p>
+<select class="form-select" id="categoryFilterMovies" name="opciones">
+    <option>Selecciona una categoría</option>
+    <option value="todos" selected="selected">Todas las categorias</option>
+    <option value="accion">Acción</option>
+    <option value="comedia">Comedia</option>
+    <option value="terror">Terror</option>
+    <option value="fantasia">Fantasia</option>
+    <option value="cienciaFicción">Ciencia Ficción</option>
+</select>
+        </div>
+        <div class="col-6 d-none" id="divSeries">
+            <p>Filtrar por Categoria Series :</p>
+            <select class="form-select" id="categoryFilterSeries" name="opciones">
+                <option>Selecciona una categoría</option>
+                <option value="todos" selected="selected">Todas las categorias</option>
+                <option value="accion">Acción</option>
+                <option value="comedia">Comedia</option>
+                <option value="terror">Terror</option>
+                <option value="fantasia">Fantasia</option>
+                <option value="cienciaFicción">Ciencia Ficción</option>
+            </select>
+        </div>
+    </article>
+</section>
+<!-- TABLA DONDE SE MUESTRAN LAS PELICULAS -->
         <section class="container mt-5">
             <div class="btn-group w-100" role="group" aria-label="Tabs">
                 <button type="button" class="btn btn-blue-style rounded-bottom-0" id="btn-movies-table">Peliculas</button>
@@ -258,6 +282,7 @@
     <script src="https://kit.fontawesome.com/a48a581e8f.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="../js/admin/app.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
 

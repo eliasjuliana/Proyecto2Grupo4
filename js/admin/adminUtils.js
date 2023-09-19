@@ -1,3 +1,4 @@
+
 import { deleteMovie, deleteSerie } from "./abm.js";
 
 const moviesTable = document.getElementById("movies-table");
@@ -85,11 +86,8 @@ export const addRowMovieTable = (movie) => {
   btnFav.type = "button";
   btnFav.classList.add("btn-fav-default");
 
-  const favStar = document.createElement("i");
-  favStar.classList.add("fa-solid", "fa-star", "star-unfav");
-  btnFav.appendChild(favStar);
-  tdActions.appendChild(btnFav);
-  tr.appendChild(tdActions);
+  tdButtons.appendChild(btnEditMovie);
+  tdButtons.appendChild(btnDeleteMovie);
 
   btnFav.onclick = () => {
     if (favStar.classList.contains("star-unfav")) {
@@ -194,17 +192,99 @@ export const addRowSerieTable = (serie) => {
   tdActions.classList.add('flex-wrap', 'justify-content-start');
   tr.appendChild(tdActions);
 
-  btnFav.onclick = () => {
-    if (favStar.classList.contains("star-unfav")) {
-      favStar.classList.remove("star-unfav");
-      favStar.classList.add("star-fav");
-      disableFavBtns();
-    } else if (favStar.classList.contains("star-fav")) {
-      favStar.classList.add("star-unfav");
-      favStar.classList.remove("star-fav");
-      resetFavBtns();
-    }
+// tabla series
+export const addRowSerieTable = (serie) => {
+    const tbody = document.getElementById('tbody-series');
+    //row table
+    const tr = document.createElement('tr');
 
+    // nombre
+    const tdName = document.createElement('td');
+    tdName.innerText = serie.name;
+    tr.appendChild(tdName);
+  
+    // imagen  
+    const tdImage = document.createElement('td');
+    const img = document.createElement('img');
+    img.classList.add('image-table')
+
+    img.src = serie.image;
+    img.alt = serie.name;
+  
+    tdImage.appendChild(img);
+    tr.appendChild(tdImage);
+  
+    // categoria
+    const tdCategory = document.createElement('td');
+    tdCategory.innerText = serie.category;
+    tr.appendChild(tdCategory);
+
+    // temporada
+    const tdSeasons = document.createElement('td');
+    tdSeasons.innerText = serie.seasons;
+    tr.appendChild(tdSeasons);
+
+    //episodios
+    const tdEpisodes = document.createElement('td');
+    tdEpisodes.innerText = serie.episodes;
+    tr.appendChild(tdEpisodes);
+  
+    // descripcion
+    const tdDescription = document.createElement('td');
+    tdDescription.innerText = serie.description;
+    tdDescription.classList.add('text-start');
+    tr.appendChild(tdDescription);
+  
+    // publicacion
+    const tdPublication = document.createElement('td');
+    tdPublication.innerText = serie.publication;
+    tr.appendChild(tdPublication);
+  
+  
+      //destacar serie
+    const tdActions = document.createElement('td');
+    const btnFav = document.createElement('button');
+    btnFav.type = 'button';
+    btnFav.classList.add('btn-fav-default');
+
+    const favStar = document.createElement('i');
+    favStar.classList.add('fa-solid', 'fa-star', 'star-unfav');
+    btnFav.appendChild(favStar);
+    tdActions.appendChild(btnFav);
+    tr.appendChild(tdActions);
+
+    btnFav.onclick = () => {
+      if(favStar.classList.contains('star-unfav')){
+        favStar.classList.remove('star-unfav');
+        favStar.classList.add('star-fav');
+        disableFavBtns();
+      } else if(favStar.classList.contains('star-fav')){
+        favStar.classList.add('star-unfav');
+        favStar.classList.remove('star-fav');
+        resetFavBtns();
+      };
+
+      const favSerieCode = serie.code;
+      return favSerieCode;
+      };
+
+// BOTONES SERIES
+
+  const tdButtonsSeries = document.createElement('td');
+
+  const btnEditSerie = document.createElement('button');
+  const btnDeleteSerie = document.createElement('button');
+
+  btnEditSerie.type = 'button';
+  btnDeleteSerie.type = 'button';
+  btnEditSerie.classList.add('btn', 'btn-warning', 'btn-sm', 'me-2');
+  btnDeleteSerie.classList.add('btn', 'btn-danger', 'btn-sm');
+  btnEditSerie.innerText = 'Editar';
+  btnDeleteSerie.innerText = 'Eliminar';
+
+  btnEditSerie.onclick = () => {
+    prepareEditionSerie(serie.code);
+  };
     saveFavSerieCode(serie.code);
   };
 
