@@ -680,3 +680,11 @@ export const setSelectValue = (value)=> {
   const select = document.querySelector('#select-movies-series')
   select.value = value;
 }
+
+// export const setcategories = (value) =>{
+//   const select = document.querySelector('.form-select'); 
+
+//   const selectOption = document.createElement('option');
+//   selectOption.value = value;
+//   select.appendChild(selectOption);
+// }

@@ -8,9 +8,19 @@ import {
   validateDescription,
   validatePublication,
 } from "./validators.js";
+// import { filtradoPelicula, filtradoSerie } from "./filters.js";
+import {rechargeCategorySelect} from "../category/select.js"
 import { editingMovie, editingSerie, responsiveMovies, responsiveSeries, setSelectValue } from "./adminUtils.js";
 
+
+//Proteger rutas
+const Logueado = JSON.parse(sessionStorage.getItem('Logueado'));
+if (!Logueado) {
+  window.location.href = '../pages/login.html';
+}
+
 //SELECCION ELEMENTOS
+rechargeCategorySelect();
 //select para cargar peliculas o series
 const selectMoviesSeries = document.getElementById("select-movies-series");
 
@@ -40,6 +50,9 @@ const fieldSerieDescription = document.getElementById(
 const fieldSeriePublication = document.getElementById("publication-serie");
 
 //botones para mostrar tabla peliculas o tabla series
+// const selectMovies = document.getElementById("divMovie")
+// const selectSeries = document.getElementById("divSeries")
+// //agustin
 const btnMoviesTable = document.getElementById("btn-movies-table");
 const btnSeriesTable = document.getElementById("btn-series-table");
 const moviesTable = document.getElementById("movies-table");
@@ -49,6 +62,7 @@ const serieCards = document.getElementById("serie-cards-container");
 
 //CARGAR TABLA O CARDS SEGUN TAMAÑO PANTALLA
 responsiveMovies();
+
 
 window.addEventListener("resize", () => {
   const screenWidth = window.innerWidth;
@@ -100,6 +114,24 @@ btnSeriesTable.addEventListener("click", () => {
   responsiveSeries();
   setSelectValue('series');
 });
+
+//event listener tabs agustin
+// btnMoviesTable.addEventListener('click', () =>{
+//   seriesTable.classList.add('d-none');
+//   moviesTable.classList.remove('d-none');
+//   selectMovies.classList.remove("d-none")
+//   selectSeries.classList.add("d-none")
+//   filtradoPelicula()
+// })
+
+// btnSeriesTable.addEventListener('click', () =>{
+//   loadSerieTable();
+//   seriesTable.classList.remove('d-none');
+//   moviesTable.classList.add('d-none');
+//   selectMovies.classList.add("d-none")
+//   selectSeries.classList.remove("d-none")
+//   filtradoSerie()
+// })
 
 //PARA CREAR FILAS DE LA TABLA PELICULAS
 
@@ -273,3 +305,4 @@ serieForm.addEventListener("submit", (e) => {
     fieldSeriePublication.classList.remove("is-valid", "is-invalid");
   }
 });
+
