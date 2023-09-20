@@ -92,16 +92,15 @@ const bannerDefault = document.getElementById('banner-default');
 const bannerFavs = document.getElementById('banner-home');
 
 
-if(!favMovie || !favSerie){
-    bannerDefault.classList.remove('d-none');
-    bannerFavs.classList.add('d-none');
-} else {
-    bannerDefault.classList.add('d-none');
-    bannerFavs.classList.remove('d-none');
-    createBannerMovie(favMovie);
-    createBannerSerie(favSerie);
-}
-
+ if(!favMovie || !favSerie){
+     bannerDefault.classList.remove('d-none');
+     bannerFavs.classList.add('d-none');
+ } else {
+     bannerDefault.classList.add('d-none');
+     bannerFavs.classList.remove('d-none');
+     createBannerMovie(favMovie);
+     createBannerSerie(favSerie);
+ }
 
 //event listener botones carousel
 

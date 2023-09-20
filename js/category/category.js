@@ -1,4 +1,3 @@
-import { setcategories } from "../admin/adminUtils.js";
 import { addCategory } from "../category/class.js";
 import { chargeCategoryList } from "../category/utils.js";
 

@@ -688,10 +688,3 @@ export const setSelectValue = (value)=> {
 //   selectOption.value = value;
 //   select.appendChild(selectOption);
 // }
-
-{/* <select class="form-select" id="category-movie" name="opciones">
-<option value="">Selecciona una categoría</option>
-<option value="opcion1">Opción 1</option>
-<option value="opcion2">Opción 2</option>
-<option value="opcion3">Opción 3</option>
-</select> */}
