@@ -15,19 +15,21 @@ formLogin.addEventListener('submit',(e) => {
     const password = fieldPassword.value;
     const passwordAgain = fieldPasswordAgain.value;
 
-    if (validateUsername(user, fieldUser)  && validateEmail(email, fieldEmail) && validatePassword(password, fieldPassword) && validatePassword(passwordAgain, fieldPasswordAgain) && password === passwordAgain)
-    {
+    if (validateUsername(user, fieldUser) && validateEmail(email, fieldEmail) && validatePassword(password, fieldPassword) && validatePassword(passwordAgain, fieldPasswordAgain) && password === passwordAgain) {
         Swal.fire({
             position: 'bottom-center',
             icon: 'success',
             title: 'Cuenta registrada!',
             showConfirmButton: false,
             timer: 1500
-          })
-    }  else {
+        }).then(() => {
+            window.location.href = '../pages/error404.html';
+        });
+    } else {
         Swal.fire({
             icon: 'error',
             title: 'Hubo un error al crear tu cuenta!',
+            text: 'Comprueba todos los campos'
         })
-}})
-
+    }
+})
