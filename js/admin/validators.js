@@ -99,8 +99,6 @@ export const validatePublication = (value, field) => {
     return true;
 };
 
-//VALIDACION TEMPORADAS
-
 export const validateSeason = (value, field) => {
     if (value > 30 || value < 1) {
         field.classList.add('is-invalid');
