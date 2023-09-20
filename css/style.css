@@ -76,7 +76,18 @@ nav a{
     width: 100vw;
     height: 100vh;
 }
-
+/* Cards */
+.card-body {
+    opacity: 0; /* Inicialmente oculto */
+    height: 0; /* Inicialmente oculto */
+    transition: 1s ease;/* Define la transición */
+  }
+  
+  .card:hover .card-body {
+    opacity: 1; /* Mostrar con opacidad total al pasar el mouse */
+    height: auto; /* Ajustar la altura automáticamente */
+  }
+  
 /* botones activos del navbar */
 
 .btn-navbar-active{

@@ -1,7 +1,9 @@
-import { getMoviesFromLS, getseriesFromLS } from "../admin/adminUtils.js";
+import { getMoviesFromLS, getseriesFromLS, loadCardsMovie } from "../admin/adminUtils.js";
+import { loadMovieCard } from "./cards.js";
 import { changeSlides, createBannerMovie, createBannerSerie, favItem } from "./utils.js"
 
 //selecciono botones del navbar
+loadMovieCard()
 
 const menuBtnNav = document.getElementById('btn-menu');
 const searchBtnNav = document.getElementById('btn-search');
