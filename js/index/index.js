@@ -1,5 +1,5 @@
-import { getMoviesFromLS, getseriesFromLS, saveFavSerieCode } from "../admin/adminUtils.js";
-import { createBannerMovie, createBannerSerie, favItem } from "./utils.js"
+import { getMoviesFromLS, getseriesFromLS } from "../admin/adminUtils.js";
+import { changeSlides, createBannerMovie, createBannerSerie, favItem } from "./utils.js"
 
 //selecciono botones del navbar
 
@@ -73,11 +73,12 @@ userBtnNav.addEventListener('click', () => {
     changeIcons(iconSearch, iconX);
 });
 
-//banner home
+//BANNER HOME
 
 //traigo del SS el codigo de pelicula/serie destacada
 const favMovieCode = sessionStorage.getItem('codeFavMovie');
 const favSerieCode = sessionStorage.getItem('codeFavSerie');
+
 //traigo los arrays de peliculas/series
 const movies = getMoviesFromLS();
 const series = getseriesFromLS();
@@ -86,14 +87,79 @@ const series = getseriesFromLS();
 const favMovie = favItem(movies, favMovieCode);
 const favSerie = favItem(series, favSerieCode);
 
-console.log(favMovie);
+//selecciono slide default del carousel
+const bannerDefault = document.getElementById('banner-default');
+const bannerFavs = document.getElementById('banner-home');
 
 
-//tomo la imagen de la pelocula destacada y creo la imagen del carousel
-createBannerMovie(favMovie);
+if(!favMovie || !favSerie){
+    bannerDefault.classList.remove('d-none');
+    bannerFavs.classList.add('d-none');
+} else {
+    bannerDefault.classList.add('d-none');
+    bannerFavs.classList.remove('d-none');
+    createBannerMovie(favMovie);
+    createBannerSerie(favSerie);
+}
 
-//tomo la imagen de la pelocula destacada y creo la imagen del carousel
-createBannerSerie(favSerie);
+
+//event listener botones carousel
+
+const btnPrev = document.getElementById('btn-prev');
+const btnNext = document.getElementById('btn-next');
 
 
+
+btnNext.addEventListener('click', ()=>{
+    changeSlides();
+})
+
+btnPrev.addEventListener('click', ()=>{
+    changeSlides();
+})
+
+
+
+
+//de index.js feat/admin
+// export const eliminarContacto = (codigo) => {
+//     // Siempre confirmar la eliminacion
+//     swal
+//       .fire({
+//         title: "¿Estás seguro?",
+//         text: "Una vez eliminado, no podrás recuperar el contacto",
+//         icon: "warning",
+//         showCancelButton: true,
+//         confirmButtonText: "Eliminar",
+//         cancelButtonText: "Cancelar",
+//       })
+//       .then((result) => {
+//         if (result.isConfirmed) {
+//           // 1. Traer la lista de contactos
+//           const contactos = obtenerContactosDeLS();
+  
+//           // 2. Filtrar el contacto a eliminar
+//           const contactosActualizados = contactos.filter(
+//             (contacto) => contacto.codigo !== codigo,
+//           );
+  
+//           // 3. Guardar el nuevo array en localStorage
+//           localStorage.setItem(
+//             "contactos",
+//             JSON.stringify(contactosActualizados),
+//           );
+  
+//           // 4. Recargar la tabla
+//           cargarTabla();
+  
+//           // 5. Mensaje de exito
+//           swal.fire({
+//             icon: "success",
+//             title: "Contacto eliminado correctamente",
+//             showConfirmButton: false,
+//             timer: 1500,
+//           });
+//         }
+//       });
+//   };
 
