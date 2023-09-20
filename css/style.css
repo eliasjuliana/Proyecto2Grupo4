@@ -8,6 +8,7 @@
     --dropdown-list-color: #848587;
     --blue-letter-color: #4896F7;
     --blue-dark-color: #2062b3;
+    --error-container:#0f171e;
 }
 
 *{
@@ -277,4 +278,22 @@ nav a{
         max-width: 38rem;
         margin: auto;
     }
+}
+
+
+/* ERROR 404 */
+
+#error-container{
+    min-height: 75vh;
+    background-color: var(--error-container);
+}
+
+#link-error {
+    text-decoration: none;
+    color: var(--terciary-color);
+    font-weight: 600;
+}
+
+#btn-error{
+    background-color: var(--secondary-color);
 }
