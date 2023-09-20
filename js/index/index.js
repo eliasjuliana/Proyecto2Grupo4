@@ -1,5 +1,5 @@
 import { getMoviesFromLS, getseriesFromLS } from "../admin/adminUtils.js";
-import { createBannerMovie, createBannerSerie, favItem } from "./utils.js"
+import { changeSlides, createBannerMovie, createBannerSerie, favItem } from "./utils.js"
 
 //selecciono botones del navbar
 
@@ -98,11 +98,25 @@ if(!favMovie || !favSerie){
 } else {
     bannerDefault.classList.add('d-none');
     bannerFavs.classList.remove('d-none');
+    createBannerMovie(favMovie);
+    createBannerSerie(favSerie);
 }
 
 
-createBannerMovie(favMovie);
-createBannerSerie(favSerie);
+//event listener botones carousel
+
+const btnPrev = document.getElementById('btn-prev');
+const btnNext = document.getElementById('btn-next');
+
+
+
+btnNext.addEventListener('click', ()=>{
+    changeSlides();
+})
+
+btnPrev.addEventListener('click', ()=>{
+    changeSlides();
+})
 
 
 

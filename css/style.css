@@ -209,7 +209,7 @@ nav a{
 
 .bg-carousel-container{
     background: hsla(0, 0%, 0%, 1);
-    background: linear-gradient(90deg, hsla(0, 0%, 0%, 1) 20%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(90deg, hsla(0, 0%, 0%, 0.8) 20%, rgba(255, 255, 255, 0) 100%);
     padding: 2rem;
     height: 70vh;
 }

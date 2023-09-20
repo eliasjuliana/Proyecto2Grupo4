@@ -79,30 +79,30 @@
     </header>
     <main>
         <section id="banner-container" class="container-fluid">
-            <article id="banner-home" class="carousel slide m-auto">
+            <div id="banner-home" class="carousel slide m-auto">
                 <div class="carousel-inner">
-                  <div class="carousel-item active banner-item" id="carousel-movie">
+                  <div class="carousel-item active banner-item d-none" id="carousel-movie">
                   </div>
-                  <div class="carousel-item banner-item" id="carousel-serie">
+                  <div class="carousel-item banner-item " id="carousel-serie">
                   </div>
                 </div>
-                <button class="carousel-control-prev z-3" type="button" data-bs-target="#banner-home" data-bs-slide="prev">
+                <button class="carousel-control-prev z-3" type="button"  id="btn-prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next z-3" type="button" data-bs-target="#banner-home" data-bs-slide="next">
+                <button class="carousel-control-next z-3" type="button"  id="btn-next">
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Next</span>
                 </button>
-            </article>
+            </div>
 
-            <article class="carousel slide m-auto d-none" id="banner-default">
+            <div class="carousel slide m-auto d-none" id="banner-default">
                 <div class="carousel-inner">
-                    <div class="carousel-item active banner-item" id="carousel-item-default">
+                    <div class="carousel-item banner-item" id="carousel-item-default">
                         <img id="img-default" src="./assets/banner.jpeg" class="d-block w-100" alt="banner default">
                     </div>
                 </div>
-            </article>
+            </div>
         </section>
     </main>
     <footer>
