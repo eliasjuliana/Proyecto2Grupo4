@@ -21,8 +21,8 @@ formLogin.addEventListener('submit',(e) => {
             icon: 'success',
             title: 'Cuenta creada!',
             text: 'Tu cuenta se creó correctamente',
-            showConfirmButton: false,
-            timer: 1800
+            timer: 1500,
+            showConfirmButton: false
         }).then(() => {
             window.location.href = '../pages/error404.html';
         });
