@@ -1,45 +1,29 @@
 import { getCategoryFromLS } from "./utils.js";
 
-export const chargeCategorySelect = (category)=>{
-    const selectStart = document.getElementById("category-movie");
+export const chargeCategorySelect = (category, selects)=>{
+
     const optionCreate = document.createElement("option")
-    optionCreate.value = category.name;
-    optionCreate.innerHTML = category.name;
+optionCreate.value = category.name;
+optionCreate.innerHTML = category.name;
 
-    selectStart.appendChild(optionCreate)
+selects.appendChild(optionCreate)
+
 }
 
-export const rechargeCategorySelect = ()=>{
+export const rechargeCategorySelect = () => {
     const categoryListArr = getCategoryFromLS();
-    const selectStart = document.getElementById("category-movie")
+    const selectMovieSerie = document.querySelectorAll(".categorySelect");
 
-    selectStart.innerHTML = "";
+    selectMovieSerie.forEach((select) => {
+        select.innerHTML = "";
 
-    categoryListArr.forEach((category)=>{
-        chargeCategorySelect(category)
-    })
+        const optionSelect = document.createElement("option");
+        optionSelect.disabled = true;
+        optionSelect.selected = true;
+        optionSelect.innerText = "Elige una categoria";
+        select.appendChild(optionSelect);
 
-    const categoriaSeleccionada = selectStart.value;
-
-    return categoriaSeleccionada;
-}
-
-
-/*const ulSave = document.getElementById("listCategory")
-const liSave = document.createElement("p")
-liSave.classList.add("list-group-item")
-liSave.innerHTML = category.name;
-ulSave.appendChild(liSave)
-}
-
-export const chargeCategoryList = ()=>{
-    const categoryListArr = getCategoryFromLS();
-    
-    const ulSave = document.getElementById("listCategory")
-
-    ulSave.innerHTML = "";
-
-
-    categoryListArr.forEach((category)=>{
-addCategoryToList(category)
-    }) */
+        categoryListArr.forEach((category) => {
+            chargeCategorySelect(category, select);
+        });
+    });}

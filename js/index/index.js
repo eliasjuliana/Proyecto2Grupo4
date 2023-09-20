@@ -1,7 +1,9 @@
-import { getMoviesFromLS, getseriesFromLS } from "../admin/adminUtils.js";
-import { createBannerMovie, createBannerSerie, favItem } from "./utils.js"
+import { getMoviesFromLS, getseriesFromLS, loadCardsMovie } from "../admin/adminUtils.js";
+import { loadMovieCard } from "./cards.js";
+import { changeSlides, createBannerMovie, createBannerSerie, favItem } from "./utils.js"
 
 //selecciono botones del navbar
+loadMovieCard()
 
 const menuBtnNav = document.getElementById('btn-menu');
 const searchBtnNav = document.getElementById('btn-search');
@@ -92,17 +94,30 @@ const bannerDefault = document.getElementById('banner-default');
 const bannerFavs = document.getElementById('banner-home');
 
 
-if(!favMovie || !favSerie){
-    bannerDefault.classList.remove('d-none');
-    bannerFavs.classList.add('d-none');
-} else {
-    bannerDefault.classList.add('d-none');
-    bannerFavs.classList.remove('d-none');
-}
+ if(!favMovie || !favSerie){
+     bannerDefault.classList.remove('d-none');
+     bannerFavs.classList.add('d-none');
+ } else {
+     bannerDefault.classList.add('d-none');
+     bannerFavs.classList.remove('d-none');
+     createBannerMovie(favMovie);
+     createBannerSerie(favSerie);
+ }
+
+//event listener botones carousel
+
+const btnPrev = document.getElementById('btn-prev');
+const btnNext = document.getElementById('btn-next');
 
 
-createBannerMovie(favMovie);
-createBannerSerie(favSerie);
+
+btnNext.addEventListener('click', ()=>{
+    changeSlides();
+})
+
+btnPrev.addEventListener('click', ()=>{
+    changeSlides();
+})
 
 
 
