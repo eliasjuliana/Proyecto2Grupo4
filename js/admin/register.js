@@ -19,9 +19,10 @@ formLogin.addEventListener('submit',(e) => {
         Swal.fire({
             position: 'bottom-center',
             icon: 'success',
-            title: 'Cuenta registrada!',
+            title: 'Cuenta creada!',
+            text: 'Tu cuenta se creó correctamente',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1800
         }).then(() => {
             window.location.href = '../pages/error404.html';
         });
