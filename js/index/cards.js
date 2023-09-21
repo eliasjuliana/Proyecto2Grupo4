@@ -62,7 +62,7 @@ const createCardByCategory = (movie) => {
   const bodyCards = document.getElementById("filmsCategory");
 const divSaveCards = document.querySelector(".category-card")
     const divCard = document.createElement("div");
-    divCard.classList.add("card","text-bg-dark","m-3","position-absolute","inline-block");
+    divCard.classList.add("card","text-bg-dark","m-3","d-flex","justify-content-between","inline-block");
     divCard.style.width = "18rem";
     const img = document.createElement("img");
     img.src = movie.image
