@@ -19,5 +19,5 @@ if(editingCategory()){
 
     chargeCategoryList();
 
-    formCategory.reset
+    formCategory.reset();
 })

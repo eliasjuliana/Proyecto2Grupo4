@@ -1,4 +1,5 @@
 import { getMoviesFromLS, getseriesFromLS, saveFavSerieCode } from "../admin/adminUtils.js";
+import { loadMovieCard, loadMoviesByCategory } from "./cards.js";
 import { createBannerMovie, createBannerSerie, favItem, changeSlides } from "./utils.js"
 // import {loadMovieCard} from "./cards.js"
 
@@ -120,3 +121,6 @@ btnPrev.addEventListener('click', ()=>{
     changeSlides();
 })
 
+
+loadMovieCard()
+loadMoviesByCategory()

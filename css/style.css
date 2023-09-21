@@ -14,7 +14,8 @@
 *{
     text-decoration: none;
     box-sizing: border-box;
-    font-family: "Amazon Ember"
+    font-family: "Amazon Ember";
+    background-color: var(--primary-color)
 }
 
 /* NAVBAR */
@@ -77,6 +78,21 @@ nav a{
     width: 100vw;
     height: 100vh;
 }
+/* TITULOS Y PRIME */
+.titleFont {
+    font-family: "Amazon Ember";
+    color: var(--terciary-color);
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-left: 1rem;
+}
+.primeFont {
+    font-family: "Amazon Ember";
+    color: var(--blue-letter-color);
+    font-size: 1.5rem;
+}
+
+
 /* Cards */
 .card-body {
     opacity: 0; /* Inicialmente oculto */
@@ -89,6 +105,7 @@ nav a{
     height: auto; /* Ajustar la altura automáticamente */
   }
   
+
 /* botones activos del navbar */
 
 .btn-navbar-active{
