@@ -1,9 +1,6 @@
-import { getMoviesFromLS, getseriesFromLS } from "../admin/adminUtils.js";
-import { createBannerMovie, createBannerSerie, favItem, changeSlides } from "./utils.js"
-
 import { getMoviesFromLS, getseriesFromLS, saveFavSerieCode } from "../admin/adminUtils.js";
 import { createBannerMovie, createBannerSerie, favItem, changeSlides } from "./utils.js"
-import {loadMovieCard} from "./cards.js"
+// import {loadMovieCard} from "./cards.js"
 
 
 //selecciono botones del navbar
