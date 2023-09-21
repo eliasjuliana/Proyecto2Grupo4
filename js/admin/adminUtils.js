@@ -575,7 +575,6 @@ export const saveFavMovieCode = (code) => {
 
   // 3. Guardar el codigo en sessionStorage
   sessionStorage.setItem("codeFavMovie", code);
-  console.log(favMovie);
 };
 
 export const saveFavSerieCode = (code) => {
@@ -589,7 +588,6 @@ export const saveFavSerieCode = (code) => {
 
   // 3. Guardar el codigo en sessionStorage
   sessionStorage.setItem("codeFavSerie", code);
-  console.log(favSerie);
 };
 
 //FUNCIONES PARA EDITAR
@@ -681,10 +679,4 @@ export const setSelectValue = (value)=> {
   select.value = value;
 }
 
-// export const setcategories = (value) =>{
-//   const select = document.querySelector('.form-select'); 
 
-//   const selectOption = document.createElement('option');
-//   selectOption.value = value;
-//   select.appendChild(selectOption);
-// }

@@ -1,6 +1,7 @@
 import { getMoviesFromLS, getseriesFromLS, saveFavSerieCode } from "../admin/adminUtils.js";
-import { createBannerMovie, createBannerSerie, favItem } from "./utils.js"
-import {loadMovieCard} from "./cards.js"
+import { createBannerMovie, createBannerSerie, favItem, changeSlides } from "./utils.js"
+// import {loadMovieCard} from "./cards.js"
+
 
 //selecciono botones del navbar
 
@@ -87,11 +88,35 @@ const series = getseriesFromLS();
 const favMovie = favItem(movies, favMovieCode);
 const favSerie = favItem(series, favSerieCode);
 
-console.log(favMovie);
+
+//selecciono slide default del carousel
+const bannerDefault = document.getElementById('banner-default');
+const bannerFavs = document.getElementById('banner-home');
 
 
-//tomo la imagen de la pelocula destacada y creo la imagen del carousel
-createBannerMovie(favMovie);
+if(!favMovie || !favSerie){
+    bannerDefault.classList.remove('d-none');
+    bannerFavs.classList.add('d-none');
+} else {
+    bannerDefault.classList.add('d-none');
+    bannerFavs.classList.remove('d-none');
+    createBannerMovie(favMovie);
+    createBannerSerie(favSerie);
+}
 
-//tomo la imagen de la pelocula destacada y creo la imagen del carousel
-createBannerSerie(favSerie);
+
+//event listener botones carousel
+
+const btnPrev = document.getElementById('btn-prev');
+const btnNext = document.getElementById('btn-next');
+
+
+
+btnNext.addEventListener('click', ()=>{
+    changeSlides();
+})
+
+btnPrev.addEventListener('click', ()=>{
+    changeSlides();
+})
+

@@ -113,61 +113,42 @@
       </div>
     </header>
     <main>
-      <section id="banner-container" class="container-fluid">
-        <article id="banner-home">
-          <div class="carousel slide m-auto">
-            <div class="carousel-inner">
-              <div
-                class="carousel-item active banner-item d-none"
-                id="carousel-movie"
-              ></div>
-              <div class="carousel-item banner-item" id="carousel-serie"></div>
-            </div>
-            <button
-              class="carousel-control-prev z-3"
-              type="button"
-              id="btn-prev"
-            >
-              <span
-                class="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button
-              class="carousel-control-next z-3"
-              type="button"
-              id="btn-next"
-            >
-              <span
-                class="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-        </article>
-        <article id="banner-default" class="d-none">
-          <div class="carousel slide m-auto">
-            <div class="carousel-inner">
-              <div class="carousel-item banner-item" id="carousel-item-default">
-                <img
-                  id="img-default"
-                  src="./assets/banner.jpeg"
-                  class="d-block w-100"
-                  alt="banner default"
-                />
-              </div>
-            </div>
-          </div>
-        </article>
-      </section>
+
+        <section id="banner-container" class="container-fluid">
+            <article id="banner-home" class="carousel slide m-auto">
+                <div class="carousel-inner">
+                  <div class="carousel-item active banner-item" id="carousel-movie">
+                  </div>
+                  <div class="carousel-item banner-item d-none" id="carousel-serie">
+                  </div>
+                </div>
+                <button class="carousel-control-prev z-3" type="button" data-bs-slide="prev" id="btn-prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next z-3" type="button"  data-bs-slide="next" id="btn-next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </article>
+
+            <article class="carousel slide m-auto d-none" id="banner-default">
+                <div class="carousel-inner">
+                    <div class="carousel-item active banner-item" id="carousel-item-default">
+                        <img id="img-default" src="./assets/prime-video-background.jpg" class="d-block w-100" alt="banner default">
+                    </div>
+                </div>
+            </article>
+        </section>
+
+
 <section class="position-relative z-2">
     <!-- RECOMENDADAS PELIS -->
     <article class="cardFilm d-flex">
 
     </article>
 </section>
+
 
     </main>
     <footer>
@@ -195,6 +176,20 @@
       </section>
     </footer>
 
+    
+
+
+        <!-- scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/a48a581e8f.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script type="module" src="../js/index/index.js"></script>
+        <script type="module" src="../js/logout.js"></script>
+
+</body>
+
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
@@ -204,9 +199,12 @@
       src="https://kit.fontawesome.com/a48a581e8f.js"
       crossorigin="anonymous"
     ></script>
+  
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script type="module" src="./js/index/index.js"></script>
     <script type="module" src="./js/logout.js"></script>
     <script type="module" src="./js/admin/details.js"></script>
   </body>
+
 </html>
