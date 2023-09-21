@@ -3,6 +3,7 @@ import { addCategoryToLS } from "./utils.js"
 class Category {
     constructor(name){
         this.name = name
+        this.code = self.crypto.randomUUID()
     }
 }
 

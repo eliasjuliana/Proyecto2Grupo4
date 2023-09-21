@@ -115,26 +115,6 @@ btnSeriesTable.addEventListener("click", () => {
   setSelectValue('series');
 });
 
-//event listener tabs agustin
-// btnMoviesTable.addEventListener('click', () =>{
-//   seriesTable.classList.add('d-none');
-//   moviesTable.classList.remove('d-none');
-//   selectMovies.classList.remove("d-none")
-//   selectSeries.classList.add("d-none")
-//   filtradoPelicula()
-// })
-
-// btnSeriesTable.addEventListener('click', () =>{
-//   loadSerieTable();
-//   seriesTable.classList.remove('d-none');
-//   moviesTable.classList.add('d-none');
-//   selectMovies.classList.add("d-none")
-//   selectSeries.classList.remove("d-none")
-//   filtradoSerie()
-// })
-
-//PARA CREAR FILAS DE LA TABLA PELICULAS
-
 //event listeners para validar
 
 fieldMovieName.addEventListener("blur", (e) => {
