@@ -1,6 +1,11 @@
 import { getMoviesFromLS, getseriesFromLS } from "../admin/adminUtils.js";
 import { createBannerMovie, createBannerSerie, favItem, changeSlides } from "./utils.js"
 
+import { getMoviesFromLS, getseriesFromLS, saveFavSerieCode } from "../admin/adminUtils.js";
+import { createBannerMovie, createBannerSerie, favItem, changeSlides } from "./utils.js"
+import {loadMovieCard} from "./cards.js"
+
+
 //selecciono botones del navbar
 
 const menuBtnNav = document.getElementById('btn-menu');
@@ -73,12 +78,11 @@ userBtnNav.addEventListener('click', () => {
     changeIcons(iconSearch, iconX);
 });
 
-//BANNER HOME
+//banner home
 
 //traigo del SS el codigo de pelicula/serie destacada
 const favMovieCode = sessionStorage.getItem('codeFavMovie');
 const favSerieCode = sessionStorage.getItem('codeFavSerie');
-
 //traigo los arrays de peliculas/series
 const movies = getMoviesFromLS();
 const series = getseriesFromLS();
@@ -86,6 +90,7 @@ const series = getseriesFromLS();
 //encuentro la pelicula/serie destacada
 const favMovie = favItem(movies, favMovieCode);
 const favSerie = favItem(series, favSerieCode);
+
 
 //selecciono slide default del carousel
 const bannerDefault = document.getElementById('banner-default');

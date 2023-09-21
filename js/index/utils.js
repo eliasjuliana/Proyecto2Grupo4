@@ -17,7 +17,7 @@ export const createBannerMovie = (favMovie) =>{
     bgCarousel.classList.add('d-block', 'w-100', 'position-absolute', 'z-2', 'bg-carousel-container');
 
     const titleBtnsContainer = document.createElement('div');
-    titleBtnsContainer.classList.add('z-2', 'position-absolute', 'text-light', 'm-4', 'title-container');
+    titleBtnsContainer.classList.add('z-3', 'position-absolute', 'text-light', 'm-4', 'title-container');
 
     const title = document.createElement('h2');
     title.classList.add('fs-1')
@@ -30,7 +30,6 @@ export const createBannerMovie = (favMovie) =>{
     btnsContainer.classList.add('d-flex', 'gap-3');
     const playBtn = document.createElement('i');
     playBtn.classList.add('fa-regular', 'fa-circle-play', 'fs-1');
-
     const plusBtn = document.createElement('i');
     plusBtn.classList.add('fa-solid', 'fa-plus', 'fs-1');
 
@@ -60,7 +59,7 @@ export const createBannerSerie = (favSerie) => {
     bgCarousel.classList.add('d-block', 'w-100', 'position-absolute', 'z-2', 'bg-carousel-container');
     
     const titleBtnsContainer = document.createElement('div');
-    titleBtnsContainer.classList.add('z-2', 'position-absolute', 'text-light', 'm-4', 'title-container');
+    titleBtnsContainer.classList.add('z-3', 'position-absolute', 'text-light', 'm-4', 'title-container');
 
     const title = document.createElement('h2');
     title.classList.add('fs-1');

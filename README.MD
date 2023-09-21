@@ -1,4 +1,4 @@
-# Presentacion fin de módulo 2: Página de streaming inspirada en prime video.
+# Presentacion fin de módulo 2: Página de streaming inspirada en Prime Video.
 
 
 El fin de este trabajo es crear una página unificando los conocimientos obtenidos en el 1er módulo (maquetado en gral) y en el 2do módulo (github y javascript, entre otros).
@@ -15,16 +15,11 @@ El fin de este trabajo es crear una página unificando los conocimientos obtenid
 - Página resposive.
 - Página Principal.
 - Página de administración.
-- Página de detalle con productos que tengan las siguientes propiedades: Código único, Nombre, precio, Categoría, Imagen (álbum o alguna imagen decorativa de la canción) cargada con url, descripción, cantidad en stock.
+- Página de detalle con la película que tengan las siguientes propiedades: Código único, Nombre, Categoría, Imagen cargada con url y descripción.
 - Página acerca de nosotros.
 - Página error 404.
+- Registro.
 - Login.
-- REQUERIMIENTOS OPTATIVOS:
-
-- REGISTRO.
-
-- LISTA DE PRODUCTOS DESEADOS.
-
 
 >**IMPORTANTE :** Tener en cuenta los tips dados en clases y considerados "buena práctica", así como también, evitar aquellos que están en desuso o son "mala práctica".
 

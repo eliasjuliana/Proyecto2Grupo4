@@ -9,7 +9,7 @@ import {
   validatePublication,
 } from "./validators.js";
 // import { filtradoPelicula, filtradoSerie } from "./filters.js";
-// import {rechargeCategorySelect} from "../category/select.js"
+import {rechargeCategorySelect} from "../category/select.js"
 import { editingMovie, editingSerie, responsiveMovies, responsiveSeries, setSelectValue } from "./adminUtils.js";
 
 
@@ -20,7 +20,7 @@ if (!Logueado) {
 }
 
 //SELECCION ELEMENTOS
-// rechargeCategorySelect();
+rechargeCategorySelect();
 //select para cargar peliculas o series
 const selectMoviesSeries = document.getElementById("select-movies-series");
 
