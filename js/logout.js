@@ -2,13 +2,13 @@
 
 const btnExit = document.getElementById('btn-exit');
 
-//mpstrar u ocultar boton
+//mostrar u ocultar boton
 
 const Logueado = JSON.parse(sessionStorage.getItem('Logueado'));
 
 if(Logueado){
     btnExit.classList.remove('d-none');
-}
+};
 
 btnExit.addEventListener("click", () => {
     swal

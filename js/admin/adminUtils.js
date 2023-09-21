@@ -681,6 +681,7 @@ export const setSelectValue = (value)=> {
   select.value = value;
 }
 
+
 // export const setcategories = (value) =>{
 //   const select = document.querySelector('.form-select'); 
 
@@ -688,3 +689,4 @@ export const setSelectValue = (value)=> {
 //   selectOption.value = value;
 //   select.appendChild(selectOption);
 // }
+
