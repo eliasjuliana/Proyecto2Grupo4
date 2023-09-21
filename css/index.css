@@ -1,0 +1,16 @@
+@import url('https://fonts.cdnfonts.com/css/amazon-ember');
+
+:root{
+    --primary-color: #010D0C;
+    --secondary-color:  #1A1E24;
+    --secondary-color-transparent:  #1a1e24a5;
+    --terciary-color: #fafafa;
+    --dropdown-list-color: #848587;
+    --blue-letter-color: #4896F7;
+    --blue-dark-color: #2062b3;
+    --error-container:#0f171e;
+}
+
+*{
+    background-color:var(--primary-color);
+}
