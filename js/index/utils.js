@@ -90,3 +90,15 @@ export const createBannerSerie = (favSerie) => {
     carouselSerie.appendChild(titleBtnsContainer);
 }
 
+export const changeSlides = () =>{
+    const slideMovie = document.getElementById('carousel-movie');
+    const slideSerie = document.getElementById('carousel-serie');
+
+    if(slideMovie.classList.contains('d-none')){
+        slideMovie.classList.remove('d-none');
+        slideSerie.classList.add('d-none')
+    } else if (slideSerie.classList.contains('d-none')){
+        slideMovie.classList.add('d-none');
+        slideSerie.classList.remove('d-none')
+    }
+}
