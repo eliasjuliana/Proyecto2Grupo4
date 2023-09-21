@@ -1,6 +1,6 @@
 import { addCategoryToLS } from "./utils.js"
 
-class Category {
+export class Category {
     constructor(name){
         this.name = name
         this.code = self.crypto.randomUUID()

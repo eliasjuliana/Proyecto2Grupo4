@@ -495,8 +495,6 @@ export const loadCardsSerie = () => {
   movieCardsContainer.innerHTML = "";
   serieCardsContainer.innerHTML = "";
 
-  // seriesTable.classList.add('d-none');
-  // moviesTable.classList.remove('d-none');
 
   // Cargar tabla
   series.forEach((serie, index) => {

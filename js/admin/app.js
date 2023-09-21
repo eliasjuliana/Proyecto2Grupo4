@@ -50,9 +50,6 @@ const fieldSerieDescription = document.getElementById(
 const fieldSeriePublication = document.getElementById("publication-serie");
 
 //botones para mostrar tabla peliculas o tabla series
-// const selectMovies = document.getElementById("divMovie")
-// const selectSeries = document.getElementById("divSeries")
-// //agustin
 const btnMoviesTable = document.getElementById("btn-movies-table");
 const btnSeriesTable = document.getElementById("btn-series-table");
 const moviesTable = document.getElementById("movies-table");

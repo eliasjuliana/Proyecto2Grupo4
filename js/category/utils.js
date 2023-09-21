@@ -1,4 +1,4 @@
-import { deleteCategory } from "./select.js";
+import { deleteCategory, prepareEditionCategory } from "./select.js";
 
 export const getCategoryFromLS = ()=>{
     return JSON.parse(localStorage.getItem("categorias")) || [];}
@@ -29,7 +29,7 @@ iconEdit.classList.add("fa-solid","fa-pen-to-square")
 iconEdit.style.color = "#000000"
 editBtn.appendChild(iconEdit)
 editBtn.onclick = ()=>{
-    //...
+    prepareEditionCategory(category.code)
 }
 
 //ELIMINAR
@@ -65,7 +65,3 @@ export const chargeCategoryList = ()=>{
 addCategoryToList(category)
     })
 }
-
-/* <i class="fa-solid fa-x" style="color: #000000;"></i> */
-
-/* <i class="fa-solid fa-pen-to-square" style="color: #000000;"></i> */

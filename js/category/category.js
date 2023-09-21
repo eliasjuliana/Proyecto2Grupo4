@@ -1,5 +1,6 @@
-import { addCategory } from "../category/class.js";
-import { chargeCategoryList } from "../category/utils.js";
+import { addCategory } from "./class.js";
+import { editCategory, editingCategory } from "./select.js";
+import { chargeCategoryList } from "./utils.js";
 
 chargeCategoryList();
 
@@ -10,8 +11,11 @@ formCategory.addEventListener("submit", (e)=>{
     e.preventDefault();
 
     const category = inputCategory.value;
-
+if(editingCategory()){
+    editCategory(category)
+} else{
     addCategory(category);
+}
 
     chargeCategoryList();
 
